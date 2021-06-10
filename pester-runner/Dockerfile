@@ -7,4 +7,4 @@ RUN Find-Module 'Pester' | Install-Module -Force
 
 WORKDIR /test
 
-ENTRYPOINT [ "pwsh", "-c", "Invoke-Pester","-EnableExit" ]
+ENTRYPOINT [ "pwsh", "-c", "Invoke-Pester"]

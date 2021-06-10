@@ -20,6 +20,4 @@ shell: ## Shell to container
 run: ## Run container 
 	docker run --rm --name="$(APP_NAME)" -v "${PWD}:/test" $(APP_NAME)
 
-stop: ## Stop and remove a running container
-	docker stop $(APP_NAME); docker rm $(APP_NAME)
 

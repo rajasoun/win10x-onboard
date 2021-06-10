@@ -27,17 +27,9 @@ FYI: System will restart couple of times
     code --install-extension ms-vscode-remote.remote-containers
     ```
 
-## Progress Tracking
+## TDD with Pester
 
-Done:
-1. Automate HyperV, WSL, WSL2 Kernel Update & Docker Desktop - ✅
-2. Automate Applications (Git Bash and VC Code) -  ✅ (Checks Pending)
-
-Learn:
-1. Dont keep ps1 scripts in Downloads 
-
-To Do:
-1. Condition Check for Installer and Uninstaller 
-2. Log details to File 
-3. Git Config 
-4. SSH Token 
+1. `make -f pester-runner/Makefile  build` to build the pester-runner container
+1. `make -f pester-runner/Makefile  run` to run the pester-runner container
+1. `make -f pester-runner/Makefile  shell` to shell to the container
+1. `make -f pester-runner/Makefile` to get help
