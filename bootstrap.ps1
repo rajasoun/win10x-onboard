@@ -36,8 +36,8 @@ $core_url = 'https://git.io/JZ4FD'
 Write-Output 'Initializing...'
 Invoke-Expression (new-object net.webclient).downloadstring($core_url)
 
-bootstrap_env
-admin_hyperv_wsl_docker_bootstrap
-applications_installer
-applications_uninstaller 
+# bootstrap_env
+# admin_hyperv_wsl_docker_bootstrap
+# applications_installer
+# applications_uninstaller 
 

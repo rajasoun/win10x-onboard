@@ -31,40 +31,9 @@ function _install_module($module){
     }
 }
 
-function _download($url){
-    $download_zip_file = $(Split-Path -Path $url -Leaf) 
-    Invoke-WebRequest -Uri $url -OutFile $download_zip_file
-    info "Download $download_zip_file to $dir Done !!!"
-}
-
-function _unzip($file,$dir){
-    Add-Type -AssemblyName System.IO.Compression.FileSystem
-    [System.IO.Compression.ZipFile]::ExtractToDirectory("$file",$dir)
-    info "Unzip $file to $location Done !!!"
-}
-
-function _remove($item){
-    if (Test-Path $item){
-        Remove-Item $item -Force -Recurse
-        info "$item Removal Done !!!"
-    }
-}
-
 function _install_modules(){
     _install_module "PSReadLine" 
     _install_module "Pester"
-}
-
-function _get_bootstrap_scripts($url,$dir){
-    _create_directory $dir
-    _change_location $dir
-    $download_zip_file = $(Split-Path -Path $url -Leaf)  
-    info "Getting $download_zip_file From $url"
-    _download($url)
-    info "UnZip $download_zip_file"
-    _unzip "$dir/$download_zip_file" "UnZip"
-    info "Remove $download_zip_file"
-    _remove($download_zip_file)
 }
 
 Function Bootstrap_HyperV 
@@ -163,8 +132,53 @@ Function Bootstrap_Docker {
         Write-Host "Docker Started successfully"       
 }
 
+function _create_directory($dir){
+    New-Item -ItemType Directory -Path $dir -Force | Out-Null
+}
+
+function _change_location($dir){
+    Set-Location -Path $dir 
+}
+
+function _download($url){
+    $download_zip_file = $(Split-Path -Path $url -Leaf) 
+    Invoke-WebRequest -Uri $url -OutFile $download_zip_file
+    info "Download $download_zip_file to $dir Done !!!"
+}
+
+function _unzip($file,$dir){
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+    [System.IO.Compression.ZipFile]::ExtractToDirectory("$file",$dir)
+    info "Unzip $file to $location Done !!!"
+}
+
+function _remove($item){
+    if (Test-Path $item){
+        Remove-Item $item -Force -Recurse
+        info "$item Removal Done !!!"
+    }
+}
+
+function _install_toolz($url,$dir){
+    _create_directory $dir
+    _change_location $dir
+    $download_zip_file = $(Split-Path -Path $url -Leaf)  
+    info "Getting $download_zip_file From $url"
+    _download($url)
+    info "UnZip $download_zip_file"
+    _unzip "$dir/$download_zip_file" "UnZip"
+    info "Remove $download_zip_file"
+    _remove($download_zip_file)
+}
+
+function install_gh_cli(){
+    $url="https://github.com/cli/cli/releases/download/v1.11.0/gh_1.11.0_windows_amd64.zip"
+    _install_toolz $url $dir
+}
+
 function bootstrap_env(){
-    _get_bootstrap_scripts $url $dir
+    _create_directory $dir
+    _change_location $dir
     _install_modules
     success "Bootstrap Done!"
 }
