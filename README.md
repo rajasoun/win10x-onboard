@@ -7,8 +7,8 @@
 1. Open Powershell as Administrator 
 1. Run following commands to setup HyperV, WSL, WSL2 Kernel Update and Docker
 ```
-cd  $HOME\workspace\on-board\win10x\setup
-.\admin-bootstrap.ps1
+. ./bootstrap.ps1 && bootstrap_env
+. ./bootstrap.ps1 && admin_hyperv_wsl_docker_bootstrap
 ```
 FYI: System will restart couple of times 
 
@@ -17,7 +17,7 @@ FYI: System will restart couple of times
 1. Open Powershell (Note - Not as Adminstrator)
 1. Run the following Command to Install Git-Bash and Visual Studio Code
 ```
-.\apps-installer.ps1
+. ./bootstrap.ps1 && applications_installer
 ```
 
 ### Install Visual Stiudio Remote Container Extension 
