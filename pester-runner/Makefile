@@ -12,7 +12,7 @@ help: ## This help.
 # DOCKER TASKS
 # Build the container
 build: ## Build the container
-	docker build -t $(APP_NAME) .
+	docker build -t $(APP_NAME) pester-runner
 
 shell: ## Shell to container 
 	docker run --rm -it --name="$(APP_NAME)" -v "${PWD}:/test" --entrypoint=pwsh $(APP_NAME)
