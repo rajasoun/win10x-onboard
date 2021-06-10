@@ -31,13 +31,7 @@ function _install_module($module){
     }
 }
 
-function _install_modules(){
-    _install_module "PSReadLine" 
-    _install_module "Pester"
-}
-
-Function Bootstrap_HyperV 
-{
+Function Bootstrap_HyperV {
     Write-Host "Checking if Hyper-V is enabled."
     $hyperv = Get-WindowsOptionalFeature -FeatureName Microsoft-Hyper-V-All -Online
     if($hyperv.State -eq "Enabled") {
@@ -51,8 +45,7 @@ Function Bootstrap_HyperV
     }
 }
 
-Function Bootstrap_WSL 
-{
+Function Bootstrap_WSL {
     Write-Host "Checking if WSL is enabled."
     $wsl = Get-WindowsOptionalFeature -FeatureName Microsoft-Windows-Subsystem-Linux -Online
     if($wsl.State -eq "Enabled") {
@@ -69,14 +62,11 @@ Function Bootstrap_WSL
     }
 }
 
-Function Bootstrap_WSL2_KernalUpdate 
-{
+Function Bootstrap_WSL2_KernalUpdate {
     Write-Host "Upgrade WSL Linux Kernel"
-    if ([Environment]::Is64BitOperatingSystem)
-    {
+    if ([Environment]::Is64BitOperatingSystem){
         Write-Host "System is x64. Need to update Linux kernel..."
-        if (-not (Test-Path wsl_update_x64.msi))
-        {
+        if (-not (Test-Path wsl_update_x64.msi)){
             Write-Host "Downloading Linux kernel update package..."
             Invoke-WebRequest -OutFile wsl_update_x64.msi https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
         }
@@ -89,8 +79,7 @@ Function Bootstrap_WSL2_KernalUpdate
     Write-Host "WSL2 is enabled with Linux Kernal Upgrade. SUCCESS !!!"
 }
 
-Function GenerateFolder($path) 
-{
+Function GenerateFolder($path) {
     $global:foldPath = $null
     foreach($foldername in $path.split("\")) {
         $global:foldPath += ($foldername+"\")
@@ -105,8 +94,7 @@ Function Bootstrap_Docker {
 
     Write-Host "Docker Installation..." 
     GenerateFolder "~/AppData/Roaming/Docker/"
-    if (-not (Test-Path DockerInstaller.exe))
-    {
+    if (-not (Test-Path DockerInstaller.exe)){
         Write-Host "Installing Docker."            
         Write-Host "Downloading the Docker exe"
         Invoke-WebRequest -Uri https://desktop.docker.com/win/stable/Docker%20Desktop%20Installer.exe -OutFile DockerInstaller.exe -UseBasicParsing
@@ -171,9 +159,16 @@ function _install_toolz($url,$dir){
     _remove($download_zip_file)
 }
 
+###### Wrapper Functions ##################
+
 function install_gh_cli(){
     $url="https://github.com/cli/cli/releases/download/v1.11.0/gh_1.11.0_windows_amd64.zip"
     _install_toolz $url $dir
+}
+
+function _install_modules(){
+    _install_module "PSReadLine" 
+    _install_module "Pester"
 }
 
 function bootstrap_env(){
