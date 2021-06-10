@@ -6,27 +6,27 @@
 
 1. Open Powershell as Administrator 
 1. Run following commands to setup HyperV, WSL, WSL2 Kernel Update and Docker
-```
-. ./bootstrap.ps1 && bootstrap_env
-. ./bootstrap.ps1 && admin_hyperv_wsl_docker_bootstrap
-```
+    ```
+    iwr -useb https://git.io/JZBfh | iex && bootstrap_env 
+    iwr -useb https://git.io/JZBfh | iex && admin_hyperv_wsl_docker_bootstrap
+    ```
 FYI: System will restart couple of times 
 
 ### Git-Bash and Visual Studio Code
 
 1. Open Powershell (Note - Not as Adminstrator)
 1. Run the following Command to Install Git-Bash and Visual Studio Code
-```
-. ./bootstrap.ps1 && applications_installer
-```
+    ```
+    iwr -useb https://git.io/JZBfh | iex &&  applications_installer
+    ```
 
 ### Install Visual Stiudio Remote Container Extension 
 
 1. Open Git Bash 
-```
-cd "$HOME/workspace"
-code --install-extension ms-vscode-remote.remote-containers
-```
+    ```
+    cd "$HOME/workspace"
+    code --install-extension ms-vscode-remote.remote-containers
+    ```
 
 ## Progress Tracking
 
