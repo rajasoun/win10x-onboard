@@ -12,12 +12,15 @@ Function Test-ModuleAvailable {
     Return [Boolean](Get-InstalledModule -Name $Name -ErrorAction Ignore)
 }
 
-function _create_directory($dir){
-    New-Item -ItemType Directory -Path $dir -Force | Out-Null
-}
-
-function _change_location($dir){
-    Set-Location -Path $dir 
+Function GenerateFolder($path) {
+    $global:foldPath = $null
+    foreach($foldername in $path.split("\")) {
+        $global:foldPath += ($foldername+"\")
+        if (!(Test-Path $global:foldPath)){
+            New-Item -ItemType Directory -Path $global:foldPath
+            Write-Host "$global:foldPath Folder Created Successfully"
+        }
+    }
 }
 
 function _install_module($module){
@@ -79,17 +82,6 @@ Function Bootstrap_WSL2_KernalUpdate {
     Write-Host "WSL2 is enabled with Linux Kernal Upgrade. SUCCESS !!!"
 }
 
-Function GenerateFolder($path) {
-    $global:foldPath = $null
-    foreach($foldername in $path.split("\")) {
-        $global:foldPath += ($foldername+"\")
-        if (!(Test-Path $global:foldPath)){
-            New-Item -ItemType Directory -Path $global:foldPath
-            Write-Host "$global:foldPath Folder Created Successfully"
-        }
-    }
-}
-
 Function Bootstrap_Docker {
 
     Write-Host "Docker Installation..." 
@@ -120,17 +112,9 @@ Function Bootstrap_Docker {
         Write-Host "Docker Started successfully"       
 }
 
-function _create_directory($dir){
-    New-Item -ItemType Directory -Path $dir -Force | Out-Null
-}
-
-function _change_location($dir){
-    Set-Location -Path $dir 
-}
-
-function _download($url){
+function _download($url,$dir){
     $download_zip_file = $(Split-Path -Path $url -Leaf) 
-    Invoke-WebRequest -Uri $url -OutFile $download_zip_file
+    Invoke-WebRequest -Uri $url -OutFile $dir/$download_zip_file
     info "Download $download_zip_file to $dir Done !!!"
 }
 
@@ -148,13 +132,12 @@ function _remove($item){
 }
 
 function _install_toolz($url,$dir){
-    _create_directory $dir
-    _change_location $dir
+    GenerateFolder $dir
     $download_zip_file = $(Split-Path -Path $url -Leaf)  
     info "Getting $download_zip_file From $url"
-    _download($url)
+    _download $url $dir
     info "UnZip $download_zip_file"
-    _unzip "$dir/$download_zip_file" "UnZip"
+    _unzip "$dir/$download_zip_file" "$dir"
     info "Remove $download_zip_file"
     _remove($download_zip_file)
 }
@@ -163,6 +146,7 @@ function _install_toolz($url,$dir){
 
 function install_gh_cli(){
     $url="https://github.com/cli/cli/releases/download/v1.11.0/gh_1.11.0_windows_amd64.zip"
+    $dir="/test/on-board"
     _install_toolz $url $dir
 }
 
@@ -172,8 +156,8 @@ function _install_modules(){
 }
 
 function bootstrap_env(){
-    _create_directory $dir
-    _change_location $dir
+    info "$dir"
+    GenerateFolder $dir
     _install_modules
     success "Bootstrap Done!"
 }
