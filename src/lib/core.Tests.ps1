@@ -52,5 +52,10 @@ Describe 'Test core.ps1' {
             bootstrap_env
             (Test-Path -Path $dir) | Should -BeTrue
         }
+        It "Bootstrap_HyperV to be success"{
+            Bootstrap_HyperV
+            $hyperv = Get-WindowsOptionalFeature -FeatureName Microsoft-Hyper-V-All -Online
+            $hyperv.State | Should -Be 'Enabled'
+        }
     }
 }
