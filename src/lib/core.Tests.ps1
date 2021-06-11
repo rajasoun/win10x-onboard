@@ -43,6 +43,10 @@ Describe 'Test core.ps1' {
             _install_modules
             Test-ModuleAvailable -Name $name | Should -Be $expected
         }
+        It "_install_module installs Emojis" {
+            _install_module "Emojis"
+            Get-Emoji -Name cactus | Should -Be '🌵'
+        }
         It "bootstrap_env to be success"{
             $dir="$HOME/workspace/on-board/"
             bootstrap_env
