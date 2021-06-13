@@ -23,14 +23,12 @@ Describe 'Windows Automation Test' {
             $pesterOk | Should -BeTrue
         }
     }
-    Context "System Test" -Tag "system" {
-        It "Enable Hyper_V" {
-            _Enable_HyperV
-            $hyperv = Get-WindowsOptionalFeature -FeatureName Microsoft-Hyper-V-All -Online
-            $hyperv.State | Should -Be "Enabled"
+    Context "System Test - Enable Hyper-V " -Tag "system" {
+        It "Enable HyperV" {
+            $result = _Enable_HyperV
+            $result | Should -Be $true
         }
-        It "Enable WSL"{
-            _Enable_WSL
+        It "Check HyperV is Enabled "{
             $hyperv = Get-WindowsOptionalFeature -FeatureName Microsoft-Hyper-V-All -Online
             $hyperv.State | Should -Be "Enabled"
         }
