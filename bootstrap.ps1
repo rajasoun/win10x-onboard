@@ -31,7 +31,7 @@ if ([System.Enum]::GetNames([System.Net.SecurityProtocolType]) -notcontains 'Tls
 }
 
 # https://raw.githubusercontent.com/rajasoun/win10x-onboard/main/src/lib/system.ps1
-$core_url = https://git.io/JZFdk
+$core_url = 'https://git.io/JZFdk'
 Write-Output 'Initializing System Functions...'
 Invoke-Expression (new-object net.webclient).downloadstring($core_url)
 _Bootstrap
