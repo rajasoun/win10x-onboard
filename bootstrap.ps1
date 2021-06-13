@@ -31,4 +31,7 @@ if ([System.Enum]::GetNames([System.Net.SecurityProtocolType]) -notcontains 'Tls
 $core_url = 'https://git.io/JZFdk'
 Write-Output 'Initializing System Functions...'
 Invoke-Expression (new-object net.webclient).downloadstring($core_url)
+$workspace_url = 'https://git.io/JZAuo'
+Write-Output 'Initializing Workspace Functions...'
+Invoke-Expression (new-object net.webclient).downloadstring($workspace_url)
 _Bootstrap
