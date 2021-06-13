@@ -30,16 +30,23 @@ if ([System.Enum]::GetNames([System.Net.SecurityProtocolType]) -notcontains 'Tls
     break
 }
 
+# https://raw.githubusercontent.com/rajasoun/win10x-onboard/main/src/lib/system.ps1
+$core_url = https://git.io/JZFdk
+Write-Output 'Initializing System Functions...'
+Invoke-Expression (new-object net.webclient).downloadstring($core_url)
+_Bootstrap
+
+
 # get core functions
 # https://raw.githubusercontent.com/rajasoun/win10x-onboard/master/src/lib/core.ps1
-$core_url = 'https://git.io/JZ4FD'
-Write-Output 'Initializing...'
-Invoke-Expression (new-object net.webclient).downloadstring($core_url)
+# $core_url = 'https://git.io/JZ4FD'
+# Write-Output 'Initializing...'
+# Invoke-Expression (new-object net.webclient).downloadstring($core_url)
 
-function admin_bootstrap(){
-    bootstrap_env 
-    admin_hyperv_wsl_docker_bootstrap
-}
+# function admin_bootstrap(){
+#     bootstrap_env 
+#     admin_hyperv_wsl_docker_bootstrap
+# }
 
 # applications_installer
 # applications_uninstaller 

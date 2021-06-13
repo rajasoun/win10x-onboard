@@ -7,7 +7,7 @@
 1. Open Powershell as Administrator 
 1. Run following commands to setup HyperV, WSL, WSL2 Kernel Update and Docker
     ```
-    iwr -useb https://git.io/JZBfh | iex && admin_bootstrap
+    iwr -useb https://git.io/JZBfh | iex 
     ```
 FYI: System will restart couple of times 
 

@@ -1,5 +1,5 @@
 BeforeAll { 
-    . $PSScriptRoot/core.ps1
+    # . $PSScriptRoot/core.ps1
     . $PSCommandPath.Replace('.Tests.ps1','.ps1')
 }
 
@@ -51,11 +51,6 @@ Describe 'Test core.ps1' {
             $dir="$HOME/workspace/on-board/"
             bootstrap_env
             (Test-Path -Path $dir) | Should -BeTrue
-        }
-        It "Bootstrap_HyperV to be success"{
-            Bootstrap_HyperV
-            $hyperv = Get-WindowsOptionalFeature -FeatureName Microsoft-Hyper-V-All -Online
-            $hyperv.State | Should -Be 'Enabled'
         }
     }
 }

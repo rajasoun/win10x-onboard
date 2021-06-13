@@ -4,7 +4,7 @@ BeforeAll {
 }
 
 Describe 'Windows Automation Test' {
-    Context "System Tests" -Tag "system" {
+    Context "PreRequisites Tests" -Tag "prerequisite" {
         It "verifies that the moduleName Petser - isn't null" -ForEach @(
             @{ ModuleName = "Pester"}
         ) {
@@ -22,8 +22,15 @@ Describe 'Windows Automation Test' {
             $pesterOk = ($pesterModules | Where-Object { $_.Version.Major -eq 5 -and $_.Version.Minor -ge 2 } | Measure-Object).Count -ge 1
             $pesterOk | Should -BeTrue
         }
-        It "enable Hyper_V"{
-            Bootstrap_HyperV
+    }
+    Context "System Test" -Tag "system" {
+        It "Enable Hyper_V" {
+            _Enable_HyperV
+            $hyperv = Get-WindowsOptionalFeature -FeatureName Microsoft-Hyper-V-All -Online
+            $hyperv.State | Should -Be "Enabled"
+        }
+        It "Enable WSL"{
+            _Enable_WSL
             $hyperv = Get-WindowsOptionalFeature -FeatureName Microsoft-Hyper-V-All -Online
             $hyperv.State | Should -Be "Enabled"
         }
