@@ -1,19 +1,25 @@
 #Requires -Version 5 
 
+function Check-Command($cmdname){
+    return [bool](Get-Command -Name $cmdname -ErrorAction SilentlyContinue)
+}
+
 function _Install_Apps(){
     # Install Apps - Run In PowerShell 
     # NOTE: DO NOT Run this script as Administrator
 
     # Scoop Installation
-    Write-Host "Installing scoop"
-    Set-Executionpolicy -scope CurrentUser -executionPolicy Bypass -Force
-    iwr -useb get.scoop.sh | iex
-    Write-Host "scoop Installation Done"
+    info "Installing scoop"  
+    Set-Executionpolicy -scope CurrentUser -executionPolicy Bypass -Force 
+    iwr -useb get.scoop.sh | iex 
+    success  "scoop buckets Initialization Done" 
+    # Git Bash Installation
+    scoop install Git 
+    success  "Git Bash Instalation Done !!!"
+    info "Adding scoop extras Bucket"
     scoop bucket add extras
     scoop update
-    Write-Host "scoop buckets Initialization Done"
-    # Git Bash Installation
-    scoop install Git
     scoop install vscode
-    Write-Host "Git Bash and VSCode Done"
+    success "vscode Instalation Done !!!"
+
 }

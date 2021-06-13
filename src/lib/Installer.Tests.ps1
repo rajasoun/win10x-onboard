@@ -7,7 +7,7 @@ BeforeAll {
 
 Describe 'Windows Automation Test - Install Applications' -Tag "system"{
     It "Bootstrap Win10K System" {
-        $result = _Install_Apps
-        $result | Should -Be $true
+        _Install_Apps
+        Check-Command -cmdname 'git' | Should -Be $true
     }
 }
