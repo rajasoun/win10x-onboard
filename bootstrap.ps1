@@ -1,15 +1,12 @@
 #Requires -Version 5
 
-$dir="$HOME/workspace/on-board/"
-$url="https://github.com/cli/cli/releases/download/v1.11.0/gh_1.11.0_windows_amd64.zip"
-
 # remote install:
 #   Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
 $old_erroractionpreference = $erroractionpreference
 $erroractionpreference = 'stop' # quit if anything goes wrong
 
 if (($PSVersionTable.PSVersion.Major) -lt 5) {
-    Write-Output "PowerShell 5 or later is required to run Scoop."
+    Write-Output "PowerShell 5 or later is required to run."
     Write-Output "Upgrade PowerShell: https://docs.microsoft.com/en-us/powershell/scripting/setup/installing-windows-powershell"
     break
 }
@@ -35,19 +32,3 @@ $core_url = 'https://git.io/JZFdk'
 Write-Output 'Initializing System Functions...'
 Invoke-Expression (new-object net.webclient).downloadstring($core_url)
 _Bootstrap
-
-
-# get core functions
-# https://raw.githubusercontent.com/rajasoun/win10x-onboard/master/src/lib/core.ps1
-# $core_url = 'https://git.io/JZ4FD'
-# Write-Output 'Initializing...'
-# Invoke-Expression (new-object net.webclient).downloadstring($core_url)
-
-# function admin_bootstrap(){
-#     bootstrap_env 
-#     admin_hyperv_wsl_docker_bootstrap
-# }
-
-# applications_installer
-# applications_uninstaller 
-
