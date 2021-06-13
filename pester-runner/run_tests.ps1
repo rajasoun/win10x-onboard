@@ -2,7 +2,7 @@
 
 Write-Host "Running Tests" 
 function code_coverage_report(){
-    $testResults.CodeCoverage.CommandsExecuted
+    #$testResults.CodeCoverage.CommandsExecuted
     Write-Host "Code Coverage % : " $testResults.CodeCoverage.CoveragePercent
     Write-Host "Missed Functions"
     Write-Host "================"

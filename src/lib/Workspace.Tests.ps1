@@ -50,10 +50,10 @@ Describe 'Test core.ps1' {
             (Test-Path -Path $Path) | Should -BeFalse
         }
         It "install_gh_cli downloads gh.exe" {
-            $Path="on-board/bin/gh.exe"
+            $Path="/tmp/on-board/bin/gh.exe"
             $aTestResult = install_gh_cli 
             (Test-Path -Path $Path) | Should -BeTrue
-            _remove "on-board"
+            _remove "/tmp/on-board"
         }      
         It "_install_modules installs Pester and PSReadLine if Not Installed" -ForEach @(
             @{ Name = "Pester"; Expected = 'True'}
