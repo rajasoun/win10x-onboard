@@ -1,18 +1,37 @@
+#Requires -Version 5 
+
 BeforeAll { 
     # . $PSScriptRoot/core.ps1
     . $PSCommandPath.Replace('.Tests.ps1','.ps1')
 }
 
 Describe 'Test core.ps1' {
-    Context "System tests" -Tag "system" {
+  Context "PreRequisites Tests" -Tag "prerequisite" {
+        It "verifies that the moduleName Petser - isn't null" -ForEach @(
+            @{ ModuleName = "Pester"}
+        ) {
+            $null = Get-Module -ListAvailable -Name $ModuleName
+		    $ModuleName | Should -Not -BeNullOrEmpty
+	    }
+        It "check powershell version is greater than 7"{
+            $majorVersion = $PSVersionTable.PSVersion.Major
+            $versionOk = $majorVersion -ge 7
+            $versionOk | Should -BeTrue
+        }
+        It "check Persion version is greater than 5.2"{
+            $module="Pester"
+            $pesterModules = Get-Module -ListAvailable -Name $module
+            $pesterOk = ($pesterModules | Where-Object { $_.Version.Major -eq 5 -and $_.Version.Minor -ge 2 } | Measure-Object).Count -ge 1
+            $pesterOk | Should -BeTrue
+        }
+    }
+    Context "Integration Test :: Workspace Setup" -Tag "workspace" {
         It "Returns <expected> (<name>)" -ForEach @(
             @{ Name = "Pester"; Expected = 'True'}
             @{ Name = "git"; Expected = 'False'} 
         ) {
             Test-ModuleAvailable -Name $name | Should -Be $expected
         }
-    }
-    Context "Integration tests" -Tag "integration" {
         It "GenerateFolder with Nested Folder" {
             $Path="/tmp/dummy"
             $aTestResult = GenerateFolder $Path  -Verbose

@@ -1,6 +1,17 @@
 #Requires -Version 5
 
-$testResults = Invoke-Pester -Output Detailed -CodeCoverage (Get-ChildItem -Path *\*\*.ps1 -Exclude *.Tests.* ).FullName -PassThru
+Write-Host "Running Tests" 
+Switch($args[0]){
+    "system"  
+        {
+            $testResults = Invoke-Pester -CodeCoverage (Get-ChildItem -Path *\*\*.ps1 ).FullName -PassThru
+        }
+    default
+        {
+            $testResults = Invoke-Pester -ExcludeTag "system" -CodeCoverage (Get-ChildItem -Path *\*\Workspace.ps1 ).FullName -PassThru
+        }
+}
+
 
 # $testResults.CodeCoverage.CommandsExecuted
 Write-Host "Code Coverage % : " $testResults.CodeCoverage.CoveragePercent

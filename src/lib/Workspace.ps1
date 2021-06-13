@@ -83,29 +83,3 @@ function bootstrap_env(){
     _install_modules
     success "Bootstrap Done!"
 }
-
-function applications_installer(){
-    # Install Apps - Run In PowerShell 
-    # NOTE: DO NOT Run this script as Administrator
-
-    # Scoop Installation
-    Set-Executionpolicy -scope CurrentUser -executionPolicy Bypass -Force
-    iwr -useb get.scoop.sh | iex
-
-    # Git Bash Installation
-    scoop install Git
-
-    scoop bucket add extras
-    scoop update
-    scoop install vscode
-}
-
-function applications_uninstaller(){
-    Set-Executionpolicy -scope CurrentUser -executionPolicy Bypass -Force
-
-    scoop uninstall vscode
-    scoop uninstall Git
-
-    scoop uninstall scoop
-    del .\scoop -Force
-}
