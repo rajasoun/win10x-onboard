@@ -1,6 +1,6 @@
 BeforeAll { 
-    # . $PSScriptRoot/core.ps1
-    # . $PSCommandPath.Replace('.Tests.ps1','.ps1')
+    # Includes system.ps1
+    . $PSCommandPath.Replace('.Tests.ps1','.ps1')
 }
 
 Describe 'Windows Automation Test' {
@@ -28,7 +28,5 @@ Describe 'Windows Automation Test' {
             $hyperv.State | Should -Be "Enabled"
         }
     }
- 
-
 }
 
