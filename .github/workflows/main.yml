@@ -26,6 +26,6 @@ jobs:
       - uses: actions/checkout@v2
 
       # Runs workspace Test scripts
-      - name: Run a one-line script
+      - name: Run workspace Test scripts
         run: ./pester-runner/run_tests.ps1
 

@@ -9,7 +9,12 @@ Function Test-ModuleAvailable {
         [String]$Name
     )
     info "Check $Name Available"
-    Return [Boolean](Get-InstalledModule -Name $Name -ErrorAction Ignore)
+    $modules = Get-Module -ListAvailable $Name
+    if ($modules -eq $null) {
+        return $false
+    }
+    return $true
+    # Return [Boolean](Get-InstalledModule -Name $Name -ErrorAction Ignore)
 }
 
 Function GenerateFolder($path) {
