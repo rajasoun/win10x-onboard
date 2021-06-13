@@ -22,6 +22,11 @@ Describe 'Windows Automation Test' {
             $pesterOk = ($pesterModules | Where-Object { $_.Version.Major -eq 5 -and $_.Version.Minor -ge 2 } | Measure-Object).Count -ge 1
             $pesterOk | Should -BeTrue
         }
+        It "enable Hyper_V"{
+            Bootstrap_HyperV
+            $hyperv = Get-WindowsOptionalFeature -FeatureName Microsoft-Hyper-V-All -Online
+            $hyperv.State | Should -Be "Enabled"
+        }
     }
  
 
