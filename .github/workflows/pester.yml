@@ -30,4 +30,8 @@ jobs:
       - name: Perform Windows System Tests from System.Tests.ps1 file
         shell: pwsh
         run: |
-          Invoke-Pester src\lib\system.Tests.ps1 -Output Detailed
+          Invoke-Pester src\lib\System.Tests.ps1 -Output Detailed
+      - name: Perform Installtion Tests from Installer.Tests.ps1 file
+        shell: pwsh
+        run: |
+          Invoke-Pester src\lib\Installer.Tests.ps1 -Output Detailed
