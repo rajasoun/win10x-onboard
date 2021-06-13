@@ -16,7 +16,7 @@ FYI: System will restart couple of times
 1. Open Powershell (Note - Not as Adminstrator)
 1. Run the following Command to Install Git-Bash and Visual Studio Code
     ```
-    iwr -useb https://git.io/JZBfh | iex &&  applications_installer
+    iwr -useb https://git.io/JZFjq | iex 
     ```
 
 ### Install Visual Stiudio Remote Container Extension 
