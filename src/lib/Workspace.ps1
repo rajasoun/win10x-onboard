@@ -68,7 +68,7 @@ function _install_toolz($url,$dir){
 
 function install_gh_cli(){
     $url="https://github.com/cli/cli/releases/download/v1.11.0/gh_1.11.0_windows_amd64.zip"
-    $dir="/test/on-board"
+    $dir="on-board"
     _install_toolz $url $dir
 }
 
