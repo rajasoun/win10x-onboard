@@ -30,7 +30,8 @@ Describe 'Windows Automation Test' {
         }
         It "Check HyperV is Enabled "{
             $hyperv = Get-WindowsOptionalFeature -FeatureName Microsoft-Hyper-V-All -Online
-            $hyperv.State | Should -Be "Enabled"
+            $hyperv | Should Not -Be $null
+            $hyperv.State | Should -Be 'Enabled'
         }
     }
 }
