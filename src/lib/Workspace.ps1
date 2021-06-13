@@ -1,8 +1,8 @@
 #Requires -Version 5
 
-function success($msg) {  write-host $msg -f darkgreen }
-function info($msg) {  write-host " >  $msg" -f cyan }
-function warn($msg) {  write-host " >  $msg" -f yellow }
+function success($msg) {  write-host "     >  $msg" -f darkgreen }
+function info($msg) {   write-host "     >  $msg" -f cyan }
+function warn($msg) {  write-host "     >  $msg" -f yellow }
 
 Function Test-ModuleAvailable {
     param (
@@ -18,7 +18,7 @@ Function GenerateFolder($path) {
         $global:foldPath += ($foldername+"\")
         if (!(Test-Path $global:foldPath)){
             New-Item -ItemType Directory -Path $global:foldPath
-            Write-Host "$global:foldPath Folder Created Successfully"
+            success "$global:foldPath Folder Created Successfully"
         }
     }
 }
