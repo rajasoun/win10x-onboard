@@ -18,9 +18,7 @@ FYI: System will restart couple of times
 gh repo clone https://github.com/rajasoun/win10x-onboard
 cd win10x-onboard
 Get-InstalledModule -Name 'Pester' -MinimumVersion 5.0
-Invoke-Pester e2e.Tests.ps1 
-Invoke-Pester src/lib/Installer.Tests.ps1
-Invoke-Pester src/lib/Workspace.Tests.ps1
+Invoke-Pester e2e.Tests.ps1 -Output Detailed
 ```
 
 
