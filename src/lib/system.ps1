@@ -37,7 +37,11 @@ Function _WSL2_KernalUpdate {
         Write-Host "System is x64. Need to update Linux kernel..."
         if (-not (Test-Path wsl_update_x64.msi)){
             Write-Host "Downloading Linux kernel update package..."
-            Invoke-WebRequest -OutFile wsl_update_x64.msi https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
+            $URL='https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi'
+            $destination='wsl_update_x64.msi'
+            $progressPreference = 'silentlyContinue'
+            Invoke-WebRequest -Uri $URL -OutFile $destination -ErrorAction Stop
+            $progressPreference = 'Continue'
         }
         Write-Host "Installing Linux kernel update package..."
         Start-Process msiexec.exe -Wait -ArgumentList '/I wsl_update_x64.msi /quiet'
@@ -55,7 +59,11 @@ Function _Install_Docker {
     if (-not (Test-Path DockerInstaller.exe)){
         Write-Host "Installing Docker."            
         Write-Host "Downloading the Docker exe"
-        Invoke-WebRequest -Uri https://desktop.docker.com/win/stable/Docker%20Desktop%20Installer.exe -OutFile DockerInstaller.exe -UseBasicParsing
+        $URL='https://desktop.docker.com/win/stable/Docker%20Desktop%20Installer.exe'
+        $destination='DockerInstaller.exe'
+        $progressPreference = 'silentlyContinue'
+        Invoke-WebRequest -Uri $URL -OutFile $destination -ErrorAction Stop -UseBasicParsing
+        $progressPreference = 'Continue'
         Write-Host "Download Completed"
         
         start-process .\DockerInstaller.exe "install --quiet" -Wait -NoNewWindow
