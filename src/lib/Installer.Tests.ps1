@@ -26,7 +26,7 @@ Describe 'Windows Automation - Application Installer' -Tag "system"{
         if(is_win10){
             Check-Command -cmdname 'windowsterminal' | Should -Be $true
         }else{
-            Check-Command -cmdname 'windowsterminal' | Should -Be $true
+            Check-Command -cmdname 'windowsterminal' | Should -Be $false
         }
     }
 }
