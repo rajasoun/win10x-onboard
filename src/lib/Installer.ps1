@@ -9,7 +9,7 @@ function Check-Command($cmdname){
 }
 
 function is_win10(){
-    return [bool]([Environment]::OSVersion.Version -ge (new-object 'Version' 10,0))
+    return [bool]([Environment]::OSVersion.Version -ge (new-object 'Version' 10,18362))
 }
 
 function _Install_Apps(){
