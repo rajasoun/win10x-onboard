@@ -1,5 +1,9 @@
 #Requires -Version 5 
 
+function success($msg) {  write-host "     >  $msg" -f darkgreen }
+function info($msg) {   write-host "     >  $msg" -f cyan }
+function warn($msg) {  write-host "     >  $msg" -f yellow }
+
 function Check-Command($cmdname){
     return [bool](Get-Command -Name $cmdname -ErrorAction SilentlyContinue)
 }
@@ -13,7 +17,7 @@ function _Install_Apps(){
     Set-Executionpolicy -scope CurrentUser -executionPolicy Bypass -Force 
     iwr -useb get.scoop.sh | iex 
     success  "scoop buckets Initialization Done" 
-    # Git Bash Installation
+
     scoop install Git 
     success  "Git Bash Instalation Done !!!"
     info "Adding scoop extras Bucket"
@@ -21,5 +25,8 @@ function _Install_Apps(){
     scoop update
     scoop install vscode
     success "vscode Instalation Done !!!"
-
+    scoop install windows-terminal
+    success "Windows Terminal Instalation Done !!!"
+    scoop install gh
+    success "GitHub CLI Instalation Done !!!"
 }
