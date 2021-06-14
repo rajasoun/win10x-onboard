@@ -23,6 +23,10 @@ Describe 'Windows Automation - Application Installer' -Tag "system"{
         Check-Command -cmdname 'code' | Should -Be $true
     }
     It "Windows Terminal Installation " {
-        Check-Command -cmdname 'windowsterminal' | Should -Be $true
+        if(is_win10){
+            Check-Command -cmdname 'windowsterminal' | Should -Be $true
+        }else{
+            Check-Command -cmdname 'windowsterminal' | Should -Be $true
+        }
     }
 }
