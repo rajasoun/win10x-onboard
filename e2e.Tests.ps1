@@ -45,11 +45,13 @@ Describe 'Windows Automation' -Tag "system"{
         It "Visual Studio Code Installation " {
             Check-Command -cmdname 'code' | Should -Be $true
         }
-        It "Windows Terminal Installation " {
+        It "Windows Terminal Installation > win10k - Build Version: 18362" {
             if(is_win10){
                 Check-Command -cmdname 'windowsterminal' | Should -Be $true
+                Write-Host "        > windows-terminal Installation"
             }else{
                 Check-Command -cmdname 'windowsterminal' | Should -Be $false
+                Write-Host "        > Skipping windows-terminal Installation"
             }
         }
     }

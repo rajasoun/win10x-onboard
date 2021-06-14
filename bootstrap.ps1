@@ -36,22 +36,32 @@ $workspace_url = 'https://git.io/JZAuo'
 Write-Output 'Initializing Workspace Functions...'
 Invoke-Expression (new-object net.webclient).downloadstring($workspace_url)
 
+$installer_url = 'https://git.io/JnJ1S'
+Write-Output 'Initializing Installing Functions...'
+Invoke-Expression (new-object net.webclient).downloadstring($installer_url)
+
 warn 'HyperV,WSL2 and Dcoker Setup '
 $yn = Read-Host 'Are you sure? (yN)'
 if ($yn -like 'y*') { _Bootstrap }
 
 warn 'Application Installer '
 $yn = Read-Host 'Are you sure? (yN)'
-if ($yn -like 'y*') { _Install_Apps }
+if ($yn -like 'y*') { 
+    _Install_Apps 
+    code --install-extension ms-vscode-remote.remote-containers
+}
 
 
 $dir="$HOME/workspace/on-board/"
 warn 'Workspace Setup'
 $yn = Read-Host 'Are you sure? (yN)'
-if ($yn -like 'y*') { _Bootstrap_Envs }
+if ($yn -like 'y*') { 
+    _Bootstrap_Env 
+    cd "$HOME/workspace"
+}
 
-code --install-extension ms-vscode-remote.remote-containers
-cd "$HOME/workspace"
+
+
 
 
 
