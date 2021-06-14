@@ -1,5 +1,11 @@
 #Requires -Version 5
 
+Function Test-IsAdmin{
+    $identity = [Security.Principal.WindowsIdentity]::GetCurrent()
+    $principal = New-Object Security.Principal.WindowsPrincipal $identity
+    $principal.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
+}
+
 # remote install:
 #   Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
 $old_erroractionpreference = $erroractionpreference
@@ -40,24 +46,35 @@ $installer_url = 'https://git.io/JnJ1S'
 Write-Output 'Initializing Installing Functions...'
 Invoke-Expression (new-object net.webclient).downloadstring($installer_url)
 
-warn 'HyperV,WSL2 and Dcoker Setup '
-$yn = Read-Host 'Are you sure? (yN)'
-if ($yn -like 'y*') { _Bootstrap }
-
-warn 'Application Installer '
-$yn = Read-Host 'Are you sure? (yN)'
-if ($yn -like 'y*') { 
-    _Install_Apps 
-    code --install-extension ms-vscode-remote.remote-containers
+# $is_admin=([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")
+if(Test-IsAdmin){
+    warn 'HyperV,WSL2 and Dcoker Setup '
+    $yn = Read-Host 'Are you sure? (yN)'
+    if ($yn -like 'y*') { _Bootstrap }
+}else{
+    warn 'HyperV,WSL2 and Dcoker Setup - Needs Administrator Previlage !!!'
+    exit
 }
 
+if(-not(Test-IsAdmin)){
+    warn 'Application Installer '
+    $yn = Read-Host 'Are you sure? (yN)'
+    if ($yn -like 'y*') { 
+        _Install_Apps 
+        code --install-extension ms-vscode-remote.remote-containers
+    }
 
-$dir="$HOME/workspace/on-board/"
-warn 'Workspace Setup'
-$yn = Read-Host 'Are you sure? (yN)'
-if ($yn -like 'y*') { 
-    _Bootstrap_Env 
-    cd "$HOME/workspace"
+
+    $dir="$HOME/workspace/on-board/"
+    warn 'Workspace Setup'
+    $yn = Read-Host 'Are you sure? (yN)'
+    if ($yn -like 'y*') { 
+        _Bootstrap_Env 
+        cd "$HOME/workspace"
+    }
+}else{
+    warn 'Application Installer and Workspace Setup - Needs Normal Previlage!!!'
+    exit
 }
 
 
