@@ -1,5 +1,14 @@
 #Requires -Version 5 
 
+BeforeAll { 
+    function Check-Command($cmdname){
+        return [bool](Get-Command -Name $cmdname -ErrorAction SilentlyContinue)
+    }
+    function is_win10(){
+        return [bool]([Environment]::OSVersion.Version -ge (new-object 'Version' 10,18362))
+    }
+}
+
 Describe 'PreRequisites Tests' {
     Context "Version Checks" -Tag "prerequisite" {
           It "verifies that the moduleName Petser - isn't null" -ForEach @(
@@ -23,7 +32,10 @@ Describe 'PreRequisites Tests' {
 }
 
 Describe 'Windows Automation' -Tag "system"{
-    Context "Application Installation Checks" -Tag "prerequisite" {
+    Context "Application Installation Checks" -Tag "installer" {
+        It "GitHub CLI Installation " {
+            Check-Command -cmdname 'scoop' | Should -Be $true
+        }
         It "GitHub CLI Installation " {
             Check-Command -cmdname 'gh' | Should -Be $true
         }
@@ -34,7 +46,11 @@ Describe 'Windows Automation' -Tag "system"{
             Check-Command -cmdname 'code' | Should -Be $true
         }
         It "Windows Terminal Installation " {
-            Check-Command -cmdname 'windowsterminal' | Should -Be $true
+            if(is_win10){
+                Check-Command -cmdname 'windowsterminal' | Should -Be $true
+            }else{
+                Check-Command -cmdname 'windowsterminal' | Should -Be $false
+            }
         }
     }
 }

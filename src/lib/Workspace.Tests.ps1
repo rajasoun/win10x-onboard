@@ -64,9 +64,9 @@ Describe 'Test core.ps1' {
             _install_module "Emojis"
             Get-Emoji -Name cactus | Should -Be '🌵'
         }
-        It "bootstrap_env to be success"{
+        It "_Bootstrap_Env to be success"{
             $dir="$HOME/workspace/on-board/"
-            bootstrap_env
+            _Bootstrap_Env
             (Test-Path -Path $dir) | Should -BeTrue
         }
     }

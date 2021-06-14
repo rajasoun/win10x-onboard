@@ -54,7 +54,7 @@ function _install_modules(){
     _install_module "Pester"
 }
 
-function bootstrap_env(){
+function _Bootstrap_Env(){
     info "$dir"
     GenerateFolder $dir
     _install_modules
