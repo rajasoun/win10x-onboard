@@ -5,29 +5,26 @@
 ### HyperV, WSL, WSL2 Kernel Update and Docker
 
 1. Open Powershell as Administrator 
-1. Run following commands to setup HyperV, WSL, WSL2 Kernel Update and Docker
+1. Run following commands to setup HyperV, WSL, WSL2 Kernel Update,Docker, Apps Installation and Workspace Setup
+
     ```
     iwr -useb https://git.io/JZBfh | iex 
     ```
 FYI: System will restart couple of times 
 
-### Git-Bash and Visual Studio Code
+## TDD with Pester - Development
 
-1. Open Powershell (Note - Not as Adminstrator)
-1. Run the following Command to Install Git-Bash and Visual Studio Code
-    ```
-    iwr -useb https://git.io/JZFjq | iex 
-    ```
+```
+gh repo clone https://github.com/rajasoun/win10x-onboard
+cd win10x-onboard
+Get-InstalledModule -Name 'Pester' -MinimumVersion 5.0
+Invoke-Pester e2e.Tests.ps1 
+Invoke-Pester src/lib/Installer.Tests.ps1
+Invoke-Pester src/lib/Workspace.Tests.ps1
+```
 
-### Install Visual Stiudio Remote Container Extension 
 
-1. Open Git Bash 
-    ```
-    cd "$HOME/workspace"
-    code --install-extension ms-vscode-remote.remote-containers
-    ```
-
-## TDD with Pester
+## TDD with Pester - Inside Docker 
 
 1. `make -f pester-runner/Makefile  build` to build the pester-runner container
 1. `make -f pester-runner/Makefile  run` to run the pester-runner container

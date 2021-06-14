@@ -50,5 +50,8 @@ warn 'Workspace Setup'
 $yn = Read-Host 'Are you sure? (yN)'
 if ($yn -like 'y*') { _Bootstrap_Envs }
 
+code --install-extension ms-vscode-remote.remote-containers
+cd "$HOME/workspace"
+
 
 
