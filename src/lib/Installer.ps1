@@ -13,26 +13,30 @@ function is_win10(){
 }
 
 function _Install_Apps(){
-    # Install Apps - Run In PowerShell 
-    # NOTE: DO NOT Run this script as Administrator
+    if (-not(Check-Command -cmdname 'scoop')) {
+        # Install Apps - Run In PowerShell 
+        # NOTE: DO NOT Run this script as Administrator
 
-    # Scoop Installation
-    info "Installing scoop"  
-    Set-Executionpolicy -scope CurrentUser -executionPolicy Bypass -Force 
-    iwr -useb get.scoop.sh | iex 
-    success  "scoop buckets Initialization Done" 
+        # Scoop Installation
+        info "Installing scoop"  
+        Set-Executionpolicy -scope CurrentUser -executionPolicy Bypass -Force 
+        iwr -useb get.scoop.sh | iex 
+        success  "scoop buckets Initialization Done" 
 
-    scoop install Git 
-    success  "Git Bash Instalation Done !!!"
-    info "Adding scoop extras Bucket"
-    scoop bucket add extras
-    scoop update
-    scoop install vscode
-    success "vscode Instalation Done !!!"
-    if (is_win10){
-        scoop install windows-terminal
-        success "Windows Terminal Instalation Done !!!"
+        scoop install Git 
+        success  "Git Bash Instalation Done !!!"
+        info "Adding scoop extras Bucket"
+        scoop bucket add extras
+        scoop update
+        scoop install vscode
+        success "vscode Instalation Done !!!"
+        if (is_win10){
+            scoop install windows-terminal
+            success "Windows Terminal Instalation Done !!!"
+        }
+        scoop install gh
+        success "GitHub CLI Instalation Done !!!"
+    }else{
+        warn "scoop Already Installed. Skipping Installation !!!"
     }
-    scoop install gh
-    success "GitHub CLI Instalation Done !!!"
 }
