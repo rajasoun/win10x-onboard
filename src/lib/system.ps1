@@ -78,6 +78,7 @@ Function _Install_Docker {
         Restart-Computer -Confirm 
     }
     Write-Host "Starting docker..."
+    Write-Host  "Switching Docker to the Windows Daemon`n" -ForegroundColor Green
     & 'C:\Program Files\Docker\Docker\DockerCli.exe' -SwitchDaemon
     $ErrorActionPreference = 'SilentlyContinue';
     do { $var1 = docker ps 2>$null } while (-Not $var1)
