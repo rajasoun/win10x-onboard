@@ -8,6 +8,10 @@ function Check-Command($cmdname){
     return [bool](Get-Command -Name $cmdname -ErrorAction SilentlyContinue)
 }
 
+function is_win10(){
+    return [bool]([Environment]::OSVersion.Version -ge (new-object 'Version' 10,0))
+}
+
 function _Install_Apps(){
     # Install Apps - Run In PowerShell 
     # NOTE: DO NOT Run this script as Administrator
@@ -25,7 +29,7 @@ function _Install_Apps(){
     scoop update
     scoop install vscode
     success "vscode Instalation Done !!!"
-    if (Environment]::OSVersion.Version -ge (new-object 'Version' 10,0){
+    if (is_win10){
         scoop install windows-terminal
         success "Windows Terminal Instalation Done !!!"
     }
