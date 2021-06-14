@@ -3,6 +3,10 @@
 BeforeAll { 
     # . $PSScriptRoot/core.ps1
     . $PSCommandPath.Replace('.Tests.ps1','.ps1')
+    $dir="$HOME/workspace/on-board/"
+}
+AfterAll { 
+    _remove $dir
 }
 
 Describe 'Test core.ps1' {
@@ -48,13 +52,7 @@ Describe 'Test core.ps1' {
             (Test-Path -Path $Path) | Should -BeTrue
             _remove $Path
             (Test-Path -Path $Path) | Should -BeFalse
-        }
-        It "install_gh_cli downloads gh.exe" {
-            $Path="/tmp/on-board/bin/gh.exe"
-            $aTestResult = install_gh_cli 
-            (Test-Path -Path $Path) | Should -BeTrue
-            _remove "/tmp/on-board"
-        }      
+        }  
         It "_install_modules installs Pester and PSReadLine if Not Installed" -ForEach @(
             @{ Name = "Pester"; Expected = 'True'}
             @{ Name = "PSReadLine"; Expected = 'True'} 

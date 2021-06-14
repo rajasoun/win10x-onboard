@@ -39,18 +39,6 @@ function _install_module($module){
     }
 }
 
-function _download($url,$dir){
-    $download_zip_file = $(Split-Path -Path $url -Leaf) 
-    Invoke-WebRequest -Uri $url -OutFile $dir/$download_zip_file
-    info "Download $download_zip_file to $dir Done !!!"
-}
-
-function _unzip($file,$dir){
-    Add-Type -AssemblyName System.IO.Compression.FileSystem
-    [System.IO.Compression.ZipFile]::ExtractToDirectory("$file",$dir)
-    info "Unzip $file to $location Done !!!"
-}
-
 function _remove($item){
     if (Test-Path $item){
         Remove-Item $item -Force -Recurse
@@ -58,24 +46,8 @@ function _remove($item){
     }
 }
 
-function _install_toolz($url,$dir){
-    GenerateFolder $dir
-    $download_zip_file = $(Split-Path -Path $url -Leaf)  
-    info "Getting $download_zip_file From $url"
-    _download $url $dir
-    info "UnZip $download_zip_file"
-    _unzip "$dir/$download_zip_file" "$dir"
-    info "Remove $download_zip_file"
-    _remove($download_zip_file)
-}
 
 ###### Wrapper Functions ##################
-
-function install_gh_cli(){
-    $url="https://github.com/cli/cli/releases/download/v1.11.0/gh_1.11.0_windows_amd64.zip"
-    $dir="/tmp/on-board"
-    _install_toolz $url $dir
-}
 
 function _install_modules(){
     _install_module "PSReadLine" 

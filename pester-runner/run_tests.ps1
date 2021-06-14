@@ -14,7 +14,8 @@ Switch($args[0]){
         code_coverage_report
     }
     "workspace" {
-        $testResults = Invoke-Pester -ExcludeTag "system" -CodeCoverage (Get-ChildItem -Path *\*\Workspace.ps1 ).FullName -PassThru 
+        #$testResults = Invoke-Pester -ExcludeTag "system" -CodeCoverage (Get-ChildItem -Path *\*\Workspace.ps1 ).FullName -PassThru 
+        $testResults = Invoke-Pester -ExcludeTag "system" -CodeCoverage (Get-ChildItem -Path *\*\*.ps1 -Exclude System.Tests.ps1 ).FullName -PassThru  
         code_coverage_report
     }
     default{

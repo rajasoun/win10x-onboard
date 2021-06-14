@@ -27,11 +27,12 @@ jobs:
       - name: Perform a Pester test from the command-line
         shell: pwsh
         run: Test-Path "C:\Windows" | Should -Be $true
-      - name: Perform Windows System Tests from System.Tests.ps1 file
-        shell: pwsh
-        run: |
-          Invoke-Pester src\lib\System.Tests.ps1 -Output Detailed
       - name: Perform Installtion Tests from Installer.Tests.ps1 file
         shell: pwsh
-        run: |
+        run: |       
+          $env:CI_WINDOWS=$true
           Invoke-Pester src\lib\Installer.Tests.ps1 -Output Detailed
+      - name: Perform Workspace setup Tests from Workspace.Tests.ps1 file
+        shell: pwsh
+        run: |       
+          Invoke-Pester src\lib\Workspace.Tests.ps1 -Output Detailed
