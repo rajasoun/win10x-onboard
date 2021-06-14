@@ -25,8 +25,10 @@ function _Install_Apps(){
     scoop update
     scoop install vscode
     success "vscode Instalation Done !!!"
-    scoop install windows-terminal
-    success "Windows Terminal Instalation Done !!!"
+    if (Environment]::OSVersion.Version -ge (new-object 'Version' 10,0){
+        scoop install windows-terminal
+        success "Windows Terminal Instalation Done !!!"
+    }
     scoop install gh
     success "GitHub CLI Instalation Done !!!"
 }
