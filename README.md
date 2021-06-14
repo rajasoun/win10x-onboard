@@ -4,13 +4,16 @@
 
 ### HyperV, WSL, WSL2 Kernel Update, Docker, Applications and Workspace setup
 
-1. Open Powershell as Administrator 
-1. Run following commands to setup HyperV, WSL, WSL2 Kernel Update,Docker
+1. Open Powershell as Administrator and Run following commands to setup HyperV, WSL, WSL2 Kernel Update,Docker
 
     ```
     iwr -useb https://git.io/JZBfh | iex 
     ```
-FYI: System will restart two times. ReRun the Script 
+    > FYI: System will restart two times. ReRun the Script 
+1. Open Powershell and Run following commands for application installation and workspace setup
+    ```
+    iwr -useb https://git.io/JZBfh | iex 
+    ```
 1. `Invoke-Pester e2e.Tests.ps1 -Output Detailed` to Validate sucessfull setup
 ## TDD with Pester - Development
 
