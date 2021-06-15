@@ -6,10 +6,6 @@ Function Test-IsAdmin{
     $principal.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
 }
 
-Function Load-Script-From-Url($url){
-    Invoke-Expression (new-object net.webclient).downloadstring($url)
-}
-
 # remote install:
 #   Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
 $old_erroractionpreference = $erroractionpreference
@@ -37,14 +33,14 @@ if ([System.Enum]::GetNames([System.Net.SecurityProtocolType]) -notcontains 'Tls
     break
 }
 
-$GIT_BASE_URL="https://raw.githubusercontent.com/rajasoun/win10x-onboard/main/src/lib/"
-Load-Script-From-Url("$GIT_BASE_URL/common.ps1")
-Load-Script-From-Url("$GIT_BASE_URL/log.ps1")
-Load-Script-From-Url("$GIT_BASE_URL/Workspace.ps1")
-Load-Script-From-Url("$GIT_BASE_URL/Apps.Installer.ps1")
-Load-Script-From-Url("$GIT_BASE_URL/HyperV.ps1")
-Load-Script-From-Url("$GIT_BASE_URL/Wsl.ps1")
-Load-Script-From-Url("$GIT_BASE_URL/Docker.ps1")
+$GIT_BASE_URL='https://raw.githubusercontent.com/rajasoun/win10x-onboard/main/src/lib'
+Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/common.ps1")
+Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/log.ps1")
+Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/Workspace.ps1")
+Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/Apps.Installer.ps1")
+Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/HyperV.ps1")
+Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/Wsl.ps1")
+Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/Docker.ps1")
 
 If(-not(Test-IsAdmin)){
     $dir="$HOME/workspace/on-board/"
