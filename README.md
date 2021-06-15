@@ -18,9 +18,16 @@
 ## TDD with Pester - Development
 
 ```
-gh repo clone https://github.com/rajasoun/win10x-onboard
+git clone https://github.com/rajasoun/win10x-onboard
 cd win10x-onboard
 Get-InstalledModule -Name 'Pester' -MinimumVersion 5.0
+
+Invoke-Pester src\lib\Workspace.Tests.ps1 -Output Detailed
+Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed
+Invoke-Pester src\lib\HyperV.Tests.ps1 -Output Detailed
+Invoke-Pester src\lib\Wsl.Tests.ps1 -Output Detailed
+Invoke-Pester src\lib\Docker.Tests.ps1 -Output Detailed
+
 Invoke-Pester e2e.Tests.ps1 -Output Detailed
 ```
 
