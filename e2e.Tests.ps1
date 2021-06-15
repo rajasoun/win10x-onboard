@@ -33,8 +33,14 @@ Describe 'PreRequisites Tests' {
 
 Describe 'Windows Automation' -Tag "system"{
     Context "Application Installation Checks" -Tag "installer" {
-        It "GitHub CLI Installation " {
+        It "Choco Installation " {
+            Check-Command -cmdname 'choco' | Should -Be $true
+        }
+        It "scoop Installation " {
             Check-Command -cmdname 'scoop' | Should -Be $true
+        }
+        It "Docker Installation " {
+            Check-Command -cmdname 'docker' | Should -Be $true
         }
         It "GitHub CLI Installation " {
             Check-Command -cmdname 'gh' | Should -Be $true

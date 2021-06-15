@@ -48,7 +48,7 @@ Invoke-Expression (new-object net.webclient).downloadstring($installer_url)
 
 # $is_admin=([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")
 if(Test-IsAdmin){
-    warn 'HyperV,WSL2 and Dcoker Setup '
+    warn 'HyperV,WSL2 and Docker Setup '
     $yn = Read-Host 'Are you sure? (yN)'
     if ($yn -like 'y*') { _Bootstrap }
 }else{
