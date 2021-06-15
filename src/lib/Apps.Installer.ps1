@@ -1,9 +1,10 @@
 #Requires -Version 5 
 
-Write-Host "PSScriptRoot -> $PSScriptRoot"
+IF (-not([string]::IsNullOrWhitespace($PSScriptRoot))){
+    . "$psscriptroot/log.ps1"
+    . "$psscriptroot/common.ps1"
+} 
 
-. "$psscriptroot/log.ps1"
-. "$psscriptroot/common.ps1"
 
 function install_scoop(){
     if(-not(is_admin)){

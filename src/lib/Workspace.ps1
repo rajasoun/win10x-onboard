@@ -1,31 +1,8 @@
 #Requires -Version 5
 
-function success($msg) {  write-host "     >  $msg" -f darkgreen }
-function info($msg) {   write-host "     >  $msg" -f cyan }
-function warn($msg) {  write-host "     >  $msg" -f yellow }
-
-Function Test-ModuleAvailable {
-    param (
-        [String]$Name
-    )
-    info "Check $Name Available"
-    $modules = Get-Module -ListAvailable $Name
-    if ($modules -eq $null) {
-        return $false
-    }
-    return $true
-    # Return [Boolean](Get-InstalledModule -Name $Name -ErrorAction Ignore)
-}
-
-Function GenerateFolder($path) {
-    $global:foldPath = $null
-    foreach($foldername in $path.split("\")) {
-        $global:foldPath += ($foldername+"\")
-        if (!(Test-Path $global:foldPath)){
-            New-Item -ItemType Directory -Path $global:foldPath
-            success "$global:foldPath Folder Created Successfully"
-        }
-    }
+IF (-not([string]::IsNullOrWhitespace($PSScriptRoot))){
+    . "$psscriptroot/log.ps1"
+    . "$psscriptroot/common.ps1"
 }
 
 function _install_module($module){

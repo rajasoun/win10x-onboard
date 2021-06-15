@@ -1,6 +1,9 @@
 #Requires -Version 5 -RunAsAdministrator
 
-. "$psscriptroot/log.ps1"
+IF (-not([string]::IsNullOrWhitespace($PSScriptRoot))){
+    . "$psscriptroot/log.ps1"
+    . "$psscriptroot/common.ps1"
+}
 
 # Check Hyper-V
 Function HyperV-Enabled() {

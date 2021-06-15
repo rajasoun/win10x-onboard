@@ -1,7 +1,9 @@
 #Requires -Version 5 
 
-. "$psscriptroot/log.ps1"
-. "$psscriptroot/common.ps1"
+IF (-not([string]::IsNullOrWhitespace($PSScriptRoot))){
+    . "$psscriptroot/log.ps1"
+    . "$psscriptroot/common.ps1"
+}
 
 function install_choco(){
     if((is_admin)){
