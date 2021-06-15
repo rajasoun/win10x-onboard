@@ -1,5 +1,7 @@
 #Requires -Version 5 
 
+Write-Host "PSScriptRoot -> $PSScriptRoot"
+
 . "$psscriptroot/log.ps1"
 . "$psscriptroot/common.ps1"
 
