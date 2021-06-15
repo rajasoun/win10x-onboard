@@ -1,5 +1,7 @@
 #Requires -Version 5 -RunAsAdministrator
 
+. "$psscriptroot/log.ps1"
+
 # Check Hyper-V
 Function HyperV-Enabled() {
     info "Checking if HyperV is enabled."
@@ -15,23 +17,17 @@ Function HyperV-Enabled() {
 
 Function Enable-HyperV() {
     info "Enabling Hyper-V..."
-    Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All -NoRestart
-    Enable-WindowsOptionalFeature -Online -FeatureName Containers -All -NoRestart
-    sucess "Hyper-V is enabled. SUCCESS !!!"
+    Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All 
+    Enable-WindowsOptionalFeature -Online -FeatureName Containers -All 
+    success "Hyper-V is enabled. SUCCESS !!!"
+    Start-Sleep 30
+    warn "System Reboot Required"
 }
-
-Function Disable-HyperV() {
-    info "Disabling Hyper-V..."
-    Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All -NoRestart
-    Disable-WindowsOptionalFeature -Online -FeatureName Containers -All -NoRestart
-    sucess "Hyper-V is Disabled"
-}
-
 
 Function Test-Enable-HyperV() {
     if(-not (HyperV-Enabled)){
         Enable-HyperV
     }else{
-        sucess "Hyper-V is Already enabled. SUCCESS !!!"  
+        success "Hyper-V is Already enabled. SUCCESS !!!"  
     }
 }

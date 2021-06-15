@@ -5,19 +5,11 @@ BeforeAll {
     . $PSCommandPath.Replace('.Tests.ps1','.ps1')
 }
 
-AfterAll { 
-    Disable-HyperV
-}
-
 Describe 'Windows 10 Automation' -Tag "system" {
     Context 'HyperV Management' {
-        It "Test-Enable-HyperV - Enables HyperV " {
+        It "Test-Enable-HyperV - Enables HyperV if Not Eabled " {
             Test-Enable-HyperV
             HyperV-Enabled | Should -Be $true
-        }
-        It "Test-Enable-HyperV - Disable HyperV " {
-            Disable-HyperV
-            HyperV-Enabled | Should -Be $false
         }
     }
 }
