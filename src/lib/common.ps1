@@ -37,3 +37,7 @@ Function GenerateFolder($path) {
         }
     }
 }
+
+Function Load-Script-From-Url($url){
+    Invoke-Expression (new-object net.webclient).downloadstring($url)
+}
