@@ -14,8 +14,9 @@ if (-not(Check-Command -cmdname 'choco')) {
     choco upgrade Pester -y 
 }
 
-# DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V
+# DISM /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V /all /norestart
 # Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+# Enable-WindowsOptionalFeature -Online -FeatureName Containers -All 
 
 # DISM /Online /Enable-Feature  /FeatureName:Microsoft-Windows-Subsystem-Linux /all /norestart
 # DISM /Online /Enable-Feature  /FeatureName:VirtualMachinePlatform /all /norestart

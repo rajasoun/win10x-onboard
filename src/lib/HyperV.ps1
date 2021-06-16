@@ -20,6 +20,7 @@ Function HyperV-Enabled() {
 
 Function Enable-HyperV() {
     info "Enabling Hyper-V..."
+    & cmd /c 'dism.exe /online /enable-feature /featurename:Microsoft-Hyper-V /all /norestart'
     Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All 
     Enable-WindowsOptionalFeature -Online -FeatureName Containers -All 
     success "Hyper-V is enabled. SUCCESS !!!"
