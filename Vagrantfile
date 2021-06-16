@@ -2,7 +2,8 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "gusztavvargadr/windows-10"
+  config.vm.box = "raja-s/Win10-Base"
+  config.vm.box_version = "1.0.0"
   # config.vm.provision :shell, path: "prepare.ps1"
   config.vm.synced_folder ".", "/vagrant"
   config.vm.provider "virtualbox" do |vb|
