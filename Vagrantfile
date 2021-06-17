@@ -3,10 +3,9 @@
 
 Vagrant.configure("2") do |config|
   #config.vm.box = "gusztavvargadr/windows-10"
+  #config.vm.provision :shell, path: "vm_prepare.ps1"
   config.vm.box = "raja-s/Win10-Base"
-  config.vm.box_version = "1.1.0"
   
-  config.vm.provision :shell, path: "vm_prepare.ps1"
   config.vm.synced_folder ".", "/vagrant"
   config.vm.provider "virtualbox" do |vb|
     # Display the VirtualBox GUI when booting the machine
