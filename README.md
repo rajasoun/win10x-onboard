@@ -5,13 +5,11 @@
 ### HyperV, WSL, WSL2 Kernel Update, Docker, Applications and Workspace setup
 1. Open Powershell and Run following commands for application installation and workspace setup
     ```
-    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
     iwr -useb https://git.io/JZBfh | iex 
     ```
 1. Open Powershell as Administrator and Run following commands to setup HyperV, WSL, WSL2 Kernel Update,Docker
 
     ```
-    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
     iwr -useb https://git.io/JZBfh | iex 
     ```
     > FYI: System will restart two times. ReRun the Script 
