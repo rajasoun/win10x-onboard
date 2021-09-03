@@ -70,7 +70,7 @@ If((Test-IsAdmin)){
         Test-Enable-HyperV
         Test-Enable-Wsl2
         Wsl2-KernalUpdate
-        _Install_Docker
+        #_Install_Docker
     }
 }else{
     error "Skipping HyperV,WSL2 and Docker Setup. Need to Run in as Admin Powershell"
