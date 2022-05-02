@@ -7,6 +7,7 @@
     ```
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
     iwr -useb https://git.io/JZBfh | iex 
+    Invoke-Pester e2e.Tests.ps1 -Output Detailed
     ```
 1. Open Powershell as **Administrator** and Run following commands to setup HyperV, WSL, WSL2 Kernel Update,Docker
 
@@ -15,7 +16,6 @@
     iwr -useb https://git.io/JZBfh | iex 
     ```
     > FYI: System will restart two times. ReRun the Script 
-1. `Invoke-Pester e2e.Tests.ps1 -Output Detailed` to Validate sucessfull setup
 
 1. Install [Docker Desktop For Windows](https://docs.docker.com/desktop/windows/install/)
 
