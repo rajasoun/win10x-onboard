@@ -16,6 +16,10 @@
     ```
     > FYI: System will restart two times. ReRun the Script 
 1. `Invoke-Pester e2e.Tests.ps1 -Output Detailed` to Validate sucessfull setup
+
+1. Install [Docker Desktop For Windows](https://docs.docker.com/desktop/windows/install/)
+
+
 ## TDD with Pester - Development
 
 ```
@@ -27,8 +31,12 @@ Invoke-Pester src\lib\Workspace.Tests.ps1 -Output Detailed
 Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed
 Invoke-Pester src\lib\HyperV.Tests.ps1 -Output Detailed
 Invoke-Pester src\lib\Wsl.Tests.ps1 -Output Detailed
-Invoke-Pester src\lib\Docker.Tests.ps1 -Output Detailed
 Invoke-Pester e2e.Tests.ps1 -Output Detailed
+```
+
+```
+# Deprecated - Not Required 
+# Invoke-Pester src\lib\Docker.Tests.ps1 -Output Detailed
 ```
 
 
