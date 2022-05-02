@@ -26,12 +26,12 @@ jobs:
       - uses: actions/checkout@v2
 
       # Run Workspace setup
-      - name: Run workspace setup - HyperV Setup as Admin f& Test
-        shell: pwsh
-        run: |
-          Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
-          iwr -useb https://raw.githubusercontent.com/rajasoun/win10x-onboard/main/bootstrap.ps1 | iex 
-          Invoke-Pester https://raw.githubusercontent.com/rajasoun/win10x-onboard/main/e2e.Tests.ps1 -Output Detailed
+      # - name: Run workspace setup - HyperV Setup as Admin f& Test
+      #   shell: pwsh
+      #   run: |
+      #     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
+      #     iwr -useb https://raw.githubusercontent.com/rajasoun/win10x-onboard/main/bootstrap.ps1 | iex 
+      #     Invoke-Pester https://raw.githubusercontent.com/rajasoun/win10x-onboard/main/e2e.Tests.ps1 -Output Detailed
 
           
 
