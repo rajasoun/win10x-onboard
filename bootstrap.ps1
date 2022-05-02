@@ -40,7 +40,7 @@ Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/Works
 Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/Apps.Installer.ps1")
 Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/HyperV.ps1")
 Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/Wsl.ps1")
-Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/Docker.ps1")
+#Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/Docker.ps1")
 
 If(-not(Test-IsAdmin)){
     $dir="$HOME/workspace/on-board/"
