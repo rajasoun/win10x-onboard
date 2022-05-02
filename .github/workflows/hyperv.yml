@@ -27,17 +27,17 @@ jobs:
 
       # Run Workspace setup
       - name: Run workspace setup - first time
-        uses: Amadevus/pwsh-script@v2
-        id: bootstrap-first-time
-        with:
-          script: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine; iwr -useb https://git.io/JZBfh | iex
+        shell: pwsh
+        run: |
+          Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
+          iwr -useb https://git.io/JZBfh | iex
 
       # Run Workspace setup
       - name: Run workspace setup - second time
-        uses: Amadevus/pwsh-script@v2
-        id: bootstrap-second-time
-        with:
-          script: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine; iwr -useb https://git.io/JZBfh | iex
+        shell: pwsh
+        run: |
+          Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
+          iwr -useb https://git.io/JZBfh | iex
 
       - name: Run Test 
         run: | 
