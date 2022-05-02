@@ -26,17 +26,20 @@ jobs:
       - uses: actions/checkout@v2
 
       # Run Workspace setup
-      - name: Run workspace setup
-        run: | 
-          Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
-          iwr -useb https://git.io/JZBfh | iex 
+      - name: Run workspace setup - first time
+        uses: Amadevus/pwsh-script@v2
+        id: bootstrap-first-time
+        with:
+          script: iwr -useb https://git.io/JZBfh | iex
 
+      # Run Workspace setup
       - name: Run workspace setup - second time
-        run: | 
-          Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
-          iwr -useb https://git.io/JZBfh | iex 
+        uses: Amadevus/pwsh-script@v2
+        id: bootstrap-second-time
+        with:
+          script: iwr -useb https://git.io/JZBfh | iex
 
-      - name: Run workspace setup - second time
+      - name: Run Test 
         run: | 
           Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
           Invoke-Pester e2e.Tests.ps1 -Output Detailed
