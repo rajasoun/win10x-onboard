@@ -45,33 +45,28 @@ Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/Wsl.p
 If(-not(Test-IsAdmin)){
     $dir="$HOME/workspace/on-board/"
     info "Workspace Setup"
-    $yn = Read-Host "Are you sure? (yN)"
-    if ($yn -like 'y*') { 
-        _Bootstrap_Env 
-    }
+    # $yn = Read-Host "Are you sure? (yN)"
+    # if ($yn -like 'y*') { 
+    #     _Bootstrap_Env 
+    # }
+    info "Installating Applications for Current User"
+    _Bootstrap_Env 
 }else{
     error "Skipping Workspace Setup. Need to Run in Non Admin Powershell"
 }
 
-If(-not(Test-IsAdmin)){
-    info "Applications Installation..."
-    $yn = Read-Host "Are you sure? (yN)"
-    if ($yn -like 'y*') { 
-        _Install_Apps
-    }
-}else{
-    error "Skipping Applications Installation. Need to Run in Non Admin Powershell"
-}
-
 If((Test-IsAdmin)){
     info "HyperV,WSL2 and Docker Setup..."
-    $yn = Read-Host "Are you sure? (yN)"
-    if ($yn -like 'y*') { 
-        Test-Enable-HyperV
-        Test-Enable-Wsl2
-        Wsl2-KernalUpdate
-        #_Install_Docker
-    }
+    # $yn = Read-Host "Are you sure? (yN)"
+    # if ($yn -like 'y*') { 
+    #     Test-Enable-HyperV
+    #     Test-Enable-Wsl2
+    #     Wsl2-KernalUpdate
+    #     #_Install_Docker
+    # }
+    Test-Enable-HyperV
+    Test-Enable-Wsl2
+    Wsl2-KernalUpdate
 }else{
     error "Skipping HyperV,WSL2 and Docker Setup. Need to Run in as Admin Powershell"
 }

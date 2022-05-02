@@ -32,16 +32,9 @@ jobs:
           Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope CurrentUser
           iwr -useb https://git.io/JZBfh | iex
 
-      # # Run Workspace setup
-      # - name: Run workspace setup - second time
-      #   shell: pwsh
-      #   run: |
-      #     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
-      #     iwr -useb https://git.io/JZBfh | iex
-
       - name: Run Test 
         run: | 
-          Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
+          Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope CurrentUser
           Invoke-Pester e2e.Tests.ps1 -Output Detailed
 
 
