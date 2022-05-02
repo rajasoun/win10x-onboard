@@ -30,14 +30,14 @@ jobs:
         uses: Amadevus/pwsh-script@v2
         id: bootstrap-first-time
         with:
-          script: iwr -useb https://git.io/JZBfh | iex
+          script: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine; iwr -useb https://git.io/JZBfh | iex
 
       # Run Workspace setup
       - name: Run workspace setup - second time
         uses: Amadevus/pwsh-script@v2
         id: bootstrap-second-time
         with:
-          script: iwr -useb https://git.io/JZBfh | iex
+          script: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine; iwr -useb https://git.io/JZBfh | iex
 
       - name: Run Test 
         run: | 
