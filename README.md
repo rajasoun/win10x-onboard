@@ -8,7 +8,7 @@
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
     iwr -useb https://git.io/JZBfh | iex 
     ```
-1. Open Powershell as Administrator and Run following commands to setup HyperV, WSL, WSL2 Kernel Update,Docker
+1. Open Powershell as **Administrator** and Run following commands to setup HyperV, WSL, WSL2 Kernel Update,Docker
 
     ```
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
