@@ -1,7 +1,7 @@
 #Requires -Version 5
 
 param(
-    [Parameter(Mandatory,HelpMessage='Installation Type [ apps | system ] ? '))]
+    [Parameter(Mandatory,HelpMessage='Installation Type [ apps | system ] ? ')]
     [String]$type = 'apps'
 )
 
