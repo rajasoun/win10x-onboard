@@ -26,6 +26,5 @@ jobs:
         shell: pwsh
         run: |       
           $env:CI_WINDOWS=$true
-          Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
           Invoke-Pester e2e.Tests.ps1 -Tag "prerequisite"  -Output Detailed
-          Invoke-Pester e2e.Tests.ps1 -Tag "apps" -Output Detailed
+

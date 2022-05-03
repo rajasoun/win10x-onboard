@@ -1,5 +1,20 @@
 # win10x-onboard
 
+## Prerequisites
+
+Open **Powershell** as current user
+
+1. Check Windows 10 and Above 
+    ```sh
+    Get-ComputerInfo | select WindowsProductName, WindowsVersion
+    ```
+1. Check Virtualization firmware Enabled.
+    ```sh
+    Get-ComputerInfo -property "HyperV*"
+    ```
+    The line HyperVRequirementVirtualizationFirmwareEnabled    : True if appears confirms virtualization is enabled in BIOS (firmware)
+1. If not, emable virtualization in BIOS mode. [Follow the Guide](https://www.geeksforgeeks.org/how-to-enable-virtualization-vt-x-in-windows-10-bios/)
+
 ## Setup 
 
 ### Applications and Workspace setup
