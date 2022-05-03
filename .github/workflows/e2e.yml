@@ -1,8 +1,8 @@
-name: apps-setup
+name: e2e
 on: push
 
 jobs:
-  apps-setup:
+  e2e:
     name: Test Apps.Installer.ps1 
     runs-on: windows-latest
     steps:
@@ -27,4 +27,5 @@ jobs:
         run: |       
           $env:CI_WINDOWS=$true
           Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
-          Invoke-Pester e2e.Tests.ps1 -Output Detailed
+          Invoke-Pester e2e.Tests.ps1 -Tag "prerequisite"  -Output Detailed
+          Invoke-Pester e2e.Tests.ps1 -Tag "apps" -Output Detailed
