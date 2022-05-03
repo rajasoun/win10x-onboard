@@ -20,7 +20,8 @@ Open **Powershell** as current user
 ### Applications and Workspace setup
 
 1. Open Powershell and Run following commands for application installation and workspace setup
-    ```
+
+    ```sh
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope currentuser
     iwr -useb https://raw.githubusercontent.com/rajasoun/win10x-onboard/main/e2e.ps1 | iex 
     cd ~\workspace
@@ -32,7 +33,7 @@ Open **Powershell** as current user
 
 1. Open Powershell as **Administrator** and Run following commands to setup HyperV, WSL, WSL2 Kernel Update,Docker
 
-    ``sh
+    ```sh
     Start-Process powershell -Verb runas
     cd ~\workspace\win10x-onboard
     git pull --rebase
@@ -44,6 +45,20 @@ Open **Powershell** as current user
 ### Docker Desktop Setup
 
 1. Install [Docker Desktop For Windows](https://docs.docker.com/desktop/windows/install/)
+
+
+### Test Docker
+
+1. Open Git Bash command prompt
+    ```sh
+    docker run --rm hello-world
+    ```
+    You shoulfd see Hello from Docker
+
+1. Check the Speed of the Internet  - Run in the same **Git Bash Shell**
+    ```sh
+    wget -O- -q https://raw.githubusercontent.com/rajasoun/common-lib/main/docker/speed.sh | bash 
+    ```
 
 
 ## TDD with Pester - For Developers (easy To Debug)
