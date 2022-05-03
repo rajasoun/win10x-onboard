@@ -9,12 +9,6 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
 
-      - name: Init Test Suite
-        uses: potatoqualitee/psmodulecache@v4
-        with:
-          modules-to-cache: Pester
-          shell: powershell
-
       - name: Perform Workspace setup Tests from Workspace.Tests.ps1 file
         shell: powershell
         run: |       

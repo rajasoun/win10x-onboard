@@ -1,5 +1,14 @@
 #Requires -Version 5 
 
+IF (-not([string]::IsNullOrWhitespace($PSScriptRoot))){
+    . "$psscriptroot/src/lib/log.ps1"
+    . "$psscriptroot/src/lib/common.ps1"
+    . "$psscriptroot/src/lib/Workspace.ps1"
+    . "$psscriptroot/src/lib/Apps.Installer.ps1"
+    . "$psscriptroot/src/lib/HyperV.ps1"
+    . "$psscriptroot/src/lib/Wsl.ps1"
+}
+
 BeforeAll { 
     # Includes system.ps1
     . $PSCommandPath.Replace('.Tests.ps1','.ps1')

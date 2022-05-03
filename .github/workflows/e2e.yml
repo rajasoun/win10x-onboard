@@ -3,7 +3,7 @@ on: push
 
 jobs:
   e2e:
-    name: Test Apps.Installer.ps1 
+    name: Test e2e.Tests.ps1 
     runs-on: windows-latest
     steps:
       - name: Check out repository code
