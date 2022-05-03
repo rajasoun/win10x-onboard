@@ -7,10 +7,10 @@ IF (-not([string]::IsNullOrWhitespace($PSScriptRoot))){
 
 
 function install_scoop(){
-    if(-not(is_admin)){
+    $ErrorActionPreference = "Stop"
+    if($env:CI_WINDOWS){
+        info "Executing with CI Server Mode. Skipping Checks"  
         if (-not(Check-Command -cmdname 'scoop')) {
-            # NOTE: DO NOT Run this script as Administrator
-    
             # Scoop Installation
             info "Installing scoop"  
             Set-Executionpolicy -scope CurrentUser -executionPolicy Bypass -Force 
@@ -20,11 +20,14 @@ function install_scoop(){
             warn "scoop already installed"
         }
     }else{
-        abort("Pls. run the Script as Non Admin")
+        info "Executing In Desktop . Performing Checks"  
+        Check-PSEnvironment
+        # NOTE: DO NOT scoop as Administrator in Developer Desktop
+        Check-NonAdmin
     }
 }
 
-function install_applications(){
+function install_applications_via_scoop(){
     scoop install Git 
     success  "Git Bash Instalation Done !!!"
     info "Adding scoop extras Bucket"
@@ -38,5 +41,7 @@ function install_applications(){
 
 function Install-Apps(){
     install_scoop
-    install_applications
+    info "scoop installation completed successfully"
+    install_applications_via_scoop
+    info "Applications installation via scoop completed successfully"
 }

@@ -1,11 +1,5 @@
 #Requires -Version 5 
 
-function is_admin() {
-    $admin = [security.principal.windowsbuiltinrole]::administrator
-    $id = [security.principal.windowsidentity]::getcurrent()
-    ([security.principal.windowsprincipal]($id)).isinrole($admin)
-}
-
 function Check-PSEnvironment {
     if ($PSVersionTable.PSEdition -ne "Desktop") {
         Write-Error "Wrong PowerShell Environment. Please execute in PowerShell Desktop."
