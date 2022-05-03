@@ -1,0 +1,30 @@
+name: apps-setup
+on: push
+
+jobs:
+  apps-setup:
+    name: Test Apps.Installer.ps1 
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+
+      - name: Init Test Suite
+        uses: potatoqualitee/psmodulecache@v4
+        with:
+          modules-to-cache: Pester
+          shell: powershell
+
+      - name: Install Pre-Requisites Windows - (Not to be done in Desktop)
+        shell: pwsh
+        run: |
+          iwr -useb get.scoop.sh -outfile 'install.ps1'
+          .\install.ps1 -RunAsAdmin
+          Join-Path (Resolve-Path ~).Path "scoop\shims" >> $Env:GITHUB_PATH
+
+      - name: Test e2e.Tests.ps1 file
+        shell: powershell
+        run: |       
+          $env:CI_WINDOWS=$true
+          Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
+          Invoke-Pester e2e.Tests.ps1 -Output Detailed

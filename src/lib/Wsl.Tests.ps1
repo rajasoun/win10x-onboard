@@ -12,9 +12,6 @@ Describe 'Windows Automation ' -Tag "system"{
         It "WSL2 To be Enabled " {
             Check-Wsl-Enabled | Should -Be $true
         }
-        It "WSL2 Upgrade " {
-            # To Be Done
-        }
     }
 }
 

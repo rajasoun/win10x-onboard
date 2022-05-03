@@ -1,12 +1,9 @@
 #Requires -Version 5 
 
 BeforeAll { 
-    function Check-Command($cmdname){
-        return [bool](Get-Command -Name $cmdname -ErrorAction SilentlyContinue)
-    }
-    function is_win10(){
-        return [bool]([Environment]::OSVersion.Version -ge (new-object 'Version' 10,18362))
-    }
+    # Includes system.ps1
+    . $PSCommandPath.Replace('.Tests.ps1','.ps1')
+    Install-Apps
 }
 
 Describe 'PreRequisites Tests' {
@@ -44,6 +41,22 @@ Describe 'Windows Automation' -Tag "system"{
         }
         It "Visual Studio Code Installation " {
             Check-Command -cmdname 'code' | Should -Be $true
+        }
+    }
+}
+
+Describe 'Windows 10 Automation' -Tag "system" {
+    Context 'HyperV Management' {
+        It "Enable-HyperV-IfNotDone - Enables HyperV if Not Eabled " {
+            Check-HyperV-Enabled | Should -Be $true
+        }
+    }
+}
+
+Describe 'Windows Automation ' -Tag "system"{
+    Context 'WSL2 Enabled & Upgraded'{
+        It "WSL2 To be Enabled " {
+            Check-Wsl-Enabled | Should -Be $true
         }
     }
 }
