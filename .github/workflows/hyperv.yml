@@ -1,8 +1,8 @@
-name: apps-setup
+name: hyperv-setup
 on: push
 
 jobs:
-  apps-setup:
+  hyperv-setup:
     name: Test Apps.Installer.ps1 
     runs-on: windows-latest
     steps:
@@ -18,4 +18,4 @@ jobs:
       - name: Test HyperV.Tests.ps1 file
         shell: powershell
         run: |       
-          Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed -RunAsAdmin
+          Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed 
