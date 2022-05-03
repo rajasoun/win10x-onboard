@@ -4,8 +4,8 @@ BeforeAll {
     # Includes system.ps1
     . $PSCommandPath.Replace('.Tests.ps1','.ps1')
     $ErrorActionPreference = "Stop"
-    # Check-PSEnvironment
-    Check-NonAdmin
+    #Check-PSEnvironment
+    #Check-NonAdmin
     Install-Apps
 }
 
