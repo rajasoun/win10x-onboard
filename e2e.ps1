@@ -1,9 +1,8 @@
 #Requires -Version 5
 
 param(
-    [Parameter(Mandatory)]
-    # app, hyperv, wsl 
-    [String]$type 
+    [Parameter(Mandatory,HelpMessage='Installation Type [ apps | system ] ? '))]
+    [String]$type = 'apps'
 )
 
 # remote install:
