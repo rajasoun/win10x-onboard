@@ -5,17 +5,21 @@ IF (-not([string]::IsNullOrWhitespace($PSScriptRoot))){
     . "$psscriptroot/common.ps1"
 } 
 
+function get_scoop(){
+    # Scoop Installation
+    info "Installing scoop" 
+    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser 
+    #iwr -useb get.scoop.sh | iex 
+    Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+    success  "scoop Installation Done. Success !!!" 
+}
 
 function install_scoop(){
     $ErrorActionPreference = "Stop"
     if($env:CI_WINDOWS){
         info "Executing with CI Server Mode. Skipping Checks"  
         if (-not(Check-Command -cmdname 'scoop')) {
-            # Scoop Installation
-            info "Installing scoop"  
-            Set-Executionpolicy -scope CurrentUser -executionPolicy Bypass -Force 
-            iwr -useb get.scoop.sh | iex 
-            success  "scoop Installation Done. Success !!!" 
+            get_scoop
         }else{
             warn "scoop already installed"
         }
@@ -24,6 +28,7 @@ function install_scoop(){
         Check-PSEnvironment
         # NOTE: DO NOT scoop as Administrator in Developer Desktop
         Check-NonAdmin
+        get_scoop
     }
 }
 
@@ -41,7 +46,5 @@ function install_applications_via_scoop(){
 
 function Install-Apps(){
     install_scoop
-    info "scoop installation completed successfully"
     install_applications_via_scoop
-    info "Applications installation via scoop completed successfully"
 }

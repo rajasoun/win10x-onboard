@@ -13,7 +13,6 @@ jobs:
         shell: pwsh
         run: |       
           $env:CI_WINDOWS=$true
-          Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
           .\src\lib\Apps.Installer.ps1 -Output Detailed
 
       - name: Test Apps.Installer.Tests.ps1 file
