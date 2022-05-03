@@ -60,7 +60,7 @@ ATDD Scripts
 
 ```sh
 Invoke-Pester e2e.Tests.ps1 -Tag "prerequisite"  -Output Detailed
-Invoke-Pester e2e.Tests.ps1 -Tag "apps" -ExcludeTag "hyperv", "wsl2" -Output Detailed
-Invoke-Pester e2e.Tests.ps1 -Tag "hyperv" -ExcludeTag "apps", "wsl2" -Output Detailed
-Invoke-Pester e2e.Tests.ps1 -Tag "wsl2" -ExcludeTag "apps", "hyperv" -Output Detailed
+Invoke-Pester e2e.Tests.ps1 -Tag "apps"   -Output Detailed
+Invoke-Pester e2e.Tests.ps1 -Tag "hyperv" -Output Detailed
+Invoke-Pester e2e.Tests.ps1 -Tag "wsl2"   -Output Detailed
 ```
