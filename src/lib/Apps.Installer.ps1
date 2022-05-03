@@ -8,9 +8,8 @@ IF (-not([string]::IsNullOrWhitespace($PSScriptRoot))){
 function get_scoop(){
     # Scoop Installation
     info "Installing scoop" 
-    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser 
-    #iwr -useb get.scoop.sh | iex 
-    Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+    iwr -useb get.scoop.sh | iex 
+    #Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
     success  "scoop Installation Done. Success !!!" 
 }
 
@@ -26,8 +25,8 @@ function install_scoop(){
     }else{
         info "Executing In Desktop . Performing Checks"  
         Check-PSEnvironment
-        # NOTE: DO NOT scoop as Administrator in Developer Desktop
-        Check-NonAdmin
+        Check-ExecutionPolicyForScoop
+        Check-NonAdmin # NOTE: DO NOT scoop as Administrator in Developer Desktop
         get_scoop
     }
 }

@@ -15,7 +15,7 @@ jobs:
           modules-to-cache: Pester
           shell: powershell
 
-      - name: Install Pre-Requisites Windows
+      - name: Install Pre-Requisites Windows - (Not to be done in Desktop)
         shell: pwsh
         run: |
           iwr -useb get.scoop.sh -outfile 'install.ps1'

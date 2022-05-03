@@ -6,7 +6,7 @@ IF (-not([string]::IsNullOrWhitespace($PSScriptRoot))){
 }
 
 # Check Hyper-V
-Function HyperV-Enabled() {
+Function Check-HyperV-Enabled() {
     info "Checking if HyperV is enabled."
     $hypstate = Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V
     if ($hypstate.State -eq "Enabled") {
@@ -28,8 +28,8 @@ Function Enable-HyperV() {
     warn "System Reboot Required"
 }
 
-Function Test-Enable-HyperV() {
-    if(-not (HyperV-Enabled)){
+Function Enable-HyperV-IfNotDone() {
+    if(-not (Check-HyperV-Enabled)){
         Enable-HyperV
     }else{
         success "Hyper-V is Already enabled. SUCCESS !!!"  

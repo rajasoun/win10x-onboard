@@ -6,7 +6,7 @@ IF (-not([string]::IsNullOrWhitespace($PSScriptRoot))){
 }
 
 # Check WSL
-Function Wsl-Enabled() {
+Function Check-Wsl-Enabled() {
     info "Checking if Wsl is enabled."
     $wsl = Get-WindowsOptionalFeature -FeatureName Microsoft-Windows-Subsystem-Linux -Online
     if ($wsl.State -eq "Enabled") {
@@ -23,16 +23,16 @@ Function Enable-Wsl() {
     & cmd /c 'dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart'
     & cmd /c 'dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart'
     Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform 
-    sucess "Wsl is enabled. SUCCESS !!!"
+    sucess "WSL is enabled. SUCCESS !!!"
     Start-Sleep 30
     warn "System Reboot Required"
 }
 
-Function Test-Enable-Wsl2() {
-    if(-not (Wsl-Enabled)){
+Function Enable-Wsl-IfNotDone() {
+    if(-not (Check-Wsl-Enabled)){
         Enable-Wsl   
     }else{
-        success "Hyper-V is Already enabled. SUCCESS !!!"  
+        success "WSL is Already enabled. SUCCESS !!!"  
     }
 }
 

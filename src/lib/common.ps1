@@ -22,6 +22,15 @@ function Check-Admin {
     }
 }
 
+function Check-ExecutionPolicyForScoop {
+    # show notification to change execution policy for scoop
+    $allowedExecutionPolicy = @('Unrestricted', 'RemoteSigned', 'ByPass')
+    if ((Get-ExecutionPolicy).ToString() -notin $allowedExecutionPolicy) {
+        Write-Error "PowerShell requires an execution policy in [$($allowedExecutionPolicy -join ", ")] to run Scoop."
+        Write-Error "Please Run :"
+        Write-Error "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -scope CurrentUser"
+    }
+}
 
 function Check-Command($cmdname){
     return [bool](Get-Command -Name $cmdname -ErrorAction SilentlyContinue)

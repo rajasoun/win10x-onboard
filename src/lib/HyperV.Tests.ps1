@@ -7,9 +7,9 @@ BeforeAll {
 
 Describe 'Windows 10 Automation' -Tag "system" {
     Context 'HyperV Management' {
-        It "Test-Enable-HyperV - Enables HyperV if Not Eabled " {
-            Test-Enable-HyperV
-            HyperV-Enabled | Should -Be $true
+        It "Enable-HyperV-IfNotDone - Enables HyperV if Not Eabled " {
+            Enable-HyperV-IfNotDone
+            Check-HyperV-Enabled | Should -Be $true
         }
     }
 }
