@@ -9,16 +9,16 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
 
-      - name: Install Applications
+      - name: Install Applications - Apps.Installer.ps1
         shell: pwsh
         run: |       
           $env:CI_WINDOWS=$true
-          Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
-          .\src\lib\Apps.Installer.Tests.ps1
+          Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
+          .\src\lib\Apps.Installer.ps1 -Output Detailed
 
       - name: Test Apps.Installer.Tests.ps1 file
         shell: pwsh
         run: |       
           $env:CI_WINDOWS=$true
-          Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+          Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
           Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed
