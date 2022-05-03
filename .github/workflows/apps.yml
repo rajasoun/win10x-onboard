@@ -23,7 +23,7 @@ jobs:
           Join-Path (Resolve-Path ~).Path "scoop\shims" >> $Env:GITHUB_PATH
 
       - name: Test Apps.Installer.Tests.ps1 file
-        shell: powershell
+        shell: pwsh
         run: |       
           $env:CI_WINDOWS=$true
           Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine

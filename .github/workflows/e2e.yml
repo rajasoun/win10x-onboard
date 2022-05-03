@@ -13,7 +13,7 @@ jobs:
         uses: potatoqualitee/psmodulecache@v4
         with:
           modules-to-cache: Pester
-          shell: powershell
+          shell: pwsh
 
       - name: Install Pre-Requisites Windows - (Not to be done in Desktop)
         shell: pwsh
@@ -23,7 +23,7 @@ jobs:
           Join-Path (Resolve-Path ~).Path "scoop\shims" >> $Env:GITHUB_PATH
 
       - name: Test e2e.Tests.ps1 file
-        shell: powershell
+        shell: pwsh
         run: |       
           $env:CI_WINDOWS=$true
           Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
