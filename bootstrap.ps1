@@ -1,9 +1,11 @@
 #Requires -Version 5
 
-Function Test-IsAdmin{
-    $identity = [Security.Principal.WindowsIdentity]::GetCurrent()
-    $principal = New-Object Security.Principal.WindowsPrincipal $identity
-    $principal.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
+function Check-NonAdmin {
+    #check for non admin priviledges 
+    if (([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) { 
+        # Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs; exit 
+        Write-Error "Please run PowerShell with Non Admin elevated permissions."
+    }
 }
 
 # remote install:
@@ -40,36 +42,22 @@ Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/Works
 Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/Apps.Installer.ps1")
 Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/HyperV.ps1")
 Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/Wsl.ps1")
-#Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/Docker.ps1")
 
-If(-not(Test-IsAdmin)){
-    $dir="$HOME/workspace/on-board/"
-    info "Workspace Setup"
-    # $yn = Read-Host "Are you sure? (yN)"
-    # if ($yn -like 'y*') { 
-    #     _Bootstrap_Env 
-    # }
-    info "Installating Applications for Current User"
-    _Bootstrap_Env 
-}else{
-    error "Skipping Workspace Setup. Need to Run in Non Admin Powershell"
-}
+$dir="$HOME/workspace/on-board/"
+info "Workspace Setup"
+Bootstrap-Env 
+info "Installating Applications for Current User"
+Install-Apps
 
-If((Test-IsAdmin)){
-    info "HyperV,WSL2 and Docker Setup..."
-    # $yn = Read-Host "Are you sure? (yN)"
-    # if ($yn -like 'y*') { 
-    #     Test-Enable-HyperV
-    #     Test-Enable-Wsl2
-    #     Wsl2-KernalUpdate
-    #     #_Install_Docker
-    # }
-    Test-Enable-HyperV
-    Test-Enable-Wsl2
-    Wsl2-KernalUpdate
-}else{
-    error "Skipping HyperV,WSL2 and Docker Setup. Need to Run in as Admin Powershell"
-}
+
+# If((Test-IsAdmin)){
+#     info "HyperV,WSL2 and Docker Setup..."
+#     Test-Enable-HyperV
+#     Test-Enable-Wsl2
+#     Wsl2-KernalUpdate
+# }else{
+#     error "Skipping HyperV,WSL2 and Docker Setup. Need to Run in as Admin Powershell"
+# }
 
 
 

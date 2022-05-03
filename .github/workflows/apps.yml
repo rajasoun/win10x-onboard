@@ -10,10 +10,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install Applications - Apps.Installer.ps1
-        shell: pwsh
         run: |       
           $env:CI_WINDOWS=$true
-          .\src\lib\Apps.Installer.ps1 -Output Detailed
+          ./src/lib/Apps.Installer.ps1 
 
       - name: Test Apps.Installer.Tests.ps1 file
         shell: pwsh
