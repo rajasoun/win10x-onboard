@@ -21,16 +21,23 @@ Open **Powershell** as current user
 
 1. Open Powershell and Run following commands for application installation and workspace setup
     ```
-    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
-    iwr -useb https://raw.githubusercontent.com/rajasoun/win10x-onboard/main/e2e.ps1  -type "apps"| iex 
+    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope currentuser
+    iwr -useb https://raw.githubusercontent.com/rajasoun/win10x-onboard/main/e2e.ps1 | iex 
+    cd ~\workspace
+    git clone https://github.com/rajasoun/win10x-onboard
+    cd win10x-onboard
     ```
 
 ### HyperV, WSL, WSL2 Kernel Update setup
 
 1. Open Powershell as **Administrator** and Run following commands to setup HyperV, WSL, WSL2 Kernel Update,Docker
 
-    ```
-    iwr -useb https://raw.githubusercontent.com/rajasoun/win10x-onboard/main/e2e.ps1 -type "system"| iex 
+    ``sh
+    Start-Process powershell -Verb runas
+    cd ~\workspace\win10x-onboard
+    git pull --rebase
+    .\e2e.ps1 -type hyperv
+    .\e2e.ps1 -type wsl
     ```
     > FYI: System will restart two times. ReRun the Script 
 
