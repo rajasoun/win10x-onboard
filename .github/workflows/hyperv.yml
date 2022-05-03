@@ -3,7 +3,7 @@ on: push
 
 jobs:
   hyperv-setup:
-    name: Test Apps.Installer.ps1 
+    name: Test HyperV.ps1 
     runs-on: windows-latest
     steps:
       - name: Check out repository code
@@ -18,4 +18,4 @@ jobs:
       - name: Test HyperV.Tests.ps1 file
         shell: powershell
         run: |       
-          Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed 
+          Invoke-Pester src\lib\HyperV.Tests.ps1 -Output Detailed 
