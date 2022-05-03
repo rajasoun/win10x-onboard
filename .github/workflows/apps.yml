@@ -15,6 +15,12 @@ jobs:
           modules-to-cache: Pester
           shell: powershell
 
+      - name: Install Scoop
+        shell: powershell
+        run: |       
+          Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
+          Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+
       - name: Test Apps.Installer.Tests.ps1 file
         shell: powershell
         run: |       
