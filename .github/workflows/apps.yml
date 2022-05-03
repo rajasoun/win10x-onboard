@@ -15,11 +15,10 @@ jobs:
           modules-to-cache: Pester
           shell: powershell
 
-      - name: Install Scoop
-        shell: powershell
-        run: |       
-          Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
-          Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+      - name: Install Pre-Requisites Windows
+        run: |
+          iwr -useb get.scoop.sh | iex
+          Join-Path (Resolve-Path ~).Path "scoop\shims" >> $Env:GITHUB_PATH
 
       # - name: Test Apps.Installer.Tests.ps1 file
       #   shell: powershell
