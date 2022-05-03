@@ -7,8 +7,7 @@
 1. Open Powershell and Run following commands for application installation and workspace setup
     ```
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
-    iwr -useb https://raw.githubusercontent.com/rajasoun/win10x-onboard/main/bootstrap.ps1 | iex 
-    Invoke-Pester https://raw.githubusercontent.com/rajasoun/win10x-onboard/main/e2e.Tests.ps1 -Output Detailed
+    iwr -useb https://raw.githubusercontent.com/rajasoun/win10x-onboard/main/e2e.ps1 "apps"| iex 
     ```
 
 ### HyperV, WSL, WSL2 Kernel Update setup
@@ -16,8 +15,7 @@
 1. Open Powershell as **Administrator** and Run following commands to setup HyperV, WSL, WSL2 Kernel Update,Docker
 
     ```
-    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
-    iwr -useb https://raw.githubusercontent.com/rajasoun/win10x-onboard/main/bootstrap.ps1 | iex 
+    iwr -useb https://raw.githubusercontent.com/rajasoun/win10x-onboard/main/e2e.ps1 "system"| iex 
     ```
     > FYI: System will restart two times. ReRun the Script 
 

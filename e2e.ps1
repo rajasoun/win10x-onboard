@@ -1,5 +1,11 @@
 #Requires -Version 5
 
+param(
+    [Parameter(Mandatory)]
+    # system for hyperv, wsl | app for applications
+    [String]$type 
+)
+
 # remote install:
 $old_erroractionpreference = $erroractionpreference
 $erroractionpreference = 'stop' # quit if anything goes wrong
@@ -25,16 +31,23 @@ Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/Apps.
 Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/HyperV.ps1")
 Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/Wsl.ps1")
 
-$dir="$HOME/workspace/on-board/"
-info "Workspace Setup"
-Bootstrap-Env 
-info "Installating Applications for Current User"
-Install-Apps
+if($type -eq "apps"){
+    $dir="$HOME/workspace/on-board/"
+    info "Workspace Setup"
+    Bootstrap-Env 
+    info "Installating Applications for Current User"
+    Install-Apps
+}
 
-info "HyperV & WSL2 Setup..."
-Enable-HyperV-IfNotDone
-Enable-Wsl-IfNotDone
-Wsl2-KernalUpdate
+if($type -eq "system"){
+    info "HyperV & WSL2 Setup"
+    Enable-HyperV-IfNotDone
+    Enable-Wsl-IfNotDone
+    Wsl2-KernalUpdate
+}
+
+
+
 
 
 

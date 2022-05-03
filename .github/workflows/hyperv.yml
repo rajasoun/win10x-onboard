@@ -15,16 +15,7 @@ jobs:
           modules-to-cache: Pester
           shell: powershell
 
-      - name: Install Pre-Requisites Windows - (Not to be done in Desktop)
-        shell: pwsh
-        run: |
-          iwr -useb get.scoop.sh -outfile 'install.ps1'
-          .\install.ps1 -RunAsAdmin
-          Join-Path (Resolve-Path ~).Path "scoop\shims" >> $Env:GITHUB_PATH
-
-      - name: Test Apps.Installer.Tests.ps1 file
+      - name: Test HyperV.Tests.ps1 file
         shell: powershell
         run: |       
-          $env:CI_WINDOWS=$true
-          Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
-          Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed
+          Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed -RunAsAdmin
