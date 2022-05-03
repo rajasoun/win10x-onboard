@@ -24,17 +24,28 @@
 1. Install [Docker Desktop For Windows](https://docs.docker.com/desktop/windows/install/)
 
 
-## TDD with Pester - For Developers
+## TDD with Pester - For Developers (easy To Debug)
 
-```
+Clone Github Repository
+```sh
 git clone https://github.com/rajasoun/win10x-onboard
 cd win10x-onboard
 Get-InstalledModule -Name 'Pester' -MinimumVersion 5.0
+```
 
+TDD Scripts
+```sh
 Invoke-Pester src\lib\Workspace.Tests.ps1 -Output Detailed
 Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed
 Invoke-Pester src\lib\HyperV.Tests.ps1 -Output Detailed
 Invoke-Pester src\lib\Wsl.Tests.ps1 -Output Detailed
-Invoke-Pester e2e.Tests.ps1 -Output Detailed
 ```
 
+ATDD Scripts
+
+```sh
+Invoke-Pester e2e.Tests.ps1 -Tag "prerequisite"  -Output Detailed
+Invoke-Pester e2e.Tests.ps1 -Tag "apps" -ExcludeTag "hyperv", "wsl2" -Output Detailed
+Invoke-Pester e2e.Tests.ps1 -Tag "hyperv" -ExcludeTag "apps", "wsl2" -Output Detailed
+Invoke-Pester e2e.Tests.ps1 -Tag "wsl2" -ExcludeTag "apps", "hyperv" -Output Detailed
+```

@@ -2,7 +2,7 @@
 
 param(
     [Parameter(Mandatory)]
-    # system for hyperv, wsl | app for applications
+    # app, hyperv, wsl 
     [String]$type 
 )
 
@@ -39,14 +39,24 @@ if($type -eq "apps"){
     Install-Apps
 }
 
-if($type -eq "system"){
-    info "HyperV & WSL2 Setup"
+if($type -eq "hyperv"){
+    info "HyperV Setup"
     Enable-HyperV-IfNotDone
+}
+
+if($type -eq "wsl"){
+    info "WSL2 Setup"
     Enable-Wsl-IfNotDone
     Wsl2-KernalUpdate
 }
 
-
+if($type -eq "system"){
+    info "HyperV Setup"
+    Enable-HyperV-IfNotDone
+    info "WSL2 Setup"
+    Enable-Wsl-IfNotDone
+    Wsl2-KernalUpdate
+}
 
 
 
