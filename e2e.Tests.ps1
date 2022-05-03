@@ -12,6 +12,7 @@ IF (-not([string]::IsNullOrWhitespace($PSScriptRoot))){
 BeforeAll { 
     # Includes system.ps1
     . $PSCommandPath.Replace('.Tests.ps1','.ps1')
+    Install-Apps
 }
 
 Describe 'PreRequisites Tests' {
@@ -38,7 +39,6 @@ Describe 'PreRequisites Tests' {
 
 Describe 'Automation' -Tag "apps"{\
     Context "Application Installation Checks" -Tag "installer" {
-        Install-Apps
         It "scoop Installation " {
             Check-Command -cmdname 'scoop' | Should -Be $true
         }
@@ -56,8 +56,8 @@ Describe 'Automation' -Tag "apps"{\
 
 Describe 'Automation' -Tag "hyperv" {
     Context 'HyperV Management' {
-        Enable-HyperV-IfNotDone
         It "Enable-HyperV-IfNotDone - Enables HyperV if Not Eabled " {
+            Enable-HyperV-IfNotDone
             Check-HyperV-Enabled | Should -Be $true
         }
     }
@@ -65,9 +65,9 @@ Describe 'Automation' -Tag "hyperv" {
 
 Describe 'Automation ' -Tag "wsl"{
     Context 'WSL2 Enabled & Upgraded'{
-        Enable-Wsl-IfNotDone
-        Wsl2-KernalUpdate
         It "WSL2 To be Enabled " {
+            Enable-Wsl-IfNotDone
+            Wsl2-KernalUpdate
             Check-Wsl-Enabled | Should -Be $true
         }
     }
