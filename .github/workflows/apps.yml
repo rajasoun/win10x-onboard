@@ -14,4 +14,5 @@ jobs:
         run: |       
           $env:CI_WINDOWS=$true
           Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+          .\src\lib\Apps.Installer.Tests.ps1
           Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed
