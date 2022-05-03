@@ -6,6 +6,29 @@ function is_admin() {
     ([security.principal.windowsprincipal]($id)).isinrole($admin)
 }
 
+function Check-PSEnvironment {
+    if ($PSVersionTable.PSEdition -ne "Desktop") {
+        Write-Error "Wrong PowerShell Environment. Please execute in PowerShell Desktop."
+    }
+}
+
+function Check-NonAdmin {
+    #check for non admin priviledges 
+    if (([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) { 
+        # Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs; exit 
+        Write-Error "Please run PowerShell with Non Admin elevated permissions."
+    }
+}
+
+function Check-Admin {
+    #check for admin priviledges and run as admin
+    if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) { 
+        # Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs; exit 
+        Write-Error "Admin priviledges required. Please run PowerShell with elevated permissions."
+    }
+}
+
+
 function Check-Command($cmdname){
     return [bool](Get-Command -Name $cmdname -ErrorAction SilentlyContinue)
 }

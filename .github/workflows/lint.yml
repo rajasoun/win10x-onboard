@@ -1,18 +1,20 @@
-name: Windows System Tests via Pester
+name: lint-scripts
 on: push
 
 jobs:
-  pester-test:
-    name: Pester Test
+  lint-scripts:
+    name: Lint Scripts
     runs-on: windows-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
+
       - name: Install PSScriptAnalyzer module
         shell: pwsh
         run: |
           Set-PSRepository PSGallery -InstallationPolicy Trusted
           Install-Module PSScriptAnalyzer -ErrorAction Stop
+
       - name: Lint with PSScriptAnalyzer
         shell: pwsh
         run: |
@@ -24,15 +26,4 @@ jobs:
           } else {
               Write-Output "There were $($errors.Count) errors and $($warnings.Count) warnings total."
           }
-      - name: Perform a Pester test from the command-line
-        shell: pwsh
-        run: Test-Path "C:\Windows" | Should -Be $true
-      - name: Perform Installtion Tests from Installer.Tests.ps1 file
-        shell: pwsh
-        run: |       
-          $env:CI_WINDOWS=$true
-          Invoke-Pester src\lib\Installer.Tests.ps1 -Output Detailed
-      - name: Perform Workspace setup Tests from Workspace.Tests.ps1 file
-        shell: pwsh
-        run: |       
-          Invoke-Pester src\lib\Workspace.Tests.ps1 -Output Detailed
+

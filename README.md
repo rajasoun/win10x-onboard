@@ -1,14 +1,18 @@
 # win10x-onboard
 
-## Windos Setup 
+## Setup 
 
-### HyperV, WSL, WSL2 Kernel Update, Docker, Applications and Workspace setup
+### Applications and Workspace setup
+
 1. Open Powershell and Run following commands for application installation and workspace setup
     ```
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
     iwr -useb https://raw.githubusercontent.com/rajasoun/win10x-onboard/main/bootstrap.ps1 | iex 
     Invoke-Pester https://raw.githubusercontent.com/rajasoun/win10x-onboard/main/e2e.Tests.ps1 -Output Detailed
     ```
+
+### HyperV, WSL, WSL2 Kernel Update setup
+
 1. Open Powershell as **Administrator** and Run following commands to setup HyperV, WSL, WSL2 Kernel Update,Docker
 
     ```
@@ -17,10 +21,12 @@
     ```
     > FYI: System will restart two times. ReRun the Script 
 
+### Docker Desktop Setup
+
 1. Install [Docker Desktop For Windows](https://docs.docker.com/desktop/windows/install/)
 
 
-## TDD with Pester - Development
+## TDD with Pester - For Developers
 
 ```
 git clone https://github.com/rajasoun/win10x-onboard
@@ -34,15 +40,3 @@ Invoke-Pester src\lib\Wsl.Tests.ps1 -Output Detailed
 Invoke-Pester e2e.Tests.ps1 -Output Detailed
 ```
 
-```
-# Deprecated - Not Required 
-# Invoke-Pester src\lib\Docker.Tests.ps1 -Output Detailed
-```
-
-
-## TDD with Pester - Inside Docker 
-
-1. `make -f pester-runner/Makefile  build` to build the pester-runner container
-1. `make -f pester-runner/Makefile  run` to run the pester-runner container
-1. `make -f pester-runner/Makefile  shell` to shell to the container
-1. `make -f pester-runner/Makefile` to get help

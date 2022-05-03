@@ -33,15 +33,9 @@ Describe 'PreRequisites Tests' {
 
 Describe 'Windows Automation' -Tag "system"{
     Context "Application Installation Checks" -Tag "installer" {
-        # It "Choco Installation " {
-        #     Check-Command -cmdname 'choco' | Should -Be $true
-        # }
         It "scoop Installation " {
             Check-Command -cmdname 'scoop' | Should -Be $true
         }
-        # It "Docker Installation " {
-        #     Check-Command -cmdname 'docker' | Should -Be $true
-        # }
         It "GitHub CLI Installation " {
             Check-Command -cmdname 'gh' | Should -Be $true
         }
@@ -51,15 +45,6 @@ Describe 'Windows Automation' -Tag "system"{
         It "Visual Studio Code Installation " {
             Check-Command -cmdname 'code' | Should -Be $true
         }
-        # It "Windows Terminal Installation > win10k - Build Version: 18362" {
-        #     if(is_win10){
-        #         Check-Command -cmdname 'windowsterminal' | Should -Be $true
-        #         Write-Host "        > windows-terminal Installation"
-        #     }else{
-        #         Check-Command -cmdname 'windowsterminal' | Should -Be $false
-        #         Write-Host "        > Skipping windows-terminal Installation"
-        #     }
-        # }
     }
 }
 

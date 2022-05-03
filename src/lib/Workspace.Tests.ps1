@@ -6,7 +6,7 @@ BeforeAll {
     $dir="$HOME/workspace/on-board/"
 }
 AfterAll { 
-    _remove $dir
+    remove $dir
 }
 
 Describe 'Test core.ps1' {
@@ -40,33 +40,33 @@ Describe 'Test core.ps1' {
             $Path="/tmp/dummy"
             $aTestResult = GenerateFolder $Path  -Verbose
             (Test-Path -Path $Path) | Should -BeTrue
-            _remove $Path
+            remove $Path
         }
         It "Check Folder Exists without GenerateFolder" {
             $Path="/tmp/dummy"
             (Test-Path -Path $Path) | Should -BeFalse
         }
-        It "_remove Folder" {
+        It "remove Folder" {
             $Path="/tmp/dummy"
             $aTestResult = GenerateFolder $Path  -Verbose
             (Test-Path -Path $Path) | Should -BeTrue
-            _remove $Path
+            remove $Path
             (Test-Path -Path $Path) | Should -BeFalse
         }  
-        It "_install_modules installs Pester and PSReadLine if Not Installed" -ForEach @(
+        It "install_modules installs Pester and PSReadLine if Not Installed" -ForEach @(
             @{ Name = "Pester"; Expected = 'True'}
             @{ Name = "PSReadLine"; Expected = 'True'} 
         ) {
-            _install_modules
+            install_modules
             Test-ModuleAvailable -Name $name | Should -Be $expected
         }
-        It "_install_module installs Emojis" {
-            _install_module "Emojis"
+        It "install_module installs Emojis" {
+            install_module "Emojis"
             Get-Emoji -Name cactus | Should -Be '🌵'
         }
-        It "_Bootstrap_Env to be success"{
+        It "Bootstrap-Env to be success"{
             $dir="$HOME/workspace/on-board/"
-            _Bootstrap_Env
+            Bootstrap-Env
             (Test-Path -Path $dir) | Should -BeTrue
         }
     }

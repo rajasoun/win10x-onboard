@@ -5,7 +5,7 @@ IF (-not([string]::IsNullOrWhitespace($PSScriptRoot))){
     . "$psscriptroot/common.ps1"
 }
 
-function _install_module($module){
+function install_module($module){
     if(!(Test-ModuleAvailable $module)) {
         info "Installing $module"
         Install-Module -Name $module -Force -SkipPublisherCheck
@@ -16,7 +16,7 @@ function _install_module($module){
     }
 }
 
-function _remove($item){
+function remove($item){
     if (Test-Path $item){
         Remove-Item $item -Force -Recurse
         info "$item Removal Done !!!"
@@ -26,14 +26,14 @@ function _remove($item){
 
 ###### Wrapper Functions ##################
 
-function _install_modules(){
-    _install_module "PSReadLine" 
-    _install_module "Pester"
+function install_modules(){
+    install_module "PSReadLine" 
+    install_module "Pester"
 }
 
-function _Bootstrap_Env(){
+function Bootstrap-Env(){
     info "$dir"
     GenerateFolder $dir
-    _install_modules
+    install_modules
     success "Bootstrap Done!"
 }

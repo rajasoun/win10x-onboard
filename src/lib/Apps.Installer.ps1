@@ -31,14 +31,12 @@ function install_applications(){
     scoop bucket add extras
     scoop update
     scoop install vscode
+    info "Visual Studio Code Instalation Done !!!"
     scoop install gh
-    if (is_win10){
-        scoop install windows-terminal
-        success "Windows Terminal Instalation Done !!!"
-    }
+    info "GitHub CLI Instalation Done !!!"
 }
 
-function _Install_Apps(){
+function Install-Apps(){
     install_scoop
     install_applications
 }

@@ -1,0 +1,17 @@
+name: apps-setup
+on: push
+
+jobs:
+  apps-setup:
+    name: Test Apps.Installer.ps1 
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+
+      - name: Perform Installtion Tests from Apps.Installer.Tests.ps1 file
+        shell: pwsh
+        run: |       
+          $env:CI_WINDOWS=$true
+          Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+          Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed
