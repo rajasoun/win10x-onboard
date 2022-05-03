@@ -9,13 +9,14 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
 
-      - name: Install Applications - Apps.Installer.ps1
-        run: |       
-          $env:CI_WINDOWS=$true
-          ./src/lib/Apps.Installer.ps1 
+      - name: Init Test Suite
+        uses: potatoqualitee/psmodulecache@v4
+        with:
+          modules-to-cache: Pester
+          shell: powershell
 
       - name: Test Apps.Installer.Tests.ps1 file
-        shell: pwsh
+        shell: powershell
         run: |       
           $env:CI_WINDOWS=$true
           Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine

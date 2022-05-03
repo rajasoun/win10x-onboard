@@ -10,13 +10,19 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install PSScriptAnalyzer module
-        shell: pwsh
+        shell: powershell
         run: |
           Set-PSRepository PSGallery -InstallationPolicy Trusted
           Install-Module PSScriptAnalyzer -ErrorAction Stop
 
+      - name: Init Test Suite
+        uses: potatoqualitee/psmodulecache@v4
+        with:
+          modules-to-cache: PSScriptAnalyzer,Pester
+          shell: powershell
+
       - name: Lint with PSScriptAnalyzer
-        shell: pwsh
+        shell: powershell
         run: |
           Invoke-ScriptAnalyzer -Path *.ps1 -Recurse -Outvariable issues
           $errors   = $issues.Where({$_.Severity -eq 'Error'})

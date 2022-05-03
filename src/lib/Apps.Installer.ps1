@@ -16,7 +16,7 @@ function get_scoop(){
 
 function install_scoop(){
     $ErrorActionPreference = "Stop"
-    if($env:CI_WINDOWS){
+    if($env:CI_WINDOWS eq $true){
         info "Executing with CI Server Mode. Skipping Checks"  
         if (-not(Check-Command -cmdname 'scoop')) {
             get_scoop
