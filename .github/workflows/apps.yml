@@ -13,7 +13,7 @@ jobs:
         uses: potatoqualitee/psmodulecache@v4
         with:
           modules-to-cache: Pester
-          shell: powershell
+          shell: pwsh
 
       - name: Install Pre-Requisites Windows - (Not to be done in Desktop)
         shell: pwsh
