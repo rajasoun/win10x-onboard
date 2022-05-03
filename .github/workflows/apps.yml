@@ -16,13 +16,14 @@ jobs:
           shell: powershell
 
       - name: Install Pre-Requisites Windows
+        shell: pwsh
         run: |
-          iwr -useb get.scoop.sh | iex
+          iex (New-Object net.webclient).downloadstring('https://get.scoop.sh')
           Join-Path (Resolve-Path ~).Path "scoop\shims" >> $Env:GITHUB_PATH
 
-      # - name: Test Apps.Installer.Tests.ps1 file
-      #   shell: powershell
-      #   run: |       
-      #     $env:CI_WINDOWS=$true
-      #     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
-      #     Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed
+      - name: Test Apps.Installer.Tests.ps1 file
+        shell: powershell
+        run: |       
+          $env:CI_WINDOWS=$true
+          Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
+          Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed
