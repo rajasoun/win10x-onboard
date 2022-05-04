@@ -57,9 +57,8 @@ Open **Powershell** as current user
 
 1. Check the Speed of the Internet  - Run in the same **Git Bash Shell**
     ```sh
-    wget -O- -q https://raw.githubusercontent.com/rajasoun/common-lib/main/docker/speed.sh | bash 
+    wget -O- -q https://raw.githubusercontent.com/rajasoun/aws-toolz/main/all-in-one/speed.sh | bash
     ```
-
 
 ## TDD with Pester - For Developers (easy To Debug)
 
