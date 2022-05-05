@@ -35,7 +35,6 @@ if($type -eq "apps"){
     $dir="$HOME/workspace"
     info "Workspace Setup"
     Bootstrap-Env 
-    Get-Date -format dd/mm/yyyy | Out-File -FilePath "$HOME\setup.txt"
     info "Installating Applications for Current User"
     Install-Apps
 }
