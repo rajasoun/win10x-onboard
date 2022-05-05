@@ -21,11 +21,10 @@ Function Check-HyperV-Enabled() {
 Function Enable-HyperV() {
     info "Enabling Hyper-V..."
     # Executing Dos commands within Powershell
-    & cmd /c 'pushd "%~dp0"'
     & cmd /c 'dir /b %SystemRoot%\servicing\Packages\*Hyper-V*.mum >hyper-v.txt'
     & cmd /c 'for /f %%i in ('findstr /i . hyper-v.txt 2^>nul') do dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"'
     & cmd /c 'del hyper-v.txt'
-    & cmd /c 'Dism /online /enable-feature /featurename:Microsoft-Hyper-V -All /LimitAccess /ALL'
+    & cmd /c 'DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V'
     & cmd /c 'pause'
 
     Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All 

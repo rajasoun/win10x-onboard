@@ -16,8 +16,9 @@ Open **Powershell** as current user.
     * Windows 10 Enterprise and Education Edition 
     * Windows 11 
 
-    HyperV is supported only in above versions of Windows by default.
     > HyperV allows running Virtual Machine on Windows and its pre-requisites to run Docker 
+
+1. HyperV is supported only in above versions of Windows by default. 
 
 ### Check HyperV is Enabled 
 
@@ -38,13 +39,12 @@ The process of enabling virtualization can vary a lot depending on the motherboa
 
 1. Completely Shutdown you Computer and turn it on again.
 
-1. keep pressing the key to open the BIOS (usually it is `Del`, `F1`, `F2`, `F4`, `F11`, or `F12`). This key depends on the Motherboard manufacturer. You can easily google it out.
+1. Keep pressing the key to open the BIOS (usually it is `Del`, `F1`, `F2`, `F4`, `F11`, or `F12`). This key depends on the Motherboard manufacturer. You can easily google it out.
 
 1. Once you get into the BIOS, it may look very scary or intimidating, but don't worry, you will get it right. Mouse may not work in BIOS so you might have to use the Directional or Arrow keys and the Enter key of the Keyboard to navigate.
   * Search for the CPU configuration section, it can be called `CPU configuration`, `processor`, `Northbridge` or `Chipset` and may be under an `advanced` or `advanced mode` tab or menu.
   * Now you need to look for the virtualization option and enable it, it can have different names such as `Hyper-V`, `Vanderpool`, `SVM`, `AMD-V`, `Intel Virtualization Technology` or `VT-X`.
-
-1. Once its enabled, save and reboot your pc.
+  * Once its enabled, save and reboot your pc.
 
 > If this part did not help you, you can specifically go the Website of the Mother Board Manufacturer of you Computer and ask for help.
 
@@ -134,3 +134,7 @@ Invoke-Pester e2e.Tests.ps1 -Tag "apps"   -Output Detailed
 Invoke-Pester e2e.Tests.ps1 -Tag "hyperv" -Output Detailed
 Invoke-Pester e2e.Tests.ps1 -Tag "wsl2"   -Output Detailed
 ```
+
+Credits:
+
+1. (Manu Hali)[https://github.com/Manuhali]
