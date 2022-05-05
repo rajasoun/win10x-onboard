@@ -32,7 +32,8 @@ Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/Hyper
 Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/Wsl.ps1")
 
 if($type -eq "apps"){
-    $dir="$HOME/workspace/on-board/"
+    $dir="$HOME/workspace"
+    Get-Date -format dd/mm/yyyy | Out-File -FilePath "$dir\setup.txt"
     info "Workspace Setup"
     Bootstrap-Env 
     info "Installating Applications for Current User"
