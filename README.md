@@ -48,6 +48,28 @@ The process of enabling virtualization can vary a lot depending on the motherboa
 
 > If this part did not help you, you can specifically go the Website of the Mother Board Manufacturer of you Computer and ask for help.
 
+## If you are using Windows-10 Home Edition. you can enable Hyper-V feature by following  below steps
+1. First of all download the Hyper-V batch file from here- (https://drive.google.com/file/d/1Cs5Xmlcd0w2ZzmaeqLLtsxX38kyhtwTv/view)
+    ![9](https://beebom.com/wp-content/uploads/2021/01/a-13.jpg?quality=75&strip=all)
+
+2. Run the batch file as a Administrator
+    ![8](https://beebom.com/wp-content/uploads/2021/01/Screenshot-2021-01-27-093037.jpg?quality=75&strip=all)
+   (FYI- command prompt opens and installs Hyper-V in your machine)
+   Once the Installation is done Restart your computer
+   ![12](https://beebom.com/wp-content/uploads/2021/01/d.jpg?quality=75&strip=all)
+   
+
+3. Now Open Run Window(windows key + R), here type ```optionalfeatures.exe``` and hit enter.
+    ![7](https://beebom.com/wp-content/uploads/2019/11/1.-Enable-Virtualization-and-Hyper-V-Support.jpg)
+
+4. windows features will open up, Now you can see Hyper-V feature, make sure to enable all the checkboxes under Hyper-V,click OK. It will start installing the necessary packages and will ask you to restart the computer once the installation is done.
+    ![6](https://beebom.com/wp-content/uploads/2019/11/1.-Enable-Virtualization-and-Hyper-V-Support-2.jpg)
+ (Restart your computer)
+
+5. Finally, Hyper-V will be enabled on your Windows 10 Home Edition.
+
+
+
 ## Setup 
 
 ### Applications and Workspace setup
