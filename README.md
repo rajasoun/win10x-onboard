@@ -137,4 +137,4 @@ Invoke-Pester e2e.Tests.ps1 -Tag "wsl2"   -Output Detailed
 
 Credits:
 
-1. (Manu Hali)[https://github.com/Manuhali]
+1. [Manu Hali](https://github.com/Manuhali)
