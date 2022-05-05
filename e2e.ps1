@@ -33,9 +33,9 @@ Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/Wsl.p
 
 if($type -eq "apps"){
     $dir="$HOME/workspace"
-    Get-Date -format dd/mm/yyyy | Out-File -FilePath "$dir\setup.txt"
     info "Workspace Setup"
     Bootstrap-Env 
+    Get-Date -format dd/mm/yyyy | Out-File -FilePath "$dir\setup.txt"
     info "Installating Applications for Current User"
     Install-Apps
 }
