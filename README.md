@@ -30,33 +30,7 @@ Open **Powershell** as current user.
   * If it says `A hypervisor has been detected. Features required for Hyper-V will not be displayed.` **This means Hyper-V is already enabled**
 
   * Otherwise, check for `Virtualization Enabled in Firmware:`.
-    * If its `Yes`, [click here](#Enable-Hyper-V).
     * If its `No`, [click here](#Enable-Virtualization-in-BIOS).
-
-#### Enable Hyper-V
-
-1. Open File Explorer on windows and Navigate to a folder.
-
-1. Right click anywhere in a blank space inside the folder. Select `New` and then Click `Text Document`.
-
-1. Open the file in Notepad and copy and paste the following text into it.
-  ```
-  pushd "%~dp0"
-  dir /b %SystemRoot%\servicing\Packages\*Hyper-V*.mum >hyper-v.txt
-  for /f %%i in ('findstr /i . hyper-v.txt 2^>nul') do dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"
-  del hyper-v.txt
-  Dism /online /enable-feature /featurename:Microsoft-Hyper-V -All /LimitAccess /ALL
-  pause
-  ```
-
-1. Click `File` from the Menu bar in the top of Notepad, then click `Save as...`. In the Save as Window that appears, Change the File name to `"Hyper-V.bat"` and click save.
-
-1. Now Double click `Hyper-V.bat` to run it. This will take some time but will install all features required for Hyper-V. A Restart might be required after it is done.
-
-1. After Restarting Windows, search for `Turn Windows features on or off` in the Start Menu search bar and open it.
-  ![10](https://user-images.githubusercontent.com/61367380/141923398-ee251035-8e1d-42e6-9551-5c797e2b8f73.png)
-
-1. In the Window, lookout for `Hyper-V`, `Virtual Machine Platform` and `Windows Hypervisor Platform`. Then check the check boxes before them and click `OK`. This will also take some time and then a Restart is necessary.
 
 #### Enable Virtualization in BIOS
 
@@ -71,10 +45,6 @@ The process of enabling virtualization can vary a lot depending on the motherboa
   * Now you need to look for the virtualization option and enable it, it can have different names such as `Hyper-V`, `Vanderpool`, `SVM`, `AMD-V`, `Intel Virtualization Technology` or `VT-X`.
 
 1. Once its enabled, save and reboot your pc.
-
-Check [HyperV Enabled](#Check-HyperV-is-Enabled) again.
-
-**Thats it Hyper-V is enabled**
 
 > If this part did not help you, you can specifically go the Website of the Mother Board Manufacturer of you Computer and ask for help.
 
@@ -103,6 +73,13 @@ Check [HyperV Enabled](#Check-HyperV-is-Enabled) again.
     .\e2e.ps1 -type hyperv
     ```
     > FYI: System will restart.
+
+1. After Restarting Windows, search for `Turn Windows features on or off` in the Start Menu search bar and open it.
+  ![10](https://user-images.githubusercontent.com/61367380/141923398-ee251035-8e1d-42e6-9551-5c797e2b8f73.png)
+
+1. In the Window, lookout for `Hyper-V`, `Virtual Machine Platform` and `Windows Hypervisor Platform`. Then check the check boxes before them and click `OK`. This will also take some time and then a Restart is necessary.
+
+Check [HyperV Enabled](#Check-HyperV-is-Enabled) again.
 
 ### WSL2 Setup
 
