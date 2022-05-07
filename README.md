@@ -1,12 +1,37 @@
 # win10x-onboard
 
+Windows Laptop setup for Developer with Docker Desktop & Applications.
+Main purpose is to have a common way of configuring a development environment that is simple, fast and completely automated.
+
+Onboard Automation script configures and installs teh following 
+
+1. Containerization - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+    * [Check Windows Version for Compatibility](#check-windows-version)
+    * [Check HyperV is Enabled](#check-hyperv-is-enabled)
+    * [Enable Virtualization in BIOS - If Required](#enable-virtualization-in-bios) 
+    * [Enable WSL2 & Update Kernel](#wsl2-setup)
+1. Package Manager -[scoop](https://github.com/rajasoun/multipass-dev-box) 
+    * [Git Bash](https://git-scm.com/)
+    * [GitHub CLI](https://cli.github.com/)
+    * Code Editor (IDE) - [Visual Studio Code](https://code.visualstudio.com/)
+1. Visual Studio Code [Extensions](https://code.visualstudio.com/docs/editor/extension-marketplace)
+    * [ms-vscode-remote.remote-containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) - [Developing inside a Container](https://code.visualstudio.com/docs/remote/containers)
+    * [golang.go](https://marketplace.visualstudio.com/items?itemName=golang.Go)
+
+
+Refernces:
+* Docker Desktop for Windows [Troubleshooting Guide](https://docs.docker.com/desktop/windows/troubleshoot/#virtualization-must-be-enabled)
+
+
 ## Prerequisites
 
 Open **Powershell** as current user.
 > TIP: Search for `Powershell` in Windows Start Menu and open it.
 
-### Check Windows Version 
+### Checks  
 
+<details>
+  <summary>1. Windows Version</summary>
 1. Check Windows 10 and Above 
     ```sh
     Get-ComputerInfo | select WindowsProductName, WindowsVersion
@@ -19,8 +44,12 @@ Open **Powershell** as current user.
     > HyperV allows running Virtual Machine on Windows and its pre-requisites to run Docker 
 
 1. HyperV is supported only in above versions of Windows by default. 
+</details>
 
-### Check HyperV is Enabled 
+### Check 
+
+<details>
+  <summary>HyperV is Enabled</summary>
 
 1. Type `systeminfo` and press Enter. Wait for the process to finish
 
@@ -32,21 +61,7 @@ Open **Powershell** as current user.
 
   * Otherwise, check for `Virtualization Enabled in Firmware:`.
     * If its `No`, [click here](#Enable-Virtualization-in-BIOS).
-
-#### Enable Virtualization in BIOS
-
-The process of enabling virtualization can vary a lot depending on the motherboard manufacturer, but it can be summarized in a few steps:
-
-1. Completely Shutdown you Computer and turn it on again.
-
-1. Keep pressing the key to open the BIOS (usually it is `Del`, `F1`, `F2`, `F4`, `F11`, or `F12`). This key depends on the Motherboard manufacturer. You can easily google it out.
-
-1. Once you get into the BIOS, it may look very scary or intimidating, but don't worry, you will get it right. Mouse may not work in BIOS so you might have to use the Directional or Arrow keys and the Enter key of the Keyboard to navigate.
-  * Search for the CPU configuration section, it can be called `CPU configuration`, `processor`, `Northbridge` or `Chipset` and may be under an `advanced` or `advanced mode` tab or menu.
-  * Now you need to look for the virtualization option and enable it, it can have different names such as `Hyper-V`, `Vanderpool`, `SVM`, `AMD-V`, `Intel Virtualization Technology` or `VT-X`.
-  * Once its enabled, save and reboot your pc.
-
-> If this part did not help you, you can specifically go the Website of the Mother Board Manufacturer of you Computer and ask for help.
+</details>
 
 ## Setup 
 
@@ -134,6 +149,21 @@ Invoke-Pester e2e.Tests.ps1 -Tag "apps"   -Output Detailed
 Invoke-Pester e2e.Tests.ps1 -Tag "hyperv" -Output Detailed
 Invoke-Pester e2e.Tests.ps1 -Tag "wsl2"   -Output Detailed
 ```
+
+## Enable Virtualization in BIOS
+
+The process of enabling virtualization can vary a lot depending on the motherboard manufacturer, but it can be summarized in a few steps:
+
+1. Completely Shutdown you Computer and turn it on again.
+
+1. Keep pressing the key to open the BIOS (usually it is `Del`, `F1`, `F2`, `F4`, `F11`, or `F12`). This key depends on the Motherboard manufacturer. You can easily google it out.
+
+1. Once you get into the BIOS, it may look very scary or intimidating, but don't worry, you will get it right. Mouse may not work in BIOS so you might have to use the Directional or Arrow keys and the Enter key of the Keyboard to navigate.
+  * Search for the CPU configuration section, it can be called `CPU configuration`, `processor`, `Northbridge` or `Chipset` and may be under an `advanced` or `advanced mode` tab or menu.
+  * Now you need to look for the virtualization option and enable it, it can have different names such as `Hyper-V`, `Vanderpool`, `SVM`, `AMD-V`, `Intel Virtualization Technology` or `VT-X`.
+  * Once its enabled, save and reboot your pc.
+
+> If this part did not help you, you can specifically go the Website of the Mother Board Manufacturer of you Computer and ask for help.
 
 Credits:
 
