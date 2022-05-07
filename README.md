@@ -59,7 +59,9 @@ HyperV is supported only in above versions of Windows by default.HyperV allows r
 
 - If it says `A hypervisor has been detected. Features required for Hyper-V will not be displayed.` **This means Hyper-V is already enabled**
 
-- Otherwise, check for `Virtualization Enabled in Firmware:`. \* If its `No`, [click here](#Enable-Virtualization-in-BIOS).
+- Otherwise, check for `Virtualization Enabled in Firmware:`. 
+    * If its `No`, [click here](#Enable-Virtualization-in-BIOS).
+    
 </details>
 
 ## Setup
