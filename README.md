@@ -141,9 +141,12 @@ wget -O- -q https://raw.githubusercontent.com/rajasoun/aws-toolz/main/all-in-one
 
 </details>
 
-## Test Driven Development
+## Test
 
 Open Powershell Terminal Window
+
+TDD - [Test Driven Development](https://en.wikipedia.org/wiki/Test-driven_development)
+ATDD - [Acceptance Test Driven Development](https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development)
 
 <details>
   <summary>1. TDD Scripts</summary>
