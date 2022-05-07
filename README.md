@@ -51,7 +51,7 @@ HyperV is supported only in above versions of Windows by default.HyperV allows r
 
 1. Type `systeminfo` and press Enter. Wait for the process to finish
 
-1. Once the results appear, search for the `Hyper-V Requirements` section which is usually the last one.
+2. Once the results appear, search for the `Hyper-V Requirements` section which is usually the last one.
 
 ![11](https://user-images.githubusercontent.com/61367380/141923469-48c99804-d491-497f-bcde-69de89f90045.jpg)
 
@@ -93,10 +93,10 @@ git pull --rebase
 
 > FYI: System will restart.
 
-1. After Restarting Windows, search for `Turn Windows features on or off` in the Start Menu search bar and open it.
+2. After Restarting Windows, search for `Turn Windows features on or off` in the Start Menu search bar and open it.
    ![10](https://user-images.githubusercontent.com/61367380/141923398-ee251035-8e1d-42e6-9551-5c797e2b8f73.png)
 
-1. In the Window, lookout for `Hyper-V`, `Virtual Machine Platform` and `Windows Hypervisor Platform`. Then check the check boxes before them and click `OK`. This will also take some time and then a Restart is necessary.
+3. In the Window, lookout for `Hyper-V`, `Virtual Machine Platform` and `Windows Hypervisor Platform`. Then check the check boxes before them and click `OK`. This will also take some time and then a Restart is necessary.
 
 </details>
 
@@ -124,13 +124,11 @@ Install [Docker Desktop For Windows](https://docs.docker.com/desktop/windows/ins
   <summary>5. Test Setup</summary>
 
 1. Docker Test: Open Git Bash command prompt and output should contain `Hello from Docker`
-
 ```sh
 docker run --rm hello-world
 ```
 
-1. Bash Test: Check the Speed of the Internet using Bash Script
-
+2. Bash Test: Check the Speed of the Internet using Bash Script
 ```sh
 wget -O- -q https://raw.githubusercontent.com/rajasoun/aws-toolz/main/all-in-one/speed.sh | bash
 ```
