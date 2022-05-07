@@ -22,7 +22,7 @@ Refernces:
 
 - Docker Desktop for Windows [Troubleshooting Guide](https://docs.docker.com/desktop/windows/troubleshoot/#virtualization-must-be-enabled)
 
-## Prerequisites
+## Prerequisites Checks
 
 Open **Powershell** as current user.
 
