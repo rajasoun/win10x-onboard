@@ -6,10 +6,10 @@ The primary purpose is to have a standard way of configuring a development envir
 Onboard Automation script configures and installs the following.
 
 1. Containerization - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-   - [Check Windows Version for Compatibility](#check-windows-version)
-   - [Check HyperV is Enabled](#check-hyperv-is-enabled)
-   - [Enable Virtualization in BIOS - If Required](#enable-virtualization-in-bios)
-   - [Enable WSL2 & Update Kernel](#wsl2-setup)
+   - Check Windows Version for Compatibility
+   - Check HyperV is Enabled
+   - Enable Virtualization in BIOS - If Required
+   - Enable WSL2 & Update Kernel
 1. Package Manager -[scoop](https://github.com/rajasoun/multipass-dev-box)
    - [Git Bash](https://git-scm.com/)
    - [GitHub CLI](https://cli.github.com/)
