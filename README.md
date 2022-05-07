@@ -28,8 +28,6 @@ Open **Powershell** as current user.
 
 > TIP: Search for `Powershell` in Windows Start Menu and open it.
 
-### Checks
-
 <details>
   <summary>1. Windows Version</summary>
 
@@ -192,6 +190,7 @@ The process of enabling virtualization can vary a lot depending on the motherboa
 
 </details>
 
-Credits:
+
+### Credits:
 
 1. [Manu Hali](https://github.com/Manuhali)
