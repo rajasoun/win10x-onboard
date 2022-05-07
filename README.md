@@ -61,7 +61,7 @@ HyperV is supported only in above versions of Windows by default.HyperV allows r
 
 - Otherwise, check for `Virtualization Enabled in Firmware:`. 
     * If its `No`, [click here](#Enable-Virtualization-in-BIOS).
-    
+
 </details>
 
 ## Setup
@@ -100,8 +100,6 @@ git pull --rebase
 
 1. In the Window, lookout for `Hyper-V`, `Virtual Machine Platform` and `Windows Hypervisor Platform`. Then check the check boxes before them and click `OK`. This will also take some time and then a Restart is necessary.
 
-Check [HyperV Enabled](#Check-HyperV-is-Enabled) again.
-
 </details>
 
 <details>
@@ -119,25 +117,28 @@ Start-Process powershell -Verb runas
 
 <details>
   <summary>4. Docker Desktop</summary>
+
 Install [Docker Desktop For Windows](https://docs.docker.com/desktop/windows/install/)
+
 </details>
 
 <details>
   <summary>5. Test Setup</summary>
 
-1. Open Git Bash command prompt
+1. Docker Test: Open Git Bash command prompt
 
 ```sh
 docker run --rm hello-world
 ```
 
-   You should see Hello from Docker
+You should see Hello from Docker
 
-1. Check the Speed of the Internet - Run in the same **Git Bash Shell**
+1. Bash Test: Check the Speed of the Internet using Bash Script
 
-   ```sh
-   wget -O- -q https://raw.githubusercontent.com/rajasoun/aws-toolz/main/all-in-one/speed.sh | bash
-   ```
+```sh
+wget -O- -q https://raw.githubusercontent.com/rajasoun/aws-toolz/main/all-in-one/speed.sh | bash
+```
+
 </details>
 
 ## TDD with Pester - For Developers (easy To Debug)
