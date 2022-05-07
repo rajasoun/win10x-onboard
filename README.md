@@ -141,7 +141,7 @@ wget -O- -q https://raw.githubusercontent.com/rajasoun/aws-toolz/main/all-in-one
 
 </details>
 
-## TDD with Pester - For Developers (easy To Debug)
+## Test Driven Development
 
 <details>
   <summary>1. Clone Github Repository</summary>
