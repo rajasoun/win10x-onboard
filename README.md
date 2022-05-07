@@ -32,18 +32,20 @@ Open **Powershell** as current user.
 
 <details>
   <summary>1. Windows Version</summary>
+
 1. Check Windows 10 and Above 
-    ```sh
-    Get-ComputerInfo | select WindowsProductName, WindowsVersion
-    ```
-    The output should contain one of the following
-    * Windoes 10 Pro, 
-    * Windows 10 Enterprise and Education Edition 
-    * Windows 11
 
-    > HyperV allows running Virtual Machine on Windows and its pre-requisites to run Docker
+```sh
+Get-ComputerInfo | select WindowsProductName, WindowsVersion
+```
 
-1. HyperV is supported only in above versions of Windows by default.
+The output should contain one of the following
+* Windoes 10 Pro
+* Windows 10 Enterprise and Education Edition 
+* Windows 11
+
+HyperV is supported only in above versions of Windows by default.HyperV allows running Virtual Machine on Windows. 
+
 </details>
 
 <details>
@@ -67,13 +69,13 @@ Open **Powershell** as current user.
 
 In Powershell window Run following commands for application installation and workspace setup
 
-    ```sh
-    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope currentuser
-    iwr -useb https://raw.githubusercontent.com/rajasoun/win10x-onboard/main/e2e.ps1 | iex
-    cd ~\workspace
-    git clone https://github.com/rajasoun/win10x-onboard
-    cd win10x-onboard
-    ```
+```sh
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope currentuser
+iwr -useb https://raw.githubusercontent.com/rajasoun/win10x-onboard/main/e2e.ps1 | iex
+cd ~\workspace
+git clone https://github.com/rajasoun/win10x-onboard
+cd win10x-onboard
+```
 
 </details>
 
@@ -82,14 +84,14 @@ In Powershell window Run following commands for application installation and wor
 
 1. In Powershell window Run following commands following commands to setup HyperV.
 
-   ```sh
-   Start-Process powershell -Verb runas
-   cd ~\workspace\win10x-onboard
-   git pull --rebase
-   .\e2e.ps1 -type hyperv
-   ```
+```sh
+Start-Process powershell -Verb runas
+cd ~\workspace\win10x-onboard
+git pull --rebase
+.\e2e.ps1 -type hyperv
+```
 
-   > FYI: System will restart.
+> FYI: System will restart.
 
 1. After Restarting Windows, search for `Turn Windows features on or off` in the Start Menu search bar and open it.
    ![10](https://user-images.githubusercontent.com/61367380/141923398-ee251035-8e1d-42e6-9551-5c797e2b8f73.png)
@@ -105,11 +107,11 @@ Check [HyperV Enabled](#Check-HyperV-is-Enabled) again.
 
 In Powershell window Run following commands following commands to setup WSL, WSL2 Kernel Update
 
-    ```sh
-    Start-Process powershell -Verb runas
-    .\e2e.ps1 -type wsl
-    ```
-    > FYI: System will restart.
+```sh
+Start-Process powershell -Verb runas
+.\e2e.ps1 -type wsl
+```
+> FYI: System will restart.
 
 </details>
 
@@ -123,14 +125,17 @@ Install [Docker Desktop For Windows](https://docs.docker.com/desktop/windows/ins
 
 1. Open Git Bash command prompt
 
-   ```sh
-   docker run --rm hello-world
-   ```
+```sh
+docker run --rm hello-world
+```
 
    You should see Hello from Docker
 
 1. Check the Speed of the Internet - Run in the same **Git Bash Shell**
-`sh wget -O- -q https://raw.githubusercontent.com/rajasoun/aws-toolz/main/all-in-one/speed.sh | bash `
+
+   ```sh
+   wget -O- -q https://raw.githubusercontent.com/rajasoun/aws-toolz/main/all-in-one/speed.sh | bash
+   ```
 </details>
 
 ## TDD with Pester - For Developers (easy To Debug)
