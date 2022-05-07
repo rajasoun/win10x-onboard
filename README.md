@@ -1,9 +1,9 @@
 # win10x-onboard
 
 Windows Laptop setup for Developer with Docker Desktop & Applications.
-Main purpose is to have a common way of configuring a development environment that is simple, fast and completely automated.
+The primary purpose is to have a standard way of configuring a development environment that is simple, fast and completely automated.
 
-Onboard Automation script configures and installs teh following 
+Onboard Automation script configures and installs the following. 
 
 1. Containerization - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
     * [Check Windows Version for Compatibility](#check-windows-version)
@@ -49,7 +49,7 @@ Open **Powershell** as current user.
 ### Check 
 
 <details>
-  <summary>HyperV is Enabled</summary>
+  <summary>2. HyperV is Enabled</summary>
 
 1. Type `systeminfo` and press Enter. Wait for the process to finish
 
@@ -65,9 +65,10 @@ Open **Powershell** as current user.
 
 ## Setup 
 
-### Applications and Workspace setup
+<details>
+  <summary>1. Workspace & Applications</summary>
 
-1. In Powershell window Run following commands for application installation and workspace setup
+In Powershell window Run following commands for application installation and workspace setup
 
     ```sh
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope currentuser
@@ -76,8 +77,10 @@ Open **Powershell** as current user.
     git clone https://github.com/rajasoun/win10x-onboard
     cd win10x-onboard
     ```
+</details>
 
-### HyperV Setup
+<details>
+  <summary>2. HyperV</summary>
 
 1. In Powershell window Run following commands following commands to setup HyperV.
 
@@ -96,22 +99,27 @@ Open **Powershell** as current user.
 
 Check [HyperV Enabled](#Check-HyperV-is-Enabled) again.
 
-### WSL2 Setup
+</details>
 
-1. In Powershell window Run following commands following commands to setup WSL, WSL2 Kernel Update
+<details>
+  <summary>3. WSL2 & Kernel Update</summary>
+
+In Powershell window Run following commands following commands to setup WSL, WSL2 Kernel Update
 
     ```sh
     Start-Process powershell -Verb runas
     .\e2e.ps1 -type wsl
     ```
     > FYI: System will restart.
+</details>
 
-### Docker Desktop Setup
+<details>
+  <summary>5. Docker Desktop</summary>
+Install [Docker Desktop For Windows](https://docs.docker.com/desktop/windows/install/)
+</details>
 
-1. Install [Docker Desktop For Windows](https://docs.docker.com/desktop/windows/install/)
-
-
-### Test Docker
+<details>
+  <summary>Test Setup</summary>
 
 1. Open Git Bash command prompt
     ```sh
@@ -123,6 +131,7 @@ Check [HyperV Enabled](#Check-HyperV-is-Enabled) again.
     ```sh
     wget -O- -q https://raw.githubusercontent.com/rajasoun/aws-toolz/main/all-in-one/speed.sh | bash
     ```
+</details>
 
 ## TDD with Pester - For Developers (easy To Debug)
 
