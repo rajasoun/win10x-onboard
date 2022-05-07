@@ -143,19 +143,10 @@ wget -O- -q https://raw.githubusercontent.com/rajasoun/aws-toolz/main/all-in-one
 
 ## Test Driven Development
 
-<details>
-  <summary>1. Clone Github Repository</summary>
-
-```sh
-git clone https://github.com/rajasoun/win10x-onboard
-cd win10x-onboard
-Get-InstalledModule -Name 'Pester' -MinimumVersion 5.0
-```
-
-</details>
+Open Powershell Terminal Window
 
 <details>
-  <summary>2. TDD Scripts</summary>
+  <summary>1. TDD Scripts</summary>
 
 ```sh
 Invoke-Pester src\lib\Workspace.Tests.ps1 -Output Detailed
@@ -167,7 +158,7 @@ Invoke-Pester src\lib\Wsl.Tests.ps1 -Output Detailed
 </details>
 
 <details>
-  <summary>3. ATDD Scripts</summary>
+  <summary>2. ATDD Scripts</summary>
 
 ```sh
 Invoke-Pester e2e.Tests.ps1 -Tag "prerequisite"  -Output Detailed
