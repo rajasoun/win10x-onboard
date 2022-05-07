@@ -87,6 +87,7 @@ Check [HyperV Enabled](#Check-HyperV-is-Enabled) again.
 
     ```sh
     Start-Process powershell -Verb runas
+    cd win10x-onboard
     .\e2e.ps1 -type wsl
     ```
     > FYI: System will restart.
