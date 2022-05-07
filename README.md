@@ -22,7 +22,7 @@ Refernces:
 
 - Docker Desktop for Windows [Troubleshooting Guide](https://docs.docker.com/desktop/windows/troubleshoot/#virtualization-must-be-enabled)
 
-## Prerequisites Checks
+## 1. Prerequisites Checks
 
 Open **Powershell** as current user.
 
@@ -62,7 +62,7 @@ HyperV is supported only in above versions of Windows by default.HyperV allows r
 
 </details>
 
-## Setup
+## 2. Setup
 
 <details>
   <summary>1. Workspace & Applications</summary>
@@ -137,7 +137,7 @@ wget -O- -q https://raw.githubusercontent.com/rajasoun/aws-toolz/main/all-in-one
 
 </details>
 
-## Test
+## 3. Test
 
 Open Powershell Terminal Window
 
