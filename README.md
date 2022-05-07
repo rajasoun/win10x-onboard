@@ -123,13 +123,11 @@ Install [Docker Desktop For Windows](https://docs.docker.com/desktop/windows/ins
 <details>
   <summary>5. Test Setup</summary>
 
-1. Docker Test: Open Git Bash command prompt
+1. Docker Test: Open Git Bash command prompt and output should contain `Hello from Docker`
 
 ```sh
 docker run --rm hello-world
 ```
-
-You should see Hello from Docker
 
 1. Bash Test: Check the Speed of the Internet using Bash Script
 
