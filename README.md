@@ -153,11 +153,6 @@ MSYS_NO_PATHCONV=1  docker run --rm rajasoun/speedtest:0.1.0 "/go/bin/speedtest-
 
 ## 3. Test
 
-Open Powershell Terminal Window
-
-TDD - [Test Driven Development](https://en.wikipedia.org/wiki/Test-driven_development)
-ATDD - [Acceptance Test Driven Development](https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development)
-
 <details>
 <summary>1. TDD Scripts</summary>
 
@@ -179,8 +174,11 @@ Invoke-Pester e2e.Tests.ps1 -Tag "apps"   -Output Detailed
 Invoke-Pester e2e.Tests.ps1 -Tag "hyperv" -Output Detailed
 Invoke-Pester e2e.Tests.ps1 -Tag "wsl2"   -Output Detailed
 ```
-
 </details>
+
+TDD - [Test Driven Development](https://en.wikipedia.org/wiki/Test-driven_development)
+ATDD - [Acceptance Test Driven Development](https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development)
+
 
 ## Enable Virtualization in BIOS
 
