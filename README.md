@@ -29,16 +29,15 @@ Containerization - [Docker Desktop](https://www.docker.com/products/docker-deskt
    - [ms-vscode-remote.remote-containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) - [Developing inside a Container](https://code.visualstudio.com/docs/remote/containers)
    - [golang.go](https://marketplace.visualstudio.com/items?itemName=golang.Go)
 
-1. Refernces:
+1. References:
 - Docker Desktop for Windows [Troubleshooting Guide](https://docs.docker.com/desktop/windows/troubleshoot/#virtualization-must-be-enabled)
 
 </details>
 
 # Automation 
 
-Automation script does following Prerequisites Checks, Setup and Tests 
+Automation script does following Prerequisites Checks, Setup and Tests. 
 Open **Powershell** as current user.
-
 > TIP: Search for `Powershell` in Windows Start Menu and open it.
 
 ## 1. Prerequisites Checks
