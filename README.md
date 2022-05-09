@@ -32,6 +32,8 @@ Containerization - [Docker Desktop](https://www.docker.com/products/docker-deskt
 1. Refernces:
 - Docker Desktop for Windows [Troubleshooting Guide](https://docs.docker.com/desktop/windows/troubleshoot/#virtualization-must-be-enabled)
 
+</details>
+
 # Automation 
 
 Automation script does following Prerequisites Checks, Setup and Tests 
