@@ -3,35 +3,48 @@
 Windows Laptop setup for Developer with Docker Desktop & Applications.
 The primary purpose is to have a standard way of configuring a development environment that is simple, fast and completely automated.
 
-Onboard Automation script configures and installs the following.
+## Application & Tools Summary 
 
-1. Containerization - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-   - Check Windows Version for Compatibility
-   - Check HyperV is Enabled
-   - Enable Virtualization in BIOS - If Required
-   - Enable WSL2 & Update Kernel
+Following Applications & Tools are setup/teardown from the automation script
+
+<details>
+<summary>Containerization - [Docker Desktop]</summary>
+
+Containerization - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- Check Windows Version for Compatibility
+- Check HyperV is Enabled
+- Enable Virtualization in BIOS - If Required
+- Enable WSL2 & Update Kernel
+</details>
+
+<details>
+<summary>Applications and Tools</summary>
+
 1. Package Manager -[scoop](https://github.com/rajasoun/multipass-dev-box)
    - [Git Bash](https://git-scm.com/)
    - [GitHub CLI](https://cli.github.com/)
    - Code Editor (IDE) - [Visual Studio Code](https://code.visualstudio.com/)
+
 1. Visual Studio Code [Extensions](https://code.visualstudio.com/docs/editor/extension-marketplace)
    - [ms-vscode-remote.remote-containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) - [Developing inside a Container](https://code.visualstudio.com/docs/remote/containers)
    - [golang.go](https://marketplace.visualstudio.com/items?itemName=golang.Go)
 
-Refernces:
-
+1. Refernces:
 - Docker Desktop for Windows [Troubleshooting Guide](https://docs.docker.com/desktop/windows/troubleshoot/#virtualization-must-be-enabled)
 
-## 1. Prerequisites Checks
+# Automation 
 
+Automation script does following Prerequisites Checks, Setup and Tests 
 Open **Powershell** as current user.
 
 > TIP: Search for `Powershell` in Windows Start Menu and open it.
 
-<details>
-  <summary>1. Windows Version</summary>
+## 1. Prerequisites Checks
 
-1. Check Windows 10 and Above 
+<details>
+<summary>1. Windows Version</summary>
+
+Check Windows 10 and Above 
 
 ```sh
 Get-ComputerInfo | select WindowsProductName, WindowsVersion
@@ -42,12 +55,13 @@ The output should contain one of the following
 * Windows 10 Enterprise and Education Edition 
 * Windows 11
 
-HyperV is supported only in above versions of Windows by default.HyperV allows running Virtual Machine on Windows. 
+HyperV is supported only in above versions of Windows by default.
+HyperV allows running Virtual Machine on Windows. 
 
 </details>
 
 <details>
-  <summary>2. HyperV is Enabled</summary>
+<summary>2. HyperV is Enabled</summary>
 
 1. Type `systeminfo` and press Enter. Wait for the process to finish
 
@@ -65,7 +79,7 @@ HyperV is supported only in above versions of Windows by default.HyperV allows r
 ## 2. Setup
 
 <details>
-  <summary>1. Workspace & Applications</summary>
+<summary>1. Workspace & Applications</summary>
 
 In Powershell window Run following commands for application installation and workspace setup
 
@@ -80,7 +94,7 @@ cd win10x-onboard
 </details>
 
 <details>
-  <summary>2. HyperV</summary>
+<summary>2. HyperV</summary>
 
 1. In Powershell window Run following commands following commands to setup HyperV.
 
@@ -101,7 +115,7 @@ git pull --rebase
 </details>
 
 <details>
-  <summary>3. WSL2 & Kernel Update</summary>
+<summary>3. WSL2 & Kernel Update</summary>
 
 In Powershell window Run following commands following commands to setup WSL, WSL2 Kernel Update
 
@@ -114,14 +128,14 @@ Start-Process powershell -Verb runas
 </details>
 
 <details>
-  <summary>4. Docker Desktop</summary>
+<summary>4. Docker Desktop</summary>
 
 Install [Docker Desktop For Windows](https://docs.docker.com/desktop/windows/install/)
 
 </details>
 
 <details>
-  <summary>5. Test Setup</summary>
+<summary>5. Test Docker  Setup</summary>
 
 1. Docker Test: Open Git Bash command prompt and output should contain `Hello from Docker`
 ```sh
@@ -130,7 +144,7 @@ docker run --rm hello-world
 
 2. Bash Test: Check the Speed of the Internet using Bash Script
 ```sh
-wget -O- -q https://raw.githubusercontent.com/rajasoun/aws-toolz/main/all-in-one/speed.sh | bash
+MSYS_NO_PATHCONV=1  docker run --rm rajasoun/speedtest:0.1.0 "/go/bin/speedtest-go"
 ```
 
 </details>
@@ -143,7 +157,7 @@ TDD - [Test Driven Development](https://en.wikipedia.org/wiki/Test-driven_develo
 ATDD - [Acceptance Test Driven Development](https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development)
 
 <details>
-  <summary>1. TDD Scripts</summary>
+<summary>1. TDD Scripts</summary>
 
 ```sh
 Invoke-Pester src\lib\Workspace.Tests.ps1 -Output Detailed
@@ -155,7 +169,7 @@ Invoke-Pester src\lib\Wsl.Tests.ps1 -Output Detailed
 </details>
 
 <details>
-  <summary>2. ATDD Scripts</summary>
+<summary>2. ATDD Scripts</summary>
 
 ```sh
 Invoke-Pester e2e.Tests.ps1 -Tag "prerequisite"  -Output Detailed
@@ -169,7 +183,7 @@ Invoke-Pester e2e.Tests.ps1 -Tag "wsl2"   -Output Detailed
 ## Enable Virtualization in BIOS
 
 <details>
-  <summary>Manual Steps</summary>
+<summary>Manual Steps</summary>
 The process of enabling virtualization can vary a lot depending on the motherboard manufacturer, but it can be summarized in a few steps:
 
 1. Completely Shutdown you Computer and turn it on again.
@@ -185,7 +199,6 @@ The process of enabling virtualization can vary a lot depending on the motherboa
 > If this part did not help you, you can specifically go the Website of the Mother Board Manufacturer of you Computer and ask for help.
 
 </details>
-
 
 ### Credits:
 
