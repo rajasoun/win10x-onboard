@@ -41,6 +41,8 @@ function install_applications_via_scoop(){
     info "Visual Studio Code Instalation Done !!!"
     scoop install gh
     info "GitHub CLI Instalation Done !!!"
+    scoop install cmder
+    info "cmder Instalation Done !!!"
 }
 
 function Install-Apps(){

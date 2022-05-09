@@ -20,5 +20,8 @@ Describe 'Windows Automation' -Tag "system"{
         It "Check GitHub CLI Installation " {
             Check-Command -cmdname 'gh' | Should -Be $true
         }
+        It "Check cmder Installation " {
+            Check-Command -cmdname 'cmder' | Should -Be $true
+        }
     }
 }

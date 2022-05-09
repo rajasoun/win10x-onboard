@@ -90,6 +90,10 @@ iwr -useb https://raw.githubusercontent.com/rajasoun/win10x-onboard/main/e2e.ps1
 cd ~\workspace
 git clone https://github.com/rajasoun/win10x-onboard
 cd win10x-onboard
+
+Invoke-Pester e2e.Tests.ps1 -Tag "prerequisite"  -Output Detailed
+Invoke-Pester src\lib\Workspace.Tests.ps1 -Output Detailed
+Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed
 ```
 
 </details>
@@ -101,7 +105,6 @@ cd win10x-onboard
 
 ```sh
 Start-Process powershell -Verb runas
-cd ~\workspace\win10x-onboard
 git pull --rebase
 .\e2e.ps1 -type hyperv
 ```
