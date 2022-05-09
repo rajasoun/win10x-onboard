@@ -144,7 +144,7 @@ Install [Docker Desktop For Windows](https://docs.docker.com/desktop/windows/ins
 docker run --rm hello-world
 ```
 
-2. Bash Test: Check the Speed of the Internet using Bash Script
+2. Check the Speed of the Internet using docker
 ```sh
 MSYS_NO_PATHCONV=1  docker run --rm rajasoun/speedtest:0.1.0 "/go/bin/speedtest-go"
 ```
