@@ -5,16 +5,10 @@ on:
     branches: 
       - main
     paths:
-      - 'src/**'
-      - '*.ps1'
-
-
-  pull_request:
-    branches: 
-      - main 
-    paths:
-      - 'src/**'
-      - '*.ps1'
+      - 'src/lib/common.ps1'
+      - 'src/lib/log.ps1'
+      - 'src/lib/Apps.Installer.ps1'
+      - 'src/lib/Apps.Installer.Tests.ps1'
 
 jobs:
   apps-setup:

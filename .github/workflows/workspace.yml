@@ -1,5 +1,13 @@
 name: workspace-setup
-on: push
+on:
+  push:
+    branches: 
+      - main
+    paths:
+      - 'src/lib/common.ps1'
+      - 'src/lib/log.ps1'
+      - 'src/lib/Workspace.ps1'
+      - 'src/lib/Workspace.Tests.ps1'
 
 jobs:
   workspace-setup:
