@@ -23,5 +23,8 @@ Describe 'Windows Automation' -Tag "system"{
         It "Check cmder Installation " {
             Check-Command -cmdname 'cmder' | Should -Be $true
         }
+        It "Check wget Installation " {
+            Check-Command -cmdname 'wget' | Should -Be $true
+        }
     }
 }

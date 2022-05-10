@@ -43,6 +43,8 @@ function install_applications_via_scoop(){
     info "GitHub CLI Instalation Done !!!"
     scoop install cmder
     info "cmder Instalation Done !!!"
+    scoop install wget
+    info "wget Instalation Done !!!"
 }
 
 function Install-Apps(){
