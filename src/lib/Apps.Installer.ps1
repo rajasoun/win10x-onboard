@@ -51,3 +51,4 @@ function Install-Apps(){
     install_scoop
     install_applications_via_scoop
 }
+
