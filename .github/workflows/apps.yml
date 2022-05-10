@@ -1,5 +1,20 @@
 name: apps-setup
-on: push
+
+on:
+  push:
+    branches: 
+      - main
+    paths:
+      - 'src/**'
+      - '*.ps1'
+
+
+  pull_request:
+    branches: 
+      - main 
+    paths:
+      - 'src/**'
+      - '*.ps1'
 
 jobs:
   apps-setup:
