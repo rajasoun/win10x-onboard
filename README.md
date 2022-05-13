@@ -96,6 +96,7 @@ HyperV allows running Virtual Machine on Windows.
    Invoke-Pester src\lib\Workspace.Tests.ps1 -Output Detailed
    ```
    </details>
+   
    <details>
    <summary>1.2 Prerequisite Checks</summary>
    In Powershell window Run following commands for Prerequisite Checks
@@ -104,6 +105,7 @@ HyperV allows running Virtual Machine on Windows.
    Invoke-Pester e2e.Tests.ps1 -Tag "prerequisite"  -Output Detailed
    ```
    </details>
+   
    <details>
    <summary>1.3 Applications Setup</summary>
 
