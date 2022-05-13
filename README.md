@@ -82,51 +82,37 @@ HyperV allows running Virtual Machine on Windows.
 <details>
 <summary>1. Workspace & Applications</summary>
 
-In Powershell window Run following commands for application installation and workspace setup
+   <details>
+   <summary>1.1 Workspace</summary>
 
-```sh
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope currentuser
-iwr -useb https://raw.githubusercontent.com/rajasoun/win10x-onboard/main/e2e.ps1 | iex
-cd ~\workspace
-git clone https://github.com/rajasoun/win10x-onboard
-cd win10x-onboard
+   In Powershell window Run following commands for workspace setup
 
-Invoke-Pester e2e.Tests.ps1 -Tag "prerequisite"  -Output Detailed
-Invoke-Pester src\lib\Workspace.Tests.ps1 -Output Detailed
-Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed
-```
+   ```sh
+   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope currentuser
+   iwr -useb https://raw.githubusercontent.com/rajasoun/win10x-onboard/main/e2e.ps1 | iex
+   cd ~\workspace
+   git clone https://github.com/rajasoun/win10x-onboard
+   cd win10x-onboard
+   Invoke-Pester src\lib\Workspace.Tests.ps1 -Output Detailed
+   ```
+   </details>
+   <details>
+   <summary>1.2 Prerequisite Checks</summary>
+   In Powershell window Run following commands for Prerequisite Checks
 
-<details>
-<summary>1.1 Workspace</summary>
+   ```sh
+   Invoke-Pester e2e.Tests.ps1 -Tag "prerequisite"  -Output Detailed
+   ```
+   </details>
+   <details>
+   <summary>1.3 Applications Setup</summary>
 
-In Powershell window Run following commands for workspace setup
+   In Powershell window Run following commands for application setup
 
-```sh
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope currentuser
-iwr -useb https://raw.githubusercontent.com/rajasoun/win10x-onboard/main/e2e.ps1 | iex
-cd ~\workspace
-git clone https://github.com/rajasoun/win10x-onboard
-cd win10x-onboard
-Invoke-Pester src\lib\Workspace.Tests.ps1 -Output Detailed
-```
-</details>
-<details>
-<summary>1.2 Prerequisite Checks</summary>
-In Powershell window Run following commands for Prerequisite Checks
-
-```sh
-Invoke-Pester e2e.Tests.ps1 -Tag "prerequisite"  -Output Detailed
-```
-</details>
-<details>
-<summary>1.3 Applications Setup</summary>
-   
-In Powershell window Run following commands for application setup
-
-```sh
-Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed
-```
-</details>
+   ```sh
+   Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed
+   ```
+   </details>
 </details>
 
 <details>
