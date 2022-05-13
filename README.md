@@ -81,7 +81,7 @@ HyperV allows running Virtual Machine on Windows.
 
 <details>
 <summary>1. Workspace & Applications</summary>
-
+   <p>
    <details>
    <summary>1.1 Workspace</summary>
 
@@ -115,6 +115,7 @@ HyperV allows running Virtual Machine on Windows.
    Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed
    ```
    </details>
+   </p>   
 </details>
 
 <details>
