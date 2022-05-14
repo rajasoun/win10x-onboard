@@ -52,8 +52,6 @@ function install_applications_via_scoop(){
 function install_bootstrap_applications_via_scoop(){
     scoop install Git 
     success  "Git Bash Instalation Done !!!"
-    scoop install pwsh
-    success  "Powershell 7 Instalation Done !!!"
     scoop install wget
     info "wget Instalation Done !!!"
 }
