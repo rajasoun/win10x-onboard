@@ -31,7 +31,15 @@ function install_scoop(){
     }
 }
 
+function scoop_temp_fix_issue_4917(){
+    scoop bucket rm main
+    scoop bucket add main
+}
+
 function install_applications_via_scoop(){
+    info "Applying scoop Temporary Fix fro Issue #4917"
+    scoop_temp_fix_issue_4917
+    scoop bucket add extras
     info "Adding scoop extras Bucket"
     scoop bucket add extras
     scoop update
