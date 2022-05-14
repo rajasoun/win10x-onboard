@@ -124,7 +124,7 @@ HyperV allows running Virtual Machine on Windows.
 1. In Powershell window Run following commands following commands to setup HyperV.
 
 ```sh
-Start-Process powershell.exe -verb runAs -ArguementList '-NoExit','-Command','cd ~\workspace\win10x-onboard'
+Start-Process powershell.exe -verb runAs -ArgumentList '-NoExit','-Command','cd ~\workspace\win10x-onboard'
 git pull --rebase
 .\e2e.ps1 -type hyperv
 ```
@@ -144,7 +144,7 @@ git pull --rebase
 In Powershell window Run following commands following commands to setup WSL, WSL2 Kernel Update
 
 ```sh
-Start-Process powershell.exe -verb runAs -ArguementList '-NoExit','-Command','cd ~\workspace\win10x-onboard'
+Start-Process powershell.exe -verb runAs -ArgumentList '-NoExit','-Command','cd ~\workspace\win10x-onboard'
 .\e2e.ps1 -type wsl
 ```
 > FYI: System will restart.
@@ -184,7 +184,7 @@ Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed
 ```
 
 ```sh
-Start-Process powershell.exe -verb runAs -ArguementList '-NoExit','-Command','cd ~\workspace\win10x-onboard'
+Start-Process powershell.exe -verb runAs -ArgumentList '-NoExit','-Command','cd ~\workspace\win10x-onboard'
 Invoke-Pester src\lib\HyperV.Tests.ps1 -Output Detailed
 Invoke-Pester src\lib\Wsl.Tests.ps1 -Output Detailed
 ```
@@ -200,7 +200,7 @@ Invoke-Pester e2e.Tests.ps1 -Tag "apps"   -Output Detailed
 ```
 
 ```sh
-Start-Process powershell.exe -verb runAs -ArguementList '-NoExit','-Command','cd ~\workspace\win10x-onboard'
+Start-Process powershell.exe -verb runAs -ArgumentList '-NoExit','-Command','cd ~\workspace\win10x-onboard'
 Invoke-Pester e2e.Tests.ps1 -Tag "hyperv" -Output Detailed
 Invoke-Pester e2e.Tests.ps1 -Tag "wsl2"   -Output Detailed
 ```
