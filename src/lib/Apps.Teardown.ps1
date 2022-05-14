@@ -10,8 +10,8 @@ function uninstall_scoop(){
 }
 
 function remove_scoop_files(){
-    rmdir /Q /S ~/scoop
-    rmdir /Q /S ~/.config
+    rmdir ~/scoop
+    rmdir ~/.config
 }
 
 function Teardown-Apps(){
