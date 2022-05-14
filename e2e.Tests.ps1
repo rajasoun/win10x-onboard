@@ -3,6 +3,7 @@
 BeforeAll { 
     # Includes system.ps1
     . $PSCommandPath.Replace('.Tests.ps1','.ps1')
+    Install-BootstrapApps
     Install-Apps
 }
 
@@ -30,17 +31,17 @@ Describe 'PreRequisites Tests' {
 
 Describe 'Automation' -Tag "apps"{
     Context "Application Installation Checks" -Tag "installer" {
-        It "scoop Installation " {
-            Check-Command -cmdname 'scoop' | Should -Be $true
+        It "Git Bash Installation " {
+            Check-Command -cmdname 'git' | Should -Be $true
         }
         It "GitHub CLI Installation " {
             Check-Command -cmdname 'gh' | Should -Be $true
         }
-        It "Git Bash Installation " {
-            Check-Command -cmdname 'git' | Should -Be $true
-        }
         It "Visual Studio Code Installation " {
             Check-Command -cmdname 'code' | Should -Be $true
+        }
+        It "scoop Installation " {
+            Check-Command -cmdname 'scoop' | Should -Be $true
         }
     }
 }

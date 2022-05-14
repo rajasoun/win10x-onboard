@@ -3,7 +3,7 @@
 param(
     #[Parameter(Mandatory,HelpMessage='Installation Type [ apps | system ] ? ')]
     [Parameter()]
-    [String]$type = 'apps'
+    [String]$type = 'bootstrap-apps'
 )
 
 # remote install:
@@ -31,11 +31,20 @@ Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/Apps.
 Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/HyperV.ps1")
 Invoke-Expression (new-object net.webclient).downloadstring("$GIT_BASE_URL/Wsl.ps1")
 
+
+if($type -eq "bootstrap-apps"){
+    $dir="$HOME/workspace"
+    info "Workspace Setup"
+    Bootstrap-Env 
+    info "Installating Bootstrap pplications (git, wget & pwsh ) for Current User"
+    Install-BootstrapApps
+}
+
 if($type -eq "apps"){
     $dir="$HOME/workspace"
     info "Workspace Setup"
     Bootstrap-Env 
-    info "Installating Applications for Current User"
+    info "Installating Applications (vscode,gh) for Current User"
     Install-Apps
 }
 
