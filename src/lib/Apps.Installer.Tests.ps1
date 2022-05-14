@@ -20,15 +20,6 @@ Describe 'Windows Automation' -Tag "system"{
         }
     }
     Context 'Applications (vscode, gh) Installation Test'{    
-        It "Check scoop Installation " {
-            Check-Command -cmdname 'scoop' | Should -Be $true
-        }
-        It "Check Git Bash Installation " {
-            Check-Command -cmdname 'git' | Should -Be $true
-        }
-        It "Check wget Installation " {
-            Check-Command -cmdname 'wget' | Should -Be $true
-        }
         It "Check Visual Studio Code Installation " {
             Check-Command -cmdname 'code' | Should -Be $true
         }
