@@ -7,20 +7,23 @@ BeforeAll {
 }
 
 Describe 'Windows Automation' -Tag "system"{
-    Context 'Bootstrap Applications (scoop, git & wget) Installation Test'{
-        It "Check scoop Installation " {
+    Context 'Bootstrap Applications (scoop, git & wget) UnInstallation Test'{
+        It "Check scoop UnInstallation " {
             Check-Command -cmdname 'scoop' | Should -Be $false
         }
-        It "Check Git Bash Installation " {
+        It "Check Git Bash UnInstallation " {
             Check-Command -cmdname 'git' | Should -Be $false
         }
     }
 
-    Context 'Applications (vscode, gh) Installation Test'{    
-        It "Check Visual Studio Code Installation " {
+    Context 'Applications (vscode, gh,concfg) UnInstallation Test'{    
+        It "Check Visual Studio Code UnInstallation " {
             Check-Command -cmdname 'code' | Should -Be $false
         }
-        It "Check GitHub CLI Installation " {
+        It "Check GitHub CLI UnInstallation " {
+            Check-Command -cmdname 'gh' | Should -Be $false
+        }
+        It "concfg UnInstallation " {
             Check-Command -cmdname 'gh' | Should -Be $false
         }
     }

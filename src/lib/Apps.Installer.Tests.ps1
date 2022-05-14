@@ -19,7 +19,7 @@ Describe 'Windows Automation' -Tag "system"{
             Check-Command -cmdname 'wget' | Should -Be $true
         }
     }
-    Context 'Applications (vscode, gh) Installation Test'{    
+    Context 'Applications (vscode, gh, concfg) Installation Test'{    
         It "Check Visual Studio Code Installation " {
             Check-Command -cmdname 'code' | Should -Be $true
         }
