@@ -5,6 +5,10 @@ IF (-not([string]::IsNullOrWhitespace($PSScriptRoot))){
     . "$psscriptroot/common.ps1"
 } 
 
+function revert_to_default_theme(){
+    concfg import powershell-defauly -y
+}
+
 function uninstall_scoop(){
     scoop uninstall scoop
 }
@@ -15,6 +19,7 @@ function remove_scoop_files(){
 }
 
 function Teardown-Apps(){
+    revert_to_default_theme
     uninstall_scoop
     remove_scoop_files
 }

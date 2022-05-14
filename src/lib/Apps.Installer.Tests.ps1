@@ -26,5 +26,8 @@ Describe 'Windows Automation' -Tag "system"{
         It "Check GitHub CLI Installation " {
             Check-Command -cmdname 'gh' | Should -Be $true
         }
+        It "concfg Installation " {
+            Check-Command -cmdname 'concfg' | Should -Be $true
+        }
     }
 }

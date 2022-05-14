@@ -47,6 +47,10 @@ function install_applications_via_scoop(){
     info "Visual Studio Code Instalation Done !!!"
     scoop install gh
     info "GitHub CLI Instalation Done !!!"
+    scoop install concfg
+    info "concfg Instalation Done !!!"
+    concfg import solarized-dark -y
+    info "Powershell Terminal theme changed to Dark !!!"
 }
 
 function install_bootstrap_applications_via_scoop(){
