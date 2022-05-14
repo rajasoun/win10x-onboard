@@ -7,6 +7,7 @@ IF (-not([string]::IsNullOrWhitespace($PSScriptRoot))){
 
 function revert_to_default_theme(){
     concfg import powershell-defauly -y
+    success  "Powershell Theme reverted back to default!!!"
 }
 
 function uninstall_scoop(){
