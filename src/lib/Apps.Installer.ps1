@@ -51,11 +51,11 @@ function install_bootstrap_applications_via_scoop(){
 }
 
 function Install-BootstrapApps(){
+    install_scoop
     install_bootstrap_applications_via_scoop
 }
 
 function Install-Apps(){
-    install_scoop
     install_applications_via_scoop
 }
 
