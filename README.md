@@ -181,6 +181,10 @@ MSYS_NO_PATHCONV=1  docker run --rm rajasoun/speedtest:0.1.0 "/go/bin/speedtest-
 ```sh
 Invoke-Pester src\lib\Workspace.Tests.ps1 -Output Detailed
 Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed
+```
+
+```sh
+Start-Process powershell -Verb runas
 Invoke-Pester src\lib\HyperV.Tests.ps1 -Output Detailed
 Invoke-Pester src\lib\Wsl.Tests.ps1 -Output Detailed
 ```
@@ -193,6 +197,10 @@ Invoke-Pester src\lib\Wsl.Tests.ps1 -Output Detailed
 ```sh
 Invoke-Pester e2e.Tests.ps1 -Tag "prerequisite"  -Output Detailed
 Invoke-Pester e2e.Tests.ps1 -Tag "apps"   -Output Detailed
+```
+
+```sh
+Start-Process powershell -Verb runas
 Invoke-Pester e2e.Tests.ps1 -Tag "hyperv" -Output Detailed
 Invoke-Pester e2e.Tests.ps1 -Tag "wsl2"   -Output Detailed
 ```
