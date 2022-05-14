@@ -14,10 +14,8 @@ Describe 'Windows Automation' -Tag "system"{
         It "Check Git Bash Installation " {
             Check-Command -cmdname 'git' | Should -Be $false
         }
-        It "Check wget Installation " {
-            Check-Command -cmdname 'wget' | Should -Be $false
-        }
     }
+
     Context 'Applications (vscode, gh) Installation Test'{    
         It "Check Visual Studio Code Installation " {
             Check-Command -cmdname 'code' | Should -Be $false
