@@ -17,9 +17,9 @@ Describe 'Test core.ps1' {
             $null = Get-Module -ListAvailable -Name $ModuleName
 		    $ModuleName | Should -Not -BeNullOrEmpty
 	    }
-        It "check powershell version is greater than 7"{
+        It "check powershell version is greater than 5"{
             $majorVersion = $PSVersionTable.PSVersion.Major
-            $versionOk = $majorVersion -ge 7
+            $versionOk = $majorVersion -ge 5
             $versionOk | Should -BeTrue
         }
         It "check Pester version is greater than 5.2"{
@@ -59,10 +59,6 @@ Describe 'Test core.ps1' {
         ) {
             install_modules
             Test-ModuleAvailable -Name $name | Should -Be $expected
-        }
-        It "install_module installs Emojis" {
-            install_module "Emojis"
-            Get-Emoji -Name cactus | Should -Be '🌵'
         }
         It "Bootstrap-Env to be success"{
             $dir="$HOME/workspace/on-board/"
