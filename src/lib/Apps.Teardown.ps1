@@ -23,6 +23,14 @@ function uninstall_scoop(){
     }
 }
 
+function uninstall_scoop_applications(){
+    $packages = Get-Content .\packages\scoop.txt
+    $ErrorActionPreference= 'silentlycontinue'
+    foreach ($pkg in $packages) {
+        scoop uninstall $pkg
+    }
+}
+
 function remove_scoop_files(){
     DeleteDir-If-Exists ~\scoop
     DeleteDir-If-Exists ~\.config

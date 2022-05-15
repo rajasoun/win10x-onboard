@@ -23,7 +23,7 @@ Function Enable-Wsl() {
     & cmd /c 'dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart'
     & cmd /c 'dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart'
     Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform 
-    sucess "WSL is enabled. SUCCESS !!! (Rebbot & Re-Run the Script)"
+    success "WSL is enabled. SUCCESS !!! (Rebbot & Re-Run the Script)"
     Start-Sleep 30
     warn "System Reboot Required & Re-run the script to continue the installation."
 }

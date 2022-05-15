@@ -36,8 +36,8 @@ function Check-Command($cmdname){
     return [bool](Get-Command -Name $cmdname -ErrorAction SilentlyContinue)
 }
 
-function is_win10(){
-    return [bool]([Environment]::OSVersion.Version -ge (new-object 'Version' 10,18362))
+function Check-WindowsVersion-GreaterOrEqual10(){
+    return [bool]([Environment]::OSVersion.Version -ge (new-object 'Version' 10,0))
 }
 
 Function Test-ModuleAvailable {
@@ -83,4 +83,8 @@ Function DeleteDir-If-Exists($dir_path){
     }else{
 	    warn "Directory $dir_path Already Removed"
     }
+}
+
+Function Profile-System(){
+    systeminfo /fo csv | ConvertFrom-Csv | select OS*, System*, Hotfix*,Hyper-V* | Format-List
 }

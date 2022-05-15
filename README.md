@@ -64,11 +64,13 @@ HyperV allows running Virtual Machine on Windows.
 <details>
 <summary>2. HyperV is Enabled</summary>
 
-1. Type `systeminfo` and press Enter. Wait for the process to finish
+1. In Powershell Windows 
 
-2. Once the results appear, search for the `Hyper-V Requirements` section which is usually the last one.
+```sh
+systeminfo /fo csv | ConvertFrom-Csv | select OS*, System*, Hotfix*,Hyper-V* | Format-List
+```
 
-![11](https://user-images.githubusercontent.com/61367380/141923469-48c99804-d491-497f-bcde-69de89f90045.jpg)
+2. Check the output
 
 - If it says `A hypervisor has been detected. Features required for Hyper-V will not be displayed.` **This means Hyper-V is already enabled**
 
@@ -217,18 +219,6 @@ Invoke-Pester e2e.Tests.ps1 -Tag "prerequisite"  -Output Detailed
 Invoke-Pester e2e.Tests.ps1 -Tag "apps"   -Output Detailed
 ```
 
-Switch to Elevated Previlage 
-
-```sh
-.\e2e.ps1 elevate
-```
-
-In the New Elevated Powershell as Administrator
-
-```sh
-Invoke-Pester e2e.Tests.ps1 -Tag "hyperv" -Output Detailed
-Invoke-Pester e2e.Tests.ps1 -Tag "wsl2"   -Output Detailed
-```
 </details>
 
 TDD - [Test Driven Development](https://en.wikipedia.org/wiki/Test-driven_development)

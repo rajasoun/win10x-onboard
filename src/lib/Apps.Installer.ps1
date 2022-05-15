@@ -53,7 +53,7 @@ function install_applications_via_scoop(){
     info "concfg Instalation Done !!!"
     concfg import solarized-dark -y
     info "Powershell Terminal theme changed to Dark !!!"
-    sucess "Applications Setup Done !!!"
+    success "Applications Setup Done !!!"
 }
 
 function install_bootstrap_applications_via_scoop(){

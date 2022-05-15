@@ -46,22 +46,3 @@ Describe 'Automation' -Tag "apps"{
     }
 }
 
-Describe 'Automation' -Tag "hyperv" {
-    Context 'HyperV Management' {
-        It "Enable-HyperV-IfNotDone - Enables HyperV if Not Eabled " {
-            Enable-HyperV-IfNotDone
-            Check-HyperV-Enabled | Should -Be $true
-        }
-    }
-}
-
-Describe 'Automation ' -Tag "wsl"{
-    Context 'WSL2 Enabled & Upgraded'{
-        It "WSL2 To be Enabled " {
-            Enable-Wsl-IfNotDone
-            Wsl2-KernalUpdate
-            Check-Wsl-Enabled | Should -Be $true
-        }
-    }
-}
-

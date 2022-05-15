@@ -1,0 +1,8 @@
+7zip
+cacert
+concfg
+gh
+Git
+PowerSession
+vscode
+wget
