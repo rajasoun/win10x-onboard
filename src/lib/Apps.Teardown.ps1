@@ -36,7 +36,17 @@ function remove_scoop_files(){
     }
 }
 
+function stop_apps(){
+    info "Force stopping Applications - If Running"
+    StopProgram-If-Running bash
+    StopProgram-If-Running code
+    StopProgram-If-Running powersession
+    StopProgram-If-Running gh
+    StopProgram-If-Running wget
+}
+
 function Teardown-Apps(){
+    stop_apps
     revert_to_default_theme
     uninstall_scoop
     remove_scoop_files

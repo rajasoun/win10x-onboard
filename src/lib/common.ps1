@@ -67,3 +67,12 @@ Function GenerateFolder($path) {
 Function Load-Script-From-Url($url){
     Invoke-Expression (new-object net.webclient).downloadstring($url)
 }
+
+Function StopProgram-If-Running($program){
+    if((Get-Process -Name $program -ErrorAction SilentlyContinue) -eq $Null) { 
+        info "Program $program is Not Running !!!" 
+    } else { 
+        Stop-Process -Name $program -Force
+        success "Program $program Stopped !!!"
+    }
+}
