@@ -26,5 +26,8 @@ Describe 'Windows Automation' -Tag "system"{
         It "concfg UnInstallation " {
             Check-Command -cmdname 'gh' | Should -Be $false
         }
+        It "PowerSession Installation " {
+            Check-Command -cmdname 'PowerSession' | Should -Be $true
+        }
     }
 }
