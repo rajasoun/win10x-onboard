@@ -45,9 +45,16 @@ function stop_apps(){
     StopProgram-If-Running wget
 }
 
+function uninstall_vscode_extensions(){
+    code --uninstall-extension ms-vscode-remote.remote-containers
+    code --uninstall-extension golang.go
+    info "VSCode Extensions UnInstallation Done !!!"
+}
+
 function Teardown-Apps(){
     stop_apps
     revert_to_default_theme
+    uninstall_vscode_extensions
     uninstall_scoop
     remove_scoop_files
 }

@@ -24,6 +24,8 @@ Containerization - [Docker Desktop](https://www.docker.com/products/docker-deskt
    - [Git Bash](https://git-scm.com/)
    - [GitHub CLI](https://cli.github.com/)
    - Code Editor (IDE) - [Visual Studio Code](https://code.visualstudio.com/)
+   - [concfg](https://github.com/lukesampson/concfg)
+   - [PowerSession](https://github.com/Watfaq/PowerSession)
 
 1. Visual Studio Code [Extensions](https://code.visualstudio.com/docs/editor/extension-marketplace)
    - [ms-vscode-remote.remote-containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) - [Developing inside a Container](https://code.visualstudio.com/docs/remote/containers)

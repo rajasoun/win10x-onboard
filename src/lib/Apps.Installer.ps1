@@ -45,6 +45,8 @@ function install_applications_via_scoop(){
     scoop update
     scoop install vscode
     info "Visual Studio Code Instalation Done !!!"
+    install_vscode_extensions
+    info "VSCode Extensions Installation Done !!!"
     scoop install gh
     info "GitHub CLI Instalation Done !!!"
     scoop install PowerSession
@@ -61,6 +63,11 @@ function install_bootstrap_applications_via_scoop(){
     success  "Git Bash Instalation Done !!!"
     scoop install wget
     info "wget Instalation Done !!!"
+}
+
+function install_vscode_extensions(){
+    code --install-extension ms-vscode-remote.remote-containers
+    code --install-extension golang.go
 }
 
 function Install-BootstrapApps(){
