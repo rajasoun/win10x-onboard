@@ -181,6 +181,7 @@ Install [Docker Desktop For Windows](https://docs.docker.com/desktop/windows/ins
 
 ```sh
 .\e2e.ps1 bash-it
+nix/assist.sh bash-setup
 ```
 
 1. Docker Test: Open Git Bash command prompt and output should contain `Hello from Docker`

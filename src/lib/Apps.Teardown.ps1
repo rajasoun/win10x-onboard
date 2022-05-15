@@ -45,6 +45,13 @@ function stop_apps(){
     StopProgram-If-Running wget
 }
 
+function remove_oh_my_bash(){
+    DeleteDir-If-Exists ~/.oh-my-bash/
+    del ~/.bashrc
+    del ~/.bash_profile 
+    del ~/.bash_history
+}
+
 function uninstall_vscode_extensions(){
     code --uninstall-extension ms-vscode-remote.remote-containers
     code --uninstall-extension golang.go
@@ -57,4 +64,5 @@ function Teardown-Apps(){
     uninstall_vscode_extensions
     uninstall_scoop
     remove_scoop_files
+    remove_oh_my_bash
 }
