@@ -177,11 +177,10 @@ Install [Docker Desktop For Windows](https://docs.docker.com/desktop/windows/ins
 <details>
 <summary>5. Test Docker  Setup</summary>
 
-1. Import Alias & switch to bash shell 
+1. Switch to bash shell 
 
 ```sh
-Import-Alias -Path "alias.csv"
-bash-it --login -i
+.\e2e.ps1 bash-it
 ```
 
 1. Docker Test: Open Git Bash command prompt and output should contain `Hello from Docker`

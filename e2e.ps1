@@ -81,6 +81,11 @@ if($type -eq "profile"){
     Profile-System
 }
 
+if($type -eq "bash-it"){
+    Import-Alias -Path "alias.csv" -ErrorAction SilentlyContinue
+    bash-it --login -i
+}
+
 
 
 
