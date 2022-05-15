@@ -3,7 +3,7 @@
 BeforeAll { 
     # . $PSScriptRoot/core.ps1
     . $PSCommandPath.Replace('.Tests.ps1','.ps1')
-    $dir="$HOME/workspace/on-board/"
+    $dir="$HOME\workspace\on-board\"
 }
 AfterAll { 
     remove $dir
@@ -61,7 +61,7 @@ Describe 'Test core.ps1' {
             Test-ModuleAvailable -Name $name | Should -Be $expected
         }
         It "Bootstrap-Env to be success"{
-            $dir="$HOME/workspace/on-board/"
+            $dir="$HOME\workspace\on-board\"
             Bootstrap-Env
             (Test-Path -Path $dir) | Should -BeTrue
         }

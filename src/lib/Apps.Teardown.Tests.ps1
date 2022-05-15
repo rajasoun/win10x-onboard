@@ -27,7 +27,7 @@ Describe 'Windows Automation' -Tag "system"{
             Check-Command -cmdname 'gh' | Should -Be $false
         }
         It "PowerSession Installation " {
-            Check-Command -cmdname 'PowerSession' | Should -Be $true
+            Check-Command -cmdname 'PowerSession' | Should -Be $false
         }
     }
 }

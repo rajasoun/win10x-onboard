@@ -6,17 +6,34 @@ IF (-not([string]::IsNullOrWhitespace($PSScriptRoot))){
 } 
 
 function revert_to_default_theme(){
-    concfg import powershell-default 
-    success  "Powershell Theme reverted back to default!!!"
+    if ((Check-Command -cmdname 'concfg')) {
+        concfg import powershell-default 
+        success  "Powershell Theme reverted back to default!!!"
+    }else{
+        warn "concfg Already Uninstalled"
+    }
 }
 
 function uninstall_scoop(){
-    scoop uninstall scoop
+    if ((Check-Command -cmdname 'scoop')) {
+        scoop uninstall scoop 
+        success  "scoop & all applications uninstallation Done!!!"
+    }else{
+        warn "scoop Already Uninstalled"
+    }
 }
 
 function remove_scoop_files(){
-    rmdir ~/scoop
-    rmdir ~/.config
+    if ( Test-Path ~\scoop ) {
+	rmdir ~\scoop
+    }else{
+	warn "Directory ~\scoop Already Removed"
+    }
+    if ( Test-Path ~\.config ) {
+	rmdir ~\.config
+    }else{
+	warn "Directory ~\.config Already Removed"
+    }
 }
 
 function Teardown-Apps(){
