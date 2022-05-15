@@ -232,8 +232,17 @@ Invoke-Pester e2e.Tests.ps1 -Tag "wsl2"   -Output Detailed
 </details>
 
 TDD - [Test Driven Development](https://en.wikipedia.org/wiki/Test-driven_development)
+
 ATDD - [Acceptance Test Driven Development](https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development)
 
+
+## 4. Teardown Applications 
+
+To uninstall scoop and all applications installed via scoop
+
+```sh
+.\e2e.ps1 teardown
+```
 
 ## Enable Virtualization in BIOS
 
