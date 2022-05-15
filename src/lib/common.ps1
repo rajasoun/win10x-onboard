@@ -76,3 +76,11 @@ Function StopProgram-If-Running($program){
         success "Program $program Stopped !!!"
     }
 }
+
+Function DeleteDir-If-Exists($dir_path){
+    if ( Test-Path $dir_path ) {
+	    rmdir $dir_path -Force
+    }else{
+	    warn "Directory $dir_path Already Removed"
+    }
+}

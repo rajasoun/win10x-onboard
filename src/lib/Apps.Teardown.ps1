@@ -24,16 +24,8 @@ function uninstall_scoop(){
 }
 
 function remove_scoop_files(){
-    if ( Test-Path ~\scoop ) {
-	rmdir ~\scoop
-    }else{
-	warn "Directory ~\scoop Already Removed"
-    }
-    if ( Test-Path ~\.config ) {
-	rmdir ~\.config
-    }else{
-	warn "Directory ~\.config Already Removed"
-    }
+    DeleteDir-If-Exists ~\scoop
+    DeleteDir-If-Exists ~\.config
 }
 
 function stop_apps(){
