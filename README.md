@@ -123,10 +123,15 @@ HyperV allows running Virtual Machine on Windows.
 
 1. In Powershell window Run following commands following commands to setup HyperV.
 
+Switch to Elevated Previlage 
+
 ```sh
-Start-Process powershell.exe -verb runAs -ArgumentList '-NoExit','-Command','cd ~\workspace\win10x-onboard'
-git pull --rebase
-.\e2e.ps1 -type hyperv
+.\e2e.ps1 elevate
+```
+
+In the New Elevated Powershell as Administrator
+```sh
+.\e2e.ps1 hyperv
 ```
 
 > FYI: System will restart.
@@ -143,9 +148,16 @@ git pull --rebase
 
 In Powershell window Run following commands following commands to setup WSL, WSL2 Kernel Update
 
+Switch to Elevated Previlage 
+
 ```sh
-Start-Process powershell.exe -verb runAs -ArgumentList '-NoExit','-Command','cd ~\workspace\win10x-onboard'
-.\e2e.ps1 -type wsl
+.\e2e.ps1 elevate
+```
+
+In the New Elevated Powershell as Administrator
+
+```sh
+.\e2e.ps1 wsl
 ```
 > FYI: System will restart.
 
@@ -183,8 +195,14 @@ Invoke-Pester src\lib\Workspace.Tests.ps1 -Output Detailed
 Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed
 ```
 
+Switch to Elevated Previlage 
+
 ```sh
-Start-Process powershell.exe -verb runAs -ArgumentList '-NoExit','-Command','cd ~\workspace\win10x-onboard'
+.\e2e.ps1 elevate
+```
+
+In the New Elevated Powershell as Administrator
+```sh
 Invoke-Pester src\lib\HyperV.Tests.ps1 -Output Detailed
 Invoke-Pester src\lib\Wsl.Tests.ps1 -Output Detailed
 ```
@@ -199,8 +217,15 @@ Invoke-Pester e2e.Tests.ps1 -Tag "prerequisite"  -Output Detailed
 Invoke-Pester e2e.Tests.ps1 -Tag "apps"   -Output Detailed
 ```
 
+Switch to Elevated Previlage 
+
 ```sh
-Start-Process powershell.exe -verb runAs -ArgumentList '-NoExit','-Command','cd ~\workspace\win10x-onboard'
+.\e2e.ps1 elevate
+```
+
+In the New Elevated Powershell as Administrator
+
+```sh
 Invoke-Pester e2e.Tests.ps1 -Tag "hyperv" -Output Detailed
 Invoke-Pester e2e.Tests.ps1 -Tag "wsl2"   -Output Detailed
 ```

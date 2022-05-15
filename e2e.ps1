@@ -73,6 +73,10 @@ if($type -eq "teardown"){
     Teardown-Apps
 }
 
+if($type -eq "elevate"){
+    Start-Process powershell.exe -verb runAs -ArgumentList '-NoExit','-Command','cd ~\workspace\win10x-onboard'
+}
+
 
 
 
