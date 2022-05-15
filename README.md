@@ -261,6 +261,7 @@ Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
 
 </details>
 
+<details>
 <summary>4.3 Disable WSL</summary>
 
 To Disable WSL
