@@ -236,13 +236,42 @@ TDD - [Test Driven Development](https://en.wikipedia.org/wiki/Test-driven_develo
 ATDD - [Acceptance Test Driven Development](https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development)
 
 
-## 4. Teardown Applications 
+## 4. Teardown 
+
+<details>
+<summary>4.1 Teardown Applications</summary>
 
 To uninstall scoop and all applications installed via scoop
 
 ```sh
 .\e2e.ps1 teardown
 ```
+
+</details>
+
+<details>
+<summary>4.2 Disable HyperV</summary>
+
+To Disable HyperV
+
+```sh
+.\e2e.ps1 elevate
+Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
+```
+
+</details>
+
+<summary>4.3 Disable WSL</summary>
+
+To Disable WSL
+
+```sh
+.\e2e.ps1 elevate
+Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+```
+
+</details>
+
 
 ## Enable Virtualization in BIOS
 
