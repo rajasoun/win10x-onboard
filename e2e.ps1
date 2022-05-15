@@ -77,6 +77,10 @@ if($type -eq "elevate"){
     Start-Process powershell.exe -verb runAs -ArgumentList '-NoExit','-Command','cd ~\workspace\win10x-onboard'
 }
 
+if($type -eq "profile"){
+    Profile-System
+}
+
 
 
 
