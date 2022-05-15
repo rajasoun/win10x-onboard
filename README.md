@@ -177,12 +177,19 @@ Install [Docker Desktop For Windows](https://docs.docker.com/desktop/windows/ins
 <details>
 <summary>5. Test Docker  Setup</summary>
 
+1. Import Alias & switch to bash shell 
+
+```sh
+Import-Alias -Path "alias.csv"
+bash-it --login -i
+```
+
 1. Docker Test: Open Git Bash command prompt and output should contain `Hello from Docker`
 ```sh
 docker run --rm hello-world
 ```
 
-2. Check the Speed of the Internet using docker
+1. Check the Speed of the Internet using docker
 ```sh
 MSYS_NO_PATHCONV=1  docker run --rm rajasoun/speedtest:0.1.0 "/go/bin/speedtest-go"
 ```
