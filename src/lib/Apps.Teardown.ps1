@@ -53,8 +53,8 @@ function remove_oh_my_bash(){
 }
 
 function uninstall_vscode_extensions(){
-    code --uninstall-extension ms-vscode-remote.remote-containers
-    code --uninstall-extension golang.go
+    code.cmd --uninstall-extension ms-vscode-remote.remote-containers
+    code.cmd --uninstall-extension golang.go
     info "VSCode Extensions UnInstallation Done !!!"
 }
 
