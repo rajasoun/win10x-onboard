@@ -58,6 +58,8 @@ function uninstall_vscode_extensions(){
     info "VSCode Extensions UnInstallation Done !!!"
 }
 
+# Teardowns scoop and its apps, restores to default windows terminal theme 
+# Removes oh-my-bash 
 function Teardown-Apps(){
     stop_apps
     revert_to_default_theme
