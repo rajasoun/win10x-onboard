@@ -36,3 +36,9 @@ jobs:
         run: |       
           $env:CI_WINDOWS=$true
           Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed
+
+      - name: Test Apps.Teardown.Tests.ps1 file
+        shell: pwsh
+        run: |       
+          $env:CI_WINDOWS=$true
+          Invoke-Pester src\lib\Apps.Teardown.Tests.ps1 -Output Detailed

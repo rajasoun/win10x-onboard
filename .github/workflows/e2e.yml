@@ -30,9 +30,14 @@ jobs:
           .\install.ps1 -RunAsAdmin
           Join-Path (Resolve-Path ~).Path "scoop\shims" >> $Env:GITHUB_PATH
 
-      - name: Test e2e.Tests.ps1 file
+      - name: Test e2e.Tests.ps1 - prerequisite
         shell: pwsh
         run: |       
           $env:CI_WINDOWS=$true
           Invoke-Pester e2e.Tests.ps1 -Tag "prerequisite"  -Output Detailed
 
+      - name: Test e2e.Tests.ps1 - apps
+        shell: pwsh
+        run: |       
+          $env:CI_WINDOWS=$true
+          Invoke-Pester e2e.Tests.ps1 -Tag "apps"  -Output Detailed
