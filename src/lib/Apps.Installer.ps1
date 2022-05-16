@@ -66,8 +66,8 @@ function install_bootstrap_applications_via_scoop(){
 }
 
 function install_vscode_extensions(){
-    code.cmd --install-extension ms-vscode-remote.remote-containers
-    code.cmd --install-extension golang.go
+    ~\scoop\apps\vscode\current\bin\code.cmd --install-extension ms-vscode-remote.remote-containers
+    ~\scoop\apps\vscode\current\bin\code.cmd --install-extension golang.go
 }
 
 function Install-BootstrapApps(){

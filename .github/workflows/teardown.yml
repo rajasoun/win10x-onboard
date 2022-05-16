@@ -42,4 +42,4 @@ jobs:
         shell: pwsh
         run: |       
           $env:CI_WINDOWS=$true
-          Invoke-Pester src\lib\Apps.Teardown.Tests.ps1 -Output Detailed
+          Invoke-Pester src\lib\Apps.Teardown.Tests.ps1 -Output Detailed -RunAsAdmin
