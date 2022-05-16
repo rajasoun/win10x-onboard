@@ -31,14 +31,11 @@ jobs:
           .\install.ps1 -RunAsAdmin
           Join-Path (Resolve-Path ~).Path "scoop\shims" >> $Env:GITHUB_PATH
 
-      - name: Test Apps.Installer.Tests.ps1 file
-        shell: pwsh
-        run: |       
-          $env:CI_WINDOWS=$true
-          Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed
-
       - name: Test Apps.Teardown.Tests.ps1 file
         shell: pwsh
         run: |       
           $env:CI_WINDOWS=$true
+          Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed
           Invoke-Pester src\lib\Apps.Teardown.Tests.ps1 -Output Detailed
+
+          
