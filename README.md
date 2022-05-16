@@ -113,11 +113,12 @@ systeminfo /fo csv | ConvertFrom-Csv | select OS*, System*, Hotfix*,Hyper-V* | F
    </details>
 
    <details>
-   <summary>1.3 Prerequisite Checks</summary>
-   In Powershell window Run following commands for Prerequisite Checks
+   <summary>1.3 Check Applications Setup</summary>
+   In Powershell window Run following commands for Automated Checks
 
    ```sh
    Invoke-Pester e2e.Tests.ps1 -Tag "prerequisite"  -Output Detailed
+   Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed
    ```
    </details>
    </p>   
