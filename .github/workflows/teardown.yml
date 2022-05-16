@@ -7,12 +7,12 @@ on:
     paths:
       - 'src/lib/common.ps1'
       - 'src/lib/log.ps1'
-      - 'src/lib/Apps.Installer.ps1'
-      - 'src/lib/Apps.Installer.Tests.ps1'
+      - 'src/lib/Apps.Teardown.ps1'
+      - 'src/lib/Apps.Teardown.Tests.ps1'
 
 jobs:
-  apps-setup:
-    name: Test Apps.Installer.ps1 
+  teardown:
+    name: Test Apps.Teardown.ps1 
     runs-on: windows-latest
     steps:
       - name: Check out repository code
