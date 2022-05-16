@@ -43,4 +43,5 @@ jobs:
         shell: pwsh
         run: |       
           $env:CI_WINDOWS=$true
+          Join-Path (Resolve-Path ~).Path "scoop\shims" >> $Env:GITHUB_PATH
           Invoke-Pester src\lib\Apps.Teardown.Tests.ps1 -Output Detailed
