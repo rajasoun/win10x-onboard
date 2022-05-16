@@ -86,6 +86,16 @@ if($type -eq "bash-it"){
     bash-it --login -i
 }
 
+if($type -eq "apps-setup-test"){
+    Invoke-Pester e2e.Tests.ps1 -Tag "prerequisite"  -Output Detailed
+    Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed
+}
+
+if($type -eq "system-setup-test"){
+    Invoke-Pester src\lib\HyperV.Tests.ps1 -Output Detailed
+    Invoke-Pester src\lib\Wsl.Tests.ps1 -Output Detailed
+}
+
 
 
 

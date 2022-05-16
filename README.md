@@ -117,8 +117,7 @@ systeminfo /fo csv | ConvertFrom-Csv | select OS*, System*, Hotfix*,Hyper-V* | F
    In Powershell window Run following commands for Automated Checks
 
    ```sh
-   Invoke-Pester e2e.Tests.ps1 -Tag "prerequisite"  -Output Detailed
-   Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed
+   .\e2e.ps1 apps-setup-test
    ```
    </details>
    </p>   
@@ -204,8 +203,7 @@ MSYS_NO_PATHCONV=1  docker run --rm rajasoun/speedtest:0.1.0 "/go/bin/speedtest-
 <summary>1. TDD Scripts</summary>
 
 ```sh
-Invoke-Pester src\lib\Workspace.Tests.ps1 -Output Detailed
-Invoke-Pester src\lib\Apps.Installer.Tests.ps1 -Output Detailed
+.\e2e.ps1 apps-setup-test
 ```
 
 Switch to Elevated Previlage 
@@ -216,8 +214,7 @@ Switch to Elevated Previlage
 
 In the New Elevated Powershell as Administrator
 ```sh
-Invoke-Pester src\lib\HyperV.Tests.ps1 -Output Detailed
-Invoke-Pester src\lib\Wsl.Tests.ps1 -Output Detailed
+.\e2e.ps1 system-setup-test
 ```
 
 </details>
@@ -253,27 +250,24 @@ To uninstall scoop and all applications installed via scoop
 <details>
 <summary>4.2 Disable HyperV</summary>
 
-To Disable HyperV
+To Disable HyperV & WSL. Restart at End
 
 ```sh
 .\e2e.ps1 elevate
 Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
-```
-
-</details>
-
-<details>
-<summary>4.3 Disable WSL</summary>
-
-To Disable WSL
-
-```sh
-.\e2e.ps1 elevate
 Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
 ```
 
 </details>
 
+<details>
+<summary>4.3 Uninstall Docker Desktop</summary>
+
+1. From the Windows Start menu, select Settings > Apps > Apps & features.
+1. Select Docker Desktop from the Apps & features list and then select Uninstall.
+1. Click Uninstall to confirm your selection.
+
+</details>
 
 ## Enable Virtualization in BIOS
 
