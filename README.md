@@ -195,9 +195,16 @@ docker run --rm hello-world
 MSYS_NO_PATHCONV=1  docker run --rm rajasoun/speedtest:0.1.0 "/go/bin/speedtest-go"
 ```
 
+2. Switch to Powershell
+```sh
+exit
+```
+
 </details>
 
 ## 3. Test
+
+In **Powershell** Window
 
 <details>
 <summary>1. TDD Scripts</summary>
@@ -248,7 +255,7 @@ To uninstall scoop and all applications installed via scoop
 </details>
 
 <details>
-<summary>4.2 Disable HyperV</summary>
+<summary>4.2 Disable HyperV & WSL</summary>
 
 To Disable HyperV & WSL. Restart at End
 
