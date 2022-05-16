@@ -9,6 +9,7 @@ on:
       - 'src/lib/log.ps1'
       - 'src/lib/Apps.Teardown.ps1'
       - 'src/lib/Apps.Teardown.Tests.ps1'
+      - '.github/workflows/teardown.yml'
 
 jobs:
   teardown:

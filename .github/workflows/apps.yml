@@ -9,6 +9,7 @@ on:
       - 'src/lib/log.ps1'
       - 'src/lib/Apps.Installer.ps1'
       - 'src/lib/Apps.Installer.Tests.ps1'
+      - '.github/workflows/apps.yml'
 
 jobs:
   apps-setup:

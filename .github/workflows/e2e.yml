@@ -8,6 +8,7 @@ on:
       - 'src/lib/**'
       - 'e2e.ps1'
       - 'e2e.Tests.ps1'
+      - '.github/workflows/e2e.yml'
 
 jobs:
   e2e:

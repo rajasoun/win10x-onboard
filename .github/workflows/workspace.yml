@@ -8,6 +8,7 @@ on:
       - 'src/lib/log.ps1'
       - 'src/lib/Workspace.ps1'
       - 'src/lib/Workspace.Tests.ps1'
+      - '.github/workflows/workspace.yml'
 
 jobs:
   workspace-setup:
