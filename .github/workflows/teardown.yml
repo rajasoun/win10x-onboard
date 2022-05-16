@@ -1,4 +1,4 @@
-name: apps-setup
+name: teardown
 
 on:
   push:
