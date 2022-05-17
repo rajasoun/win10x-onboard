@@ -10,7 +10,7 @@ case ${choice} in
       docker_clean_all
     ;;
     "speed-test")
-      speed-test
+      speed_test
     ;;
     "wrapper")
       echo -e "${GREEN}\nRun${NC}"
