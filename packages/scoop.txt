@@ -6,3 +6,5 @@ Git
 PowerSession
 vscode
 wget
+make
+
